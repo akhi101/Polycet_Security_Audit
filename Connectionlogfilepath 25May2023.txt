@@ -1,0 +1,343 @@
+25-05-2023 15:14:53
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:14:53
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:14:59
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:14:59
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:15:37
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:15:37
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:19:52
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:19:52
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:22:27
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:22:27
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:24:22
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:24:22
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:25:38
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:25:38
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:40:30
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:40:30
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:42:39
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:42:39
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:44:15
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:44:15
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:45:15
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:45:15
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:45:46
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:45:46
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:46:57
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:46:57
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:47:54
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:47:54
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:48:41
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:48:42
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:48:49
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:48:49
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:49:32
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:49:32
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:52:50
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:52:50
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:53:06
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:53:06
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:54:33
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:54:33
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 15:54:49
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 15:54:49
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 16:11:43
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 16:11:45
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 16:17:20
+Error converting data type varchar to bigint.
+
+25-05-2023 16:18:00
+Error converting data type varchar to bigint.
+
+25-05-2023 16:18:14
+Error converting data type varchar to bigint.
+
+25-05-2023 16:29:16
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 16:29:16
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 16:30:46
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 16:30:47
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 16:40:55
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 16:40:55
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 17:26:30
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 17:26:30
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 17:38:35
+The INSERT statement conflicted with the FOREIGN KEY constraint "fk_SHL_RegistrationID". The conflict occurred in database "POLYCET_PROD", table "dbo.Registrations", column 'RegistrationID'.
+The statement has been terminated.
+
+25-05-2023 17:38:35
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 18:57:58
+Could not find stored procedure 'SP_Set_StudentRankCardLog'.
+
+25-05-2023 18:57:58
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 22:47:01
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:03
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:03
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:14
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:14
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:14
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:14
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:30
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:30
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:47:30
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:30
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:47:30
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:47:30
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:30
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:47:30
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:30
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:47:30
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:48:58
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:49:00
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:49:00
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+Timeout expired.  The timeout period elapsed prior to obtaining a connection from the pool.  This may have occurred because all pooled connections were in use and max pool size was reached.
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:49:00
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+
+25-05-2023 22:49:00
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 22:49:00
+ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.
+
+25-05-2023 23:31:16
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:31:16
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:34:13
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:34:13
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:34:29
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:34:29
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:34:36
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:34:36
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:34:52
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:34:52
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:40:28
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:40:29
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:41:26
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:41:26
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:42:14
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:42:14
+Could not find stored procedure 'USP_SET_ErrorLog'.
+
+25-05-2023 23:43:18
+Procedure or function 'SP_Set_StudentHallticketLog' expects parameter '@HallicketNo', which was not supplied.
+
+25-05-2023 23:43:18
+Could not find stored procedure 'USP_SET_ErrorLog'.
+

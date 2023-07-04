@@ -1,0 +1,2118 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F263893F-2AB8-4692-894C-6ACFFA17E86E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>44355</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.9.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.9.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+            <Aliases>itextalias</Aliases>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\itextsharp.xmlworker.5.5.13.2\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>packages\MailKit.2.0.0\lib\net45\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MimeKit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>packages\MimeKit.3.6.1\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.10.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>packages\RestSharp.106.6.10\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=22.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>packages\Select.HtmlToPdf.22.2.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.32.2.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>packages\SharpCompress.0.32.2\lib\net461\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encoding.CodePages.6.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="app\AdmissionRoutes.js" />
+    <Content Include="app\app.js" />
+    <Content Include="app\controllers\AdmExamCentresAttendanceController.js" />
+    <Content Include="app\controllers\AdmExamCentresListController.js" />
+    <Content Include="app\controllers\AttendanceStatisticsController.js" />
+    <Content Include="app\controllers\ExamCentresLoginCredsController.js" />
+    <Content Include="app\controllers\AdmExamCentresNRDownloadController.js" />
+    <Content Include="app\controllers\AdmExamCentresNRExcelController.js" />
+    <Content Include="app\controllers\AdminExaminationCentresController.js" />
+    <Content Include="app\controllers\AdminStudentDashboardController.js" />
+    <Content Include="app\controllers\ApplicationController.js" />
+    <Content Include="app\controllers\AttendanceSheetController.js" />
+    <Content Include="app\controllers\callbacksController.js" />
+    <Content Include="app\controllers\CentreLocatorAppDetailsController.js" />
+    <Content Include="app\controllers\ChangePasswordController.js" />
+    <Content Include="app\controllers\CoordinatingCentresController.js" />
+    <Content Include="app\controllers\DashboardController.js" />
+    <Content Include="app\controllers\DCCentreLocatorAppController.js" />
+    <Content Include="app\controllers\DCExamCentresAllocationController.js" />
+    <Content Include="app\controllers\DCExaminationCentresReportController.js" />
+    <Content Include="app\controllers\DCWiseExamCentresAttendanceController.js" />
+    <Content Include="app\controllers\DefaultController.js" />
+    <Content Include="app\controllers\DetailsUpdationLoginController.js" />
+    <Content Include="app\controllers\DistrictCoordinatorsController.js" />
+    <Content Include="app\controllers\DistrictCordCollegesController.js" />
+    <Content Include="app\controllers\ExamCentreAttendanceController.js" />
+    <Content Include="app\controllers\ExamCentreNRDownloadController.js" />
+    <Content Include="app\controllers\ExamCentreNRExcelController.js" />
+    <Content Include="app\controllers\ExamCentresAllocationController.js" />
+    <Content Include="app\controllers\ExamCentresListController.js" />
+    <Content Include="app\controllers\ExaminationCentersController.js" />
+    <Content Include="app\controllers\DCWiseExamCentresNRDownloadController.js" />
+    <Content Include="app\controllers\DCWiseExamCentresNRExcelController.js" />
+    <Content Include="app\controllers\AdmExaminationCentresReportController.js" />
+    <Content Include="app\controllers\FeePaymentStatusController.js" />
+    <Content Include="app\controllers\FeePaymentDetailsController.js" />
+    <Content Include="app\controllers\FeePaymentReportsController.js" />
+    <Content Include="app\controllers\ForgotPageController.js" />
+    <Content Include="app\controllers\GetDeCryptPaSSPageSController.js" />
+    <Content Include="app\controllers\GetDeCryptPaSSPageOController.js" />
+    <Content Include="app\controllers\GetHtController.js" />
+    <Content Include="app\controllers\GetOMRController.js" />
+    <Content Include="app\controllers\GetRankCardController.js" />
+    <Content Include="app\controllers\HallTicketDeletionController.js" />
+    <Content Include="app\controllers\HTDownloadController.js" />
+    <Content Include="app\controllers\OMRNoExcelUploadController.js" />
+    <Content Include="app\controllers\PaymentRecieptController.js" />
+    <Content Include="app\controllers\PreExamination\PrinterNRDownloadController.js" />
+    <Content Include="app\controllers\RankCardController.js" />
+    <Content Include="app\controllers\Registration1Controller.js" />
+    <Content Include="app\controllers\ReportsController.js" />
+    <Content Include="app\controllers\ResultsAutomationController.js" />
+    <Content Include="app\controllers\ResultsReleaseController.js" />
+    <Content Include="app\controllers\SSCDataController.js" />
+    <Content Include="app\controllers\HallticketController.js" />
+    <Content Include="app\controllers\IndexController.js" />
+    <Content Include="app\controllers\LoginController.js" />
+    <Content Include="app\controllers\MarkAttendanceController.js" />
+    <Content Include="app\controllers\MasterSettings\DatesSettingsController.js" />
+    <Content Include="app\controllers\MasterSettings\RegistrationDatesSettingsController.js" />
+    <Content Include="app\controllers\MasterSettings\ExamCentresDatesSettingsController.js" />
+    <Content Include="app\controllers\MasterSettings\FeeAmountsController.js" />
+    <Content Include="app\controllers\MasterSettings\MasterSettingsController.js" />
+    <Content Include="app\controllers\MasterSettings\ModulesSettingController.js" />
+    <Content Include="app\controllers\MasterSettings\RecentNewsController.js" />
+    <Content Include="app\controllers\MasterSettings\UsersController.js" />
+    <Content Include="app\controllers\Notifications\NotificationsController.js" />
+    <Content Include="app\controllers\NRDownloadController.js" />
+    <Content Include="app\controllers\OfficialsLoginController.js" />
+    <Content Include="app\controllers\PaymentResponseController.js" />
+    <Content Include="app\controllers\MasterSettings\PolycetYearsController.js" />
+    <Content Include="app\controllers\PreExamination\PreExaminationController.js" />
+    <Content Include="app\controllers\PrinterNRController.js" />
+    <Content Include="app\controllers\QPReportsController.js" />
+    <Content Include="app\controllers\Register\RegistrationController.js" />
+    <Content Include="app\controllers\StatisticsCountController.js" />
+    <Content Include="app\controllers\StudentChangePasswordController.js" />
+    <Content Include="app\controllers\StudentDashboardController.js" />
+    <Content Include="app\controllers\StudentForgotPageController.js" />
+    <Content Include="app\controllers\StudentHallTicketController.js" />
+    <Content Include="app\controllers\StudentHtDashboardController.js" />
+    <Content Include="app\controllers\StudentTransferController.js" />
+    <Content Include="app\controllers\TestingStudentApplicationController.js" />
+    <Content Include="app\controllers\TestingWebServiceController.js" />
+    <Content Include="app\controllers\TEstLOGinController.js" />
+    <Content Include="app\controllers\TestRegistrationController.js" />
+    <Content Include="app\controllers\TestStudentDashboardController.js" />
+    <Content Include="app\controllers\UploadOMRsController.js" />
+    <Content Include="app\controllers\ViewDetailsLoginController.js" />
+    <Content Include="app\controllers\ViewOMRController.js" />
+    <Content Include="app\views\PreExamination\PrinterNRDownload.html" />
+    <Content Include="app\views\ResultsRelease.html" />
+    <Content Include="app\views\ViewOMR.html" />
+    <Content Include="app\controllers\ViewStudentDashboardController.js" />
+    <Content Include="app\directives\inputNumberOnly.js" />
+    <Content Include="app\directives\noSpecialChar.js" />
+    <Content Include="app\directives\saCanvas.js" />
+    <Content Include="app\directives\saCheckbox.js" />
+    <Content Include="app\directives\saDate.js" />
+    <Content Include="app\directives\saDateRng.js" />
+    <Content Include="app\directives\saFileUpload.js" />
+    <Content Include="app\directives\saInput.js" />
+    <Content Include="app\directives\saNumber.js" />
+    <Content Include="app\directives\saNumberWothoutLable.js" />
+    <Content Include="app\directives\saSelect.js" />
+    <Content Include="app\directives\saSelectDisabled.js" />
+    <Content Include="app\directives\SaSpecificDateEnable.js" />
+    <Content Include="app\directives\saTable.js" />
+    <Content Include="app\directives\saTextarea.js" />
+    <Content Include="app\directives\saTime.js" />
+    <Content Include="app\Main.js" />
+    <Content Include="app\services\AdminService\AdminService.js" />
+    <Content Include="app\services\AppSettings.js" />
+    <Content Include="app\services\authInterceptorService.js" />
+    <Content Include="app\services\BillDesk\PaymentService.js" />
+    <Content Include="app\services\DataAccessService.js" />
+    <Content Include="app\services\ForgotPasswordService\ForgotPasswordService.js" />
+    <Content Include="app\services\MasterSettings\MasterPageService.js" />
+    <Content Include="app\services\MasterSettings\MasterSettingsService.js" />
+    <Content Include="app\services\SystemAdministrator\ChangePasswordService.js" />
+    <Content Include="app\views\AdmExamCentresAttendance.html" />
+    <Content Include="app\views\AdmExamCentresList.html" />
+    <Content Include="app\views\AttendanceStatistics.html" />
+    <Content Include="app\views\ExamCentresLoginCreds.html" />
+    <Content Include="app\views\AdmExamCentresNRDownload.html" />
+    <Content Include="app\views\AdmExamCentresNRExcel.html" />
+    <Content Include="app\views\AdminExaminationCentres.html" />
+    <Content Include="app\views\AdminStudentDashboard.html" />
+    <Content Include="app\views\AttendanceSheet.html" />
+    <Content Include="app\views\callbacks.html" />
+    <Content Include="app\views\CentreLocatorAppDetails.html" />
+    <Content Include="app\views\ChangePassword.html" />
+    <Content Include="app\views\CoordinatingCentres.html" />
+    <Content Include="app\views\DCCentreLocatorApp.html" />
+    <Content Include="app\views\DCExamCentresAllocation.html" />
+    <Content Include="app\views\DCExaminationCentresReport.html" />
+    <Content Include="app\views\DCWiseExamCentresAttendance.html" />
+    <Content Include="app\views\DetailsUpdationLogin.html" />
+    <Content Include="app\views\ExamCentreAttendance.html" />
+    <Content Include="app\views\ExamCentreNRDownload.html" />
+    <Content Include="app\views\ExamCentreNRExcel.html" />
+    <Content Include="app\views\ExamCentresAllocation.html" />
+    <Content Include="app\views\ExamCentresList.html" />
+    <Content Include="app\views\ExaminationCenters.html" />
+    <Content Include="app\views\DCWiseExamCentresNRDownload.html" />
+    <Content Include="app\views\DCWiseExamCentresNRExcel.html" />
+    <Content Include="app\views\AdmExaminationCentresReport.html" />
+    <Content Include="app\views\FeePaymentDetails.html" />
+    <Content Include="app\views\FeePaymentReports.html" />
+    <Content Include="app\views\FeePaymentStatus.html" />
+    <Content Include="app\views\GetDeCryptPaSSPageS.html" />
+    <Content Include="app\views\GetDeCryptPaSSPageO.html" />
+    <Content Include="app\views\GetHt.html" />
+    <Content Include="app\views\GetOMR.html" />
+    <Content Include="app\views\GetRankCard.html" />
+    <Content Include="app\views\HallTicketDeletion.html" />
+    <Content Include="app\views\HTDownload.html" />
+    <Content Include="app\views\OMRNoExcelUpload.html" />
+    <Content Include="app\views\PaymentReciept.html" />
+    <Content Include="app\views\Popups\AbsentListSubmitPopup.html" />
+    <Content Include="app\views\Popups\ConfirmDeleteHallTicketPopup.html" />
+    <Content Include="app\views\Popups\EditHtDatesPopup.html" />
+    <Content Include="app\views\RankCard.html" />
+    <Content Include="app\views\Registration1.html" />
+    <Content Include="app\views\Reports.html" />
+    <Content Include="app\views\ResultsAutomation.html" />
+    <Content Include="app\views\SSCData.html" />
+    <Content Include="app\views\Hallticket.html" />
+    <Content Include="app\views\MarkAttendance.html" />
+    <Content Include="app\views\MasterSettings\DatesSettings.html" />
+    <Content Include="app\views\MasterSettings\ExamCentresDatesSettings.html" />
+    <Content Include="app\views\MasterSettings\Users.html" />
+    <Content Include="app\views\Notifications\Notifications.html" />
+    <Content Include="app\views\MasterSettings\RegistrationDatesSettings.html" />
+    <Content Include="app\views\MasterSettings\FeeAmounts.html" />
+    <Content Include="app\views\MasterSettings\MasterSettings.html" />
+    <Content Include="app\views\MasterSettings\ModulesSetting.html" />
+    <Content Include="app\services\PreExamination\PreExaminationService.js" />
+    <Content Include="app\services\routeResolver.js" />
+    <Content Include="app\services\StudentRegistration\StudentRegistrationService.js" />
+    <Content Include="app\services\SystemAdministrator\SystemUserService.js" />
+    <Content Include="app\views\Application.html" />
+    <Content Include="app\views\Dashboard.html" />
+    <Content Include="app\views\DistrictCoordinators.html" />
+    <Content Include="app\views\DistrictCordColleges.html" />
+    <Content Include="app\views\ForgotPage.html" />
+    <Content Include="app\views\index.html" />
+    <Content Include="app\views\login.html" />
+    <Content Include="app\views\MasterSettings\RecentNews.html" />
+    <Content Include="app\views\NRDownload.html" />
+    <Content Include="app\views\OfficialsLogin.html" />
+    <Content Include="app\views\PaymentResponse.html" />
+    <Content Include="app\views\MasterSettings\PolycetYears.html" />
+    <Content Include="app\views\Popups\AbsentListPopup.html" />
+    <Content Include="app\views\Popups\ConfirmAmountPopup.html" />
+    <Content Include="app\views\Popups\ConfirmDeleteCoordinatingCentrePopup.html" />
+    <Content Include="app\views\Popups\ConfirmDeleteExaminationCentrePopup.html" />
+    <Content Include="app\views\Popups\ConfirmStdPreferencesPopup.html" />
+    <Content Include="app\views\Popups\ConfirmTransferCentrePopup.html" />
+    <Content Include="app\views\Popups\DeleteCoordinatingCentresPopup.html" />
+    <Content Include="app\views\Popups\DeleteExaminationCentresPopup.html" />
+    <Content Include="app\views\Popups\EditDCExamCentreAllocationPopup.html" />
+    <Content Include="app\views\Popups\EditDistCentresPopup.html" />
+    <Content Include="app\views\Popups\EditCoordinatingCentresPopup.html" />
+    <Content Include="app\views\Popups\EditExamCentresRegistrationPopup.html" />
+    <Content Include="app\views\Popups\EditExaminationCentresPopup.html" />
+    <Content Include="app\views\Popups\EditExaminationDatesPopup.html" />
+    <Content Include="app\views\Popups\EditFeeAmountPopup.html" />
+    <Content Include="app\views\Popups\EditModulesPopup.html" />
+    <Content Include="app\views\Popups\EditNotificationPopup.html" />
+    <Content Include="app\views\Popups\EditNRDatesPopup.html" />
+    <Content Include="app\views\Popups\EditOMRDatesPopup.html" />
+    <Content Include="app\views\Popups\EditPolycetYearPopup.html" />
+    <Content Include="app\views\Popups\EditRecentNewsPopup.html" />
+    <Content Include="app\views\Popups\EditRegDatesPopup.html" />
+    <Content Include="app\views\Popups\EditResultsDatesPopup.html" />
+    <Content Include="app\views\Popups\EditSubModulesPopup.html" />
+    <Content Include="app\views\Popups\EditUserModulesPopup.html" />
+    <Content Include="app\views\Popups\EditUserPopup.html" />
+    <Content Include="app\views\Popups\EditUserSubModulesPopup.html" />
+    <Content Include="app\views\Popups\EditUserTypesPopup.html" />
+    <Content Include="app\views\Popups\FeePaymentPopup.html" />
+    <Content Include="app\views\Popups\StudentApplicationSubmitPopup.html" />
+    <Content Include="app\views\Popups\ViewDetailsUpdationPopup.html" />
+    <Content Include="app\views\Popups\ViewDistCentresPopup.html" />
+    <Content Include="app\views\Popups\ViewCoordinatingCentresPopup.html" />
+    <Content Include="app\views\Popups\ViewExaminationCentresPopup.html" />
+    <Content Include="app\views\Popups\ViewExaminationDatesPopup.html" />
+    <Content Include="app\views\Popups\ViewFeeAmountsPopup.html" />
+    <Content Include="app\views\Popups\ViewOMRDatesPopup.html" />
+    <Content Include="app\views\Popups\ViewPolycetYearPopup.html" />
+    <Content Include="app\views\Popups\ViewRecentNewsPopup.html" />
+    <Content Include="app\views\Popups\ViewExamCentresRegDatesPopup.html" />
+    <Content Include="app\views\Popups\ViewRegDatesPopup.html" />
+    <Content Include="app\views\Popups\ViewResultsDatesPopup.html" />
+    <Content Include="app\views\Popups\ViewUserPopup.html" />
+    <Content Include="app\views\Popups\ViewUserTypesPopup.html" />
+    <Content Include="app\views\PreExamination\PreExamination.html" />
+    <Content Include="app\views\PrinterNR.html" />
+    <Content Include="app\views\QPReports.html" />
+    <Content Include="app\views\Register\Registration.html" />
+    <Content Include="app\views\StatisticsCount.html" />
+    <Content Include="app\views\StudentChangePassword.html" />
+    <Content Include="app\views\StudentDashboard.html" />
+    <Content Include="app\views\StudentForgotPage.html" />
+    <Content Include="app\views\StudentHallTicket.html" />
+    <Content Include="app\views\StudentHtDashboard.html" />
+    <Content Include="app\views\StudentTransfer.html" />
+    <Content Include="app\views\TestingWebService.html" />
+    <Content Include="app\views\TEstLOGin.html" />
+    <Content Include="app\views\TestRegistration.html" />
+    <Content Include="app\views\TestingStudentApplication.html" />
+    <Content Include="app\views\TestStudentDashboard.html" />
+    <Content Include="app\views\UploadOMRs.html" />
+    <Content Include="app\views\ViewDetailsLogin.html" />
+    <Content Include="app\views\ViewStudentDashboard.html" />
+    <Content Include="assets\cont\css\fontello.css" />
+    <Content Include="assets\cont\font\fontello.svg" />
+    <Content Include="assets\css\animate.css" />
+    <Content Include="assets\css\bootsnav.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\datatables.min.css" />
+    <Content Include="assets\css\elegant-icons.css" />
+    <Content Include="assets\css\ElegantIcons.html" />
+    <Content Include="assets\css\flaticon-set.css" />
+    <Content Include="assets\css\Flaticon.html" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\magnific-popup.css" />
+    <Content Include="assets\css\nav.css" />
+    <Content Include="assets\css\owl.carousel.min.css" />
+    <Content Include="assets\css\owl.theme.default.min.css" />
+    <Content Include="assets\css\owl.video.play.html" />
+    <Content Include="assets\css\polycet.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\css\studentdashboardstyle.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\table.css" />
+    <Content Include="assets\fonts\ElegantIcons.svg" />
+    <Content Include="assets\fonts\fa-brands-400.html" />
+    <Content Include="assets\fonts\fa-regular-400.html" />
+    <Content Include="assets\fonts\fa-solid-900.html" />
+    <Content Include="assets\fonts\Flaticon.html" />
+    <Content Include="assets\fonts\Flaticon.svg" />
+    <Content Include="assets\fonts\Flaticond41d.html" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfont93e3.html" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfont93e3.svg" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\fonts\fonts\ionicons28b5-2.html" />
+    <Content Include="assets\fonts\fonts\ionicons28b5-3.html" />
+    <Content Include="assets\fonts\fonts\ionicons28b5.html" />
+    <Content Include="assets\fonts\fonts\Simple-Line-Icons-2.html" />
+    <Content Include="assets\fonts\fonts\Simple-Line-Icons-3.html" />
+    <Content Include="assets\fonts\fonts\Simple-Line-Icons.html" />
+    <Content Include="assets\fonts\fonts\Simple-Line-Iconsd41d.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="assets\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="assets\img\application.png" />
+    <Content Include="assets\img\application_status.png" />
+    <Content Include="assets\img\banner\1bg.jpg" />
+    <Content Include="assets\img\banner\banner-1.svg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-1.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-2.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-3.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-4.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-5.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-6.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-7.jpg" />
+    <Content Include="assets\img\banner\HomeBanner\slide-8.jpg" />
+    <Content Include="assets\img\banner\pattern_bg2.png" />
+    <Content Include="assets\img\banner\slide1-n.jpg" />
+    <Content Include="assets\img\banner\slide2-n.jpg" />
+    <Content Include="assets\img\banner\slide3-n.jpg" />
+    <Content Include="assets\img\banner\slide4-n.jpg" />
+    <Content Include="assets\img\banner\slide5-n.jpg" />
+    <Content Include="assets\img\category\1.jpg" />
+    <Content Include="assets\img\category\2.jpg" />
+    <Content Include="assets\img\category\3.jpg" />
+    <Content Include="assets\img\category\4.jpg" />
+    <Content Include="assets\img\category\5.jpg" />
+    <Content Include="assets\img\category\6.jpg" />
+    <Content Include="assets\img\category\7.jpg" />
+    <Content Include="assets\img\category\8.jpg" />
+    <Content Include="assets\img\category\ccic.jpg" />
+    <Content Include="assets\img\category\comingsoon.jpg" />
+    <Content Include="assets\img\category\diploma.jpg" />
+    <Content Include="assets\img\category\shorthand.jpg" />
+    <Content Include="assets\img\category\typewriter.jpg" />
+    <Content Include="assets\img\close.png" />
+    <Content Include="assets\img\coming-soon.svg" />
+    <Content Include="assets\img\courses\1.jpg" />
+    <Content Include="assets\img\courses\2.jpg" />
+    <Content Include="assets\img\courses\3.jpg" />
+    <Content Include="assets\img\courses\4.jpg" />
+    <Content Include="assets\img\courses\5.jpg" />
+    <Content Include="assets\img\courses\6.jpg" />
+    <Content Include="assets\img\courses\f1.jpg" />
+    <Content Include="assets\img\courses\f2.jpg" />
+    <Content Include="assets\img\courses\f3.jpg" />
+    <Content Include="assets\img\custom\banner\2.svg" />
+    <Content Include="assets\img\custom\big-logo.png" />
+    <Content Include="assets\img\custom\counter_bg.jpg" />
+    <Content Include="assets\img\custom\ex3.png" />
+    <Content Include="assets\img\custom\ex4.jpg" />
+    <Content Include="assets\img\custom\ex5.jpg" />
+    <Content Include="assets\img\custom\favicon.png" />
+    <Content Include="assets\img\custom\mittal.jpg" />
+    <Content Include="assets\img\custom\sb-1.jpg" />
+    <Content Include="assets\img\custom\sb-1.png" />
+    <Content Include="assets\img\evaluation.png" />
+    <Content Include="assets\img\loading.gif" />
+    <Content Include="assets\img\login.png" />
+    <Content Include="assets\img\menu.svg" />
+    <Content Include="assets\img\new-img.gif" />
+    <Content Include="assets\img\next.png" />
+    <Content Include="assets\img\payment.png" />
+    <Content Include="assets\img\preloader.gif" />
+    <Content Include="assets\img\previous.png" />
+    <Content Include="assets\img\printer.png" />
+    <Content Include="assets\img\refresh-button.png" />
+    <Content Include="assets\img\register.png" />
+    <Content Include="assets\img\reload.png" />
+    <Content Include="assets\img\sbtet-logo.jpg" />
+    <Content Include="assets\img\sbtet-logo.png" />
+    <Content Include="assets\img\sbtet_logo.jpg" />
+    <Content Include="assets\img\Secretary.jpeg" />
+    <Content Include="assets\img\Secretary.jpg" />
+    <Content Include="assets\img\Secretary.png" />
+    <Content Include="assets\jquery.lightbox.css" />
+    <Content Include="assets\jquery.lightbox.js" />
+    <Content Include="assets\js\bootsnav.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\count-to.js" />
+    <Content Include="assets\js\datatables.min.js" />
+    <Content Include="assets\js\equal-height.min.js" />
+    <Content Include="assets\js\imagesloaded.pkgd.min.js" />
+    <Content Include="assets\js\isotope.pkgd.min.js" />
+    <Content Include="assets\js\jquery-1.12.4.min.js" />
+    <Content Include="assets\js\jquery-3.3.1.js" />
+    <Content Include="assets\js\jquery.appear.js" />
+    <Content Include="assets\js\jquery.easing.min.js" />
+    <Content Include="assets\js\jquery.font-accessibility.dev.js" />
+    <Content Include="assets\js\jquery.font-accessibility.min.js" />
+    <Content Include="assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="assets\js\jquery.nice-select.min.js" />
+    <Content Include="assets\js\loopcounter.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\modernizr.custom.13711.js" />
+    <Content Include="assets\js\nav.js" />
+    <Content Include="assets\js\owl.carousel.min.js" />
+    <Content Include="assets\js\pdfmake.min.js" />
+    <Content Include="assets\js\report.js" />
+    <Content Include="assets\js\typed.html" />
+    <Content Include="assets\js\vfs_fonts.js" />
+    <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\js\YTPlayer.min.html" />
+    <Content Include="assets\Mobileapp-icons\css\animation.css" />
+    <Content Include="assets\Mobileapp-icons\css\fontello-codes.css" />
+    <Content Include="assets\Mobileapp-icons\css\fontello-embedded.css" />
+    <Content Include="assets\Mobileapp-icons\css\fontello-ie7-codes.css" />
+    <Content Include="assets\Mobileapp-icons\css\fontello-ie7.css" />
+    <Content Include="assets\Mobileapp-icons\css\fontello.css" />
+    <Content Include="assets\Mobileapp-icons\demo.html" />
+    <Content Include="assets\Mobileapp-icons\font\fontello.svg" />
+    <Content Include="assets\Mobileapp-icons\README.txt" />
+    <Content Include="assets\Polycet 2023 Results Released.gif" />
+    <Content Include="assets\site-fonts\demo.html" />
+    <Content Include="assets\site-fonts\stylesheet.css" />
+    <Content Include="assets\style.css" />
+    <Content Include="contents\404.html" />
+    <Content Include="contents\500.html" />
+    <Content Include="contents\bg_my_logo.png" />
+    <Content Include="contents\css\Application.css" />
+    <Content Include="contents\css\bootstrap-theme.css" />
+    <Content Include="contents\css\bootstrap-theme.min.css" />
+    <Content Include="contents\css\bootstrap.css" />
+    <Content Include="contents\css\bootstrap.min.css" />
+    <Content Include="contents\css\bootstrap4.min.css" />
+    <Content Include="contents\css\component.css" />
+    <Content Include="contents\css\custom-css\component.css" />
+    <Content Include="contents\css\custom-css\twshStyles.css" />
+    <Content Include="contents\css\dashboard\applicationdashboard.css" />
+    <Content Include="contents\css\dashboard\googleapis1.css" />
+    <Content Include="contents\css\dashboard\googleapis2.css" />
+    <Content Include="contents\css\dashboard\mystyle.css" />
+    <Content Include="contents\css\dashboard\plugins\datatables\datatables.css" />
+    <Content Include="contents\css\dashboard\style-old.css" />
+    <Content Include="contents\css\dashboard\style.css" />
+    <Content Include="contents\css\dashboard\style_for_forms.css" />
+    <Content Include="contents\css\date.css" />
+    <Content Include="contents\css\datepick.css" />
+    <Content Include="contents\css\font-awesome\css\font-awesome.css" />
+    <Content Include="contents\css\font-awesome\css\font-awesome.min.css" />
+    <Content Include="contents\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="contents\css\main.css" />
+    <Content Include="contents\css\old-bootstrap.min.css" />
+    <Content Include="contents\css\PagesStyle.css" />
+    <Content Include="contents\css\print.css" />
+    <Content Include="contents\css\responsive.css" />
+    <Content Include="contents\css\style.css" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\common-images\darktheme\colorpicker_dark.png" />
+    <Content Include="contents\css\syncfusion\common-images\diagram\diagram_context.png" />
+    <Content Include="contents\css\syncfusion\common-images\diagram\diagram_context1.png" />
+    <Content Include="contents\css\syncfusion\common-images\diagram\Rotate.cur" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\cellbottomalignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\cellcenteralignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\celltopalignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\tablecenteralignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\tableleftalignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\documenteditor\tablerightalignment.svg" />
+    <Content Include="contents\css\syncfusion\common-images\ejicons.svg" />
+    <Content Include="contents\css\syncfusion\common-images\fileexplorer\file_icons.png" />
+    <Content Include="contents\css\syncfusion\common-images\grid\dropPointer.cur" />
+    <Content Include="contents\css\syncfusion\common-images\kanban\nouser.svg" />
+    <Content Include="contents\css\syncfusion\common-images\lighttheme\colorpicker_light.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Bootom.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Bootom_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Left.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Left_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Right.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Right_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Top.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Arrow_Top_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Bar.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home_hover_lime.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home_hover_saffron.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home_lime.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Home_saffron.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Navicatior.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Zoom-In.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Zoom-In_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Zoom-out.png" />
+    <Content Include="contents\css\syncfusion\common-images\maps\Zoom-out_hover.png" />
+    <Content Include="contents\css\syncfusion\common-images\materialtheme\colorpicker_light_material.png" />
+    <Content Include="contents\css\syncfusion\common-images\mediaplayer\basic_view_toolbar_bg.png" />
+    <Content Include="contents\css\syncfusion\common-images\mediaplayer\header_bg.png" />
+    <Content Include="contents\css\syncfusion\common-images\mediaplayer\thumbnail.png" />
+    <Content Include="contents\css\syncfusion\common-images\mediaplayer\waiting_popup.gif" />
+    <Content Include="contents\css\syncfusion\common-images\navigationdrawer\icons.svg" />
+    <Content Include="contents\css\syncfusion\common-images\pdfviewer\preloader-pdfviewer.gif" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\circle.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\diamond.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\down-arrow.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\green.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\red.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\right-arrow.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\three-color.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\triangle.png" />
+    <Content Include="contents\css\syncfusion\common-images\pivotgrid\up-arrow.png" />
+    <Content Include="contents\css\syncfusion\common-images\radialmenu\back.png" />
+    <Content Include="contents\css\syncfusion\common-images\radialmenu\radial.png" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\collapse.svg" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\down.png" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\expand.svg" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\minus.gif" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\minus.jpg" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\minus.png" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\plus.gif" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\plus.jpg" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\plus.png" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\up.png" />
+    <Content Include="contents\css\syncfusion\common-images\reportviewer\updown.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Blank.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Browser.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Check.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Diet.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\ejrbnicons.svg" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\gallery.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Gantt.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\homegallery.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\paste.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Project.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Protect.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Sales.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\style.gallery.png" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\User.jpg" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\Version.png" />
+    <Content Include="contents\css\syncfusion\common-images\schedule\schedule_priority.png" />
+    <Content Include="contents\css\syncfusion\common-images\spellcheck\highlight.png" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\blank.png" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\chart-sprites.png" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\charttab-sprites.png" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\charttype-sprites.png" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\down_arrow_dark.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\down_arrow_light.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\draw_border_dark.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\draw_border_grid_dark.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\draw_border_grid_light.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\draw_border_light.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\ejxlicons.svg" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\format_painter_dark.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\format_painter_light.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\right_arrow_dark.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\right_arrow_light.cur" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\sprites.png" />
+    <Content Include="contents\css\syncfusion\common-images\treeview\drop-sibling-rtl.png" />
+    <Content Include="contents\css\syncfusion\default-theme\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\default-theme\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\default-theme\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\default-theme\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\default-theme\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\default-theme\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\default-theme\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\default-theme\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\default-theme\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\default-theme\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\default-theme\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.bootstrap.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.bootstrap.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.material.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.material.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.office-365.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.office-365.min.css" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\flat-lime\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\flat-lime\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\flat-saffron\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\flat-saffron\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-azure\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-azure\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-lime\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-lime\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\material\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\material\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\material\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\material\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\material\icons\ejicons.svg" />
+    <Content Include="contents\css\syncfusion\material\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\material\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\material\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\material\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\material\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\material\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\material\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\office-365\ej.theme.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\office-365\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\office-365\ej.web.all.compatibility.min.css" />
+    <Content Include="contents\css\syncfusion\office-365\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\office-365\icons\ejicons.svg" />
+    <Content Include="contents\css\syncfusion\office-365\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\office-365\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\Rating_Active.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\Rating_Clear.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\Rating_Default.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\slider-tick.png" />
+    <Content Include="contents\css\syncfusion\office-365\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\responsive-css\ej.responsive.css" />
+    <Content Include="contents\css\syncfusion\responsive-css\ejgrid.responsive.css" />
+    <Content Include="contents\css\syncfusion\ribbon-css\ej.icons.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-notify.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap.min.css" />
+    <Content Include="contents\css\syncfusion\themes\common-images\colorpicker_dark.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\colorpicker_light.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\diagram_context.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\diagram_context1.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ejicons.svg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Bootom.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Bootom_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Left.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Left_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Right.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Right_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Top.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Arrow_Top_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Bar.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home_hover_lime.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home_hover_saffron.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home_lime.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Home_saffron.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Navicatior.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Zoom-In.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Zoom-In_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Zoom-out.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\maps\Zoom-out_hover.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\circle.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\diamond.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\down-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\green.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\red.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\right-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\three-color.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\triangle.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\olapkpi\up-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\radialmenu\back.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\radialmenu\radial.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\down.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\minus.gif" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\minus.jpg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\plus.gif" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\plus.jpg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\up.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\reports\updown.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Blank.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Browser.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Check.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Diet.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\ejrbnicons.svg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\gallery.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Gantt.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\paste.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Project.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Protect.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Sales.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\User.jpg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\Version.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\Rotate.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\schedule_priority.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\blank.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\chart-sprites.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\charttab-sprites.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\charttype-sprites.png" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\Down_Arrow.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\Draw_Border.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\Draw_Border_Grid.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\ejxlicons.svg" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\Format_Painter.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\Right_Arrow.cur" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\sprites.png" />
+    <Content Include="contents\css\syncfusion\themes\default-responsive.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\default.css" />
+    <Content Include="contents\css\syncfusion\themes\ej.widgets.core.bootstrap.min.css" />
+    <Content Include="contents\css\syncfusion\themes\ej.widgets.core.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\transparent.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\transparent.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\transparent.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\transparent.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.theme.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.web.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.web.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.widgets.all.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.widgets.all.min.css" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\ajax-loader.gif" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\checkedtick.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\dot.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\drop-sibling.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\gradient.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\palette-arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\rating-star.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\rotator-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\toggle-text.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\toolbar_icons.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\ui-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\images\waitingpopup.gif" />
+    <Content Include="contents\css\syncfusion\themes\images\android_phone.png" />
+    <Content Include="contents\css\syncfusion\themes\images\android_tablet.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow-dark-down.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow-dark-left.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow-dark-right.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow-dark-up.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrow2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrowcollapse.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrowdown.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrowleft.png" />
+    <Content Include="contents\css\syncfusion\themes\images\arrowup.png" />
+    <Content Include="contents\css\syncfusion\themes\images\azure-logo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\burger icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\closebutton-hover.png" />
+    <Content Include="contents\css\syncfusion\themes\images\closebutton.png" />
+    <Content Include="contents\css\syncfusion\themes\images\colapse.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark left side tab bg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark left side tab hover.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark right side BG texture.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-arrow2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-arrowleft.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-evttracer.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-evttracerhover.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-left-side-tab-header.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-search.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-theme-blue-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-theme-green-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-theme-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dark-theme-orange-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\Airline_reservation.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\Audit_Prediction.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-Diagram-Builder.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-expense-thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-Flight-Reservation.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-health-thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-invoiceDemo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-projecttracker.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-sales-analysis.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-sales-summary.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-stack-thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\dark-theme-weather-thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\Diagram_Builder.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\expense_thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\health_thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\invoiceDemo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\ochart.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\oclient.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\odchart.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\odclient.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\odgauge.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\odgrid.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\ogauge.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\ogrid.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\prod-img-hover1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\prod-img-hover2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\prod-img-normal1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\prod-img-normal2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\projecttracker.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\sales-analysis.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\sales-summary.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\spreadsheet.PNG" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\stock_thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\dashboard_img\weather_thumb.png" />
+    <Content Include="contents\css\syncfusion\themes\images\divider-line.png" />
+    <Content Include="contents\css\syncfusion\themes\images\down.png" />
+    <Content Include="contents\css\syncfusion\themes\images\download-icon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Down_Arrow.cur" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\3.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\4.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\5.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\6.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\7.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\8.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Employees\9.png" />
+    <Content Include="contents\css\syncfusion\themes\images\evttracer.png" />
+    <Content Include="contents\css\syncfusion\themes\images\evttracerhover.png" />
+    <Content Include="contents\css\syncfusion\themes\images\expand.png" />
+    <Content Include="contents\css\syncfusion\themes\images\favicon.ico" />
+    <Content Include="contents\css\syncfusion\themes\images\footer.png" />
+    <Content Include="contents\css\syncfusion\themes\images\function.jpg" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\basketball.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\digi-1-dark_03.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\digi-1-light_03.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\football.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_01dark.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_01light.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_02_light.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_linear_dark.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_linear_dark1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_linear_light.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\Gauge_linear_light1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\golfball.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\thermo-Dark_05.png" />
+    <Content Include="contents\css\syncfusion\themes\images\gauge\thermo-light_03.png" />
+    <Content Include="contents\css\syncfusion\themes\images\GridActive.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\Add.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\bmiimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\calorieimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\calories.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\circle.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\close_button.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\dashboardimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\floor.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\heart-img.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\noimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\person.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\personimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\step.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\steps.png" />
+    <Content Include="contents\css\syncfusion\themes\images\HealthTracker\weightimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\icon-down.png" />
+    <Content Include="contents\css\syncfusion\themes\images\Icon.ico" />
+    <Content Include="contents\css\syncfusion\themes\images\js_logo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\left side tab bg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\left side tab hover.png" />
+    <Content Include="contents\css\syncfusion\themes\images\left-side-tab-header.png" />
+    <Content Include="contents\css\syncfusion\themes\images\lime-logo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\MapActive.png" />
+    <Content Include="contents\css\syncfusion\themes\images\MenuNew.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\communities.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\drawericon.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\home.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\location.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\locations.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\people.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\01.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\02.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\03.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\04.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\05.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\photo\06.png" />
+    <Content Include="contents\css\syncfusion\themes\images\navigationdrawer\profile.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\airlineReservation.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\diagramBuilder.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\expense.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\health.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\invoiceDemo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\projecttracker.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\sales-summary.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\sales.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\spreadsheet.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\stock.png" />
+    <Content Include="contents\css\syncfusion\themes\images\qrcode\weather.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\a1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\a2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\align.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\Back_button.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\c1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\c2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\copy.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\draw.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\f1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\f2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\file-font-type1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\font.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\Font_letter.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\l1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\l2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\l3.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\l4.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\l5.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\list.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\main.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\paste.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\redo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\s1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\s2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\settings.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\sort.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\table.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\tag.png" />
+    <Content Include="contents\css\syncfusion\themes\images\RadialMenu\undo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\right side BG texture.png" />
+    <Content Include="contents\css\syncfusion\themes\images\saffron-logo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\sbeditimg.png" />
+    <Content Include="contents\css\syncfusion\themes\images\sbloading-popup-dark.gif" />
+    <Content Include="contents\css\syncfusion\themes\images\sbloading-popup-light.gif" />
+    <Content Include="contents\css\syncfusion\themes\images\sbtooltip.png" />
+    <Content Include="contents\css\syncfusion\themes\images\search.png" />
+    <Content Include="contents\css\syncfusion\themes\images\sprites.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\new-dark.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\new_active.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\preview-dark.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\preview_active.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\tag-new.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\tag-preview.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\tag-update.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\updated-dark.png" />
+    <Content Include="contents\css\syncfusion\themes\images\status_icon\update_active.png" />
+    <Content Include="contents\css\syncfusion\themes\images\StockAnalysis\person.png" />
+    <Content Include="contents\css\syncfusion\themes\images\StockAnalysis\stock_logo.png" />
+    <Content Include="contents\css\syncfusion\themes\images\StockAnalysis\tile.png" />
+    <Content Include="contents\css\syncfusion\themes\images\thumb_no.png" />
+    <Content Include="contents\css\syncfusion\themes\images\thumb_yes.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\alerts.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\bing.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\camera.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\favs.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\games.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\map.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\messages.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\music.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\people_1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\people_2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\people_3.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\Photo_1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\Photo_2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\pictures.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\sports.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\weather.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\Weather_1.png" />
+    <Content Include="contents\css\syncfusion\themes\images\tile\windows\Weather_2.png" />
+    <Content Include="contents\css\syncfusion\themes\images\toggle-button.png" />
+    <Content Include="contents\css\syncfusion\themes\images\up.png" />
+    <Content Include="contents\css\syncfusion\themes\images\zoom_icon.png" />
+    <Content Include="contents\css\syncfusion\themes\nv_ie8.css" />
+    <Content Include="contents\css\syncfusion\themes\responsive-css\ej.responsive.css" />
+    <Content Include="contents\css\syncfusion\themes\responsive-css\ejgrid.responsive.css" />
+    <Content Include="contents\css\syncfusion\themes\ribbon-css\ej.icons.css" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\bigdata.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\gridcontent.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\javascript.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\lightswitch.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\mvccontent.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\orubase.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\twitter.html" />
+    <Content Include="contents\css\syncfusion\themes\samplecontent\wpfcontent.html" />
+    <Content Include="contents\css\toaster.min.css" />
+    <Content Include="contents\css\twshStyles.css" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="contents\img\2000005.jpg" />
+    <Content Include="contents\img\bg_gif.gif" />
+    <Content Include="contents\img\bg_logo.png" />
+    <Content Include="contents\img\big-logo.png" />
+    <Content Include="contents\img\big-logo_bkp_vs.png" />
+    <Content Include="contents\img\BillDesk_logo.png" />
+    <Content Include="contents\img\cesign.jpg" />
+    <Content Include="contents\img\cesign.png" />
+    <Content Include="contents\img\checked.png" />
+    <Content Include="contents\img\chrome.png" />
+    <Content Include="contents\img\comingsoon.png" />
+    <Content Include="contents\img\error_401.jpg" />
+    <Content Include="contents\img\Folder-Icon.svg" />
+    <Content Include="contents\img\gif.gif" />
+    <Content Include="contents\img\Loader.gif" />
+    <Content Include="contents\img\loader1.gif" />
+    <Content Include="contents\img\loading.gif" />
+    <Content Include="contents\img\Loading1.gif" />
+    <Content Include="contents\img\loading2.gif" />
+    <Content Include="contents\img\lock.png" />
+    <Content Include="contents\img\Maintainance1.jpg" />
+    <Content Include="contents\img\maintenance.jpg" />
+    <Content Include="contents\img\noimage.png" />
+    <Content Include="contents\img\nophoto.png" />
+    <Content Include="contents\img\paymentloading.gif" />
+    <Content Include="contents\img\person.jpg" />
+    <Content Include="contents\img\POLYCETENGLISH.JPG" />
+    <Content Include="contents\img\POLYCETTELUGU.JPG" />
+    <Content Include="contents\img\profilePic.jpg" />
+    <Content Include="contents\img\ps3.jpg" />
+    <Content Include="contents\img\Sbtet-Logo.png" />
+    <Content Include="contents\img\sbtet-logo.svg" />
+    <Content Include="contents\img\students.png" />
+    <Content Include="contents\img\T-Wallet_2.jpg" />
+    <Content Include="contents\img\telangana-logo-png.png" />
+    <Content Include="contents\img\topbar.png" />
+    <Content Include="contents\img\Transcripts.png" />
+    <Content Include="contents\img\twalletonly.png" />
+    <Content Include="contents\img\unchecked.png" />
+    <Content Include="contents\img\websiteloading.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_0668dd77-a88d-41c9-a5b7-abd7ec4b4b14.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_0bcd1181-9cc1-4b0a-8ef6-6b93269142b7.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_0f1314de-4a7a-403b-afdd-c2b75c118e03.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_158a32a7-9a81-4abf-b51f-248e88161b9c.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_2ddef058-c304-4218-ad7d-631e6f12b820.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_2eab0a12-fa78-4503-a850-4af41d622deb.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_33cee713-b1e3-4093-a688-ca2ef09b8fe1.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_3503c97c-04bc-4f17-b689-a7f834cd970d.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_355edda6-d263-45db-8baa-d710dace4292.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_370a7dae-da0d-4219-8180-5e9bbd50fb6b.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_3764ec16-10c3-43eb-bc5d-3cad5dc06dfa.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_3854cd2d-4ba4-49ce-903b-2d2d60872c92.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_3a5a60ab-f918-4e0c-994d-5f1c9b100dd3.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_4564ad50-7465-4472-b4b1-c9aa1e45e71a.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_4bb525b2-8fb7-4e3e-b476-f1206ac0abd2.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_669b938e-a1ae-4836-bd27-7a7c21545dd8.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_68d09086-7242-41ca-9b8e-909d55f93c80.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_6e24aa7a-4fb1-43d3-886d-3da3ebd4e160.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_78f68ab6-40e4-4450-8f3c-939f8b47d738.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_7c0b0580-2121-44b9-8457-9852ebdb2880.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_8117b097-5bb3-4977-8306-88ef52ee31b5.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_873b1a6b-6b5b-4e8a-bfb6-95096d26b534.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_89d3ee00-8e08-4de1-a9db-7b5b11dcb31d.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_8ec21bd9-365e-471e-a861-aaef7233c89e.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_8f09b0f5-eab4-4148-a22a-7efda65ae38e.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_9b352c64-a202-4570-a662-28ba2c2bb7b6.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_9c5eeeaf-121b-4179-88b4-651eeff340b0.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_a546f611-b6e8-4718-b021-e9ea35a57501.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_aa40d77b-31c8-41d4-a2b9-9a59b1189df1.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_ad31b243-29d8-40a2-9024-ab3334fd6692.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_aef0d675-6d39-4e3c-9575-202a0e135bc2.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_b2055084-df7d-40b5-ae14-e257fb4b9456.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_b7acc60f-a74f-447f-bc2c-4b1530650490.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_bd24d123-11a6-47b3-bb41-2a22a8ef1245.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_c0fa77f4-f0a7-4368-a0f7-feaef9802879.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_cf57e66d-389f-4bca-9101-9b4f127884e3.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_d408650e-2887-40c8-97c8-493310872b62.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_d58de6f2-8cb3-4d39-9f9c-100114ba3b20.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_d5fae4c9-1e9d-4c6e-98d2-f7e0634cf777.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_d89dc69c-f1f6-45b1-bff3-d7d30de771f5.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_df9204e0-5c88-4671-8393-fa03ce2d89db.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_e53fffdd-06a2-4ec7-8490-9a3fbb3979e4.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_e72e9345-95ff-4b4f-b927-bc10625a4ae6.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_e89de845-3edb-4324-877f-16c385f677dd.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_eac171cf-26a4-4513-8613-7b5d4d7a49e1.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_ef01f21c-49b3-4efd-b108-79fb4ce892ab.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_f4275637-24fe-499c-a3f6-8b60d17e7a2c.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_f66be5ff-763a-45c7-a13f-4c8ffc381ae2.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_f7e30e89-a764-45b4-8055-b6b4b12c5770.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_fab238a6-1c15-425f-90f6-ea573f0c782a.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_fe2cf06b-27a9-4fe1-8ae1-497fa112c84e.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentPhoto_fe459ab8-4efc-4ead-a21c-64954b1bb19d.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_002dee15-9d90-4f0b-a8ee-d1581eb704ec.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_014bb464-2c68-40e2-a5d6-8615f3ce605e.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_01c43592-3374-4946-bf3c-f66942ef9de9.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_0954c4a3-d976-49cd-be62-21910a95a10c.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_0dc1447b-8554-4068-8360-3cb2bab13ee5.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_0e3add70-4a11-4314-9414-d535bb5bee04.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_17daa7d3-0094-4f33-8d96-56b3e33fdbe6.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_1dec9353-1b40-49f2-9207-fb938c8218b8.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_23bd80b8-d957-47fc-9b19-a8d59db1ab49.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_25f4795d-81f8-40fd-8295-fd77e7e31b7f.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_2675c682-a8c4-4917-a803-b0fb51f65b9e.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_2bf0e719-c92c-4a08-8918-fa6529cc0478.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_359a5e69-ace6-40ee-b289-1837dd324a89.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_4a087e2f-6468-4e05-912c-5239852093fa.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_4e217f0b-12f6-4a3c-8694-b61128d74f99.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_5038d3b3-5200-412b-bd89-dc715fc59d33.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_5dd3e8b7-3657-4998-ba93-e2426db6ddec.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_5ecc735b-7788-4ed8-8a1d-2715cbf42bd3.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_6aca030d-8ac5-4d0f-bb00-502e27eebc66.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_6c42bf88-bb63-45c2-b51f-f081872b8e35.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_7f6e8508-a421-4d18-8d6f-2be6c1ed7550.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_814ee744-ebb0-4d7d-89e3-c80d4040b13b.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_86e6080b-80b5-4f26-8725-1b81156b3448.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_88261456-584d-4d42-8790-225a24baaf0d.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_8db91de9-3b62-4782-b407-14ab4831f1c9.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_8dbb940e-6e84-4c94-8965-a5786e4c1015.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_982e0850-43e9-46dc-9745-1d0b26471720.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_a17161cf-0fed-4281-a831-3e5c735cdc38.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_a30b596f-eb53-464c-b907-5021e6d767ae.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_a5f5fbcf-b3f5-4b1e-9a0a-646b9192744d.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_a9cf33ba-8438-4007-994b-c786a941f410.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_aa65e843-fe18-4cf5-8fd7-2968b1ddd5b2.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_acfce2fa-5355-4f30-b84c-edddeee84310.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_b5a47913-e817-4d58-b47d-8c910f67df3f.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_b896308f-2cd6-4159-84ef-8463722855dc.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_bc490d37-d6dc-4f7a-9e24-86d0bff081bc.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_c06f2726-9b2c-40ab-9bea-02dd8d275450.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_c14f9773-aef7-4a9b-be1f-0cd0a41656c4.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_c35a846b-624d-4ab7-aeed-52d05a80167c.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_c3fc9e53-839f-441f-b590-159a59361a8f.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_ccfdc07e-53f1-4dd9-8bcf-a69919c11733.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_d0745459-94e1-438d-bc50-b18b7a149f5f.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_d4e05dfc-cc79-47cd-8d2b-89e3e3b558db.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_d817b1bf-53e0-4dee-83fb-2c66e9eaf0be.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_d90e69b4-b25a-4c7d-b4e5-bea42ee28f25.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_d96894b1-efb6-4685-ab43-b6925bc99629.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_e04cd641-6708-4b34-86e1-66c7001e104f.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_e1f19427-045a-4661-aa38-a525e8c19bc8.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_ed51ad73-009e-4b83-bcbb-521222f68dd6.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_f6046a30-82c7-43ec-8c33-f9c1d80c6866.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_f815d118-e1c1-4783-b397-ee3e32508bda.jpg" />
+    <Content Include="POLYCETSTATICFILES\StudentSign_fbc28702-4f94-4915-9d66-93a85c336be6.jpg" />
+    <Content Include="scripts\alasql%400.4.js" />
+    <Content Include="scripts\angular-animate.js" />
+    <Content Include="scripts\angular-animate.min.js" />
+    <Content Include="scripts\angular-datepicker.js" />
+    <Content Include="scripts\angular-material.min.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular-sanitize.js" />
+    <Content Include="scripts\angular-ui-router.js" />
+    <Content Include="scripts\angular-ui-switch.min.js" />
+    <Content Include="scripts\angular.min.1.8.2.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\angularjs-crypto.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\cryptojs\components\aes-min.js" />
+    <Content Include="scripts\cryptojs\components\aes.js" />
+    <Content Include="scripts\cryptojs\components\cipher-core-min.js" />
+    <Content Include="scripts\cryptojs\components\cipher-core.js" />
+    <Content Include="scripts\cryptojs\components\core-min.js" />
+    <Content Include="scripts\cryptojs\components\core.js" />
+    <Content Include="scripts\cryptojs\components\enc-base64-min.js" />
+    <Content Include="scripts\cryptojs\components\enc-base64.js" />
+    <Content Include="scripts\cryptojs\components\enc-utf16-min.js" />
+    <Content Include="scripts\cryptojs\components\enc-utf16.js" />
+    <Content Include="scripts\cryptojs\components\evpkdf-min.js" />
+    <Content Include="scripts\cryptojs\components\evpkdf.js" />
+    <Content Include="scripts\cryptojs\components\format-hex-min.js" />
+    <Content Include="scripts\cryptojs\components\format-hex.js" />
+    <Content Include="scripts\cryptojs\components\hmac-min.js" />
+    <Content Include="scripts\cryptojs\components\hmac.js" />
+    <Content Include="scripts\cryptojs\components\lib-typedarrays-min.js" />
+    <Content Include="scripts\cryptojs\components\lib-typedarrays.js" />
+    <Content Include="scripts\cryptojs\components\md5-min.js" />
+    <Content Include="scripts\cryptojs\components\md5.js" />
+    <Content Include="scripts\cryptojs\components\mode-cfb-min.js" />
+    <Content Include="scripts\cryptojs\components\mode-cfb.js" />
+    <Content Include="scripts\cryptojs\components\mode-ctr-gladman-min.js" />
+    <Content Include="scripts\cryptojs\components\mode-ctr-gladman.js" />
+    <Content Include="scripts\cryptojs\components\mode-ctr-min.js" />
+    <Content Include="scripts\cryptojs\components\mode-ctr.js" />
+    <Content Include="scripts\cryptojs\components\mode-ecb-min.js" />
+    <Content Include="scripts\cryptojs\components\mode-ecb.js" />
+    <Content Include="scripts\cryptojs\components\mode-ofb-min.js" />
+    <Content Include="scripts\cryptojs\components\mode-ofb.js" />
+    <Content Include="scripts\cryptojs\components\pad-ansix923-min.js" />
+    <Content Include="scripts\cryptojs\components\pad-ansix923.js" />
+    <Content Include="scripts\cryptojs\components\pad-iso10126-min.js" />
+    <Content Include="scripts\cryptojs\components\pad-iso10126.js" />
+    <Content Include="scripts\cryptojs\components\pad-iso97971-min.js" />
+    <Content Include="scripts\cryptojs\components\pad-iso97971.js" />
+    <Content Include="scripts\cryptojs\components\pad-nopadding-min.js" />
+    <Content Include="scripts\cryptojs\components\pad-nopadding.js" />
+    <Content Include="scripts\cryptojs\components\pad-zeropadding-min.js" />
+    <Content Include="scripts\cryptojs\components\pad-zeropadding.js" />
+    <Content Include="scripts\cryptojs\components\pbkdf2-min.js" />
+    <Content Include="scripts\cryptojs\components\pbkdf2.js" />
+    <Content Include="scripts\cryptojs\components\rabbit-legacy-min.js" />
+    <Content Include="scripts\cryptojs\components\rabbit-legacy.js" />
+    <Content Include="scripts\cryptojs\components\rabbit-min.js" />
+    <Content Include="scripts\cryptojs\components\rabbit.js" />
+    <Content Include="scripts\cryptojs\components\rc4-min.js" />
+    <Content Include="scripts\cryptojs\components\rc4.js" />
+    <Content Include="scripts\cryptojs\components\ripemd160-min.js" />
+    <Content Include="scripts\cryptojs\components\ripemd160.js" />
+    <Content Include="scripts\cryptojs\components\sha1-min.js" />
+    <Content Include="scripts\cryptojs\components\sha1.js" />
+    <Content Include="scripts\cryptojs\components\sha224-min.js" />
+    <Content Include="scripts\cryptojs\components\sha224.js" />
+    <Content Include="scripts\cryptojs\components\sha256-min.js" />
+    <Content Include="scripts\cryptojs\components\sha256.js" />
+    <Content Include="scripts\cryptojs\components\sha3-min.js" />
+    <Content Include="scripts\cryptojs\components\sha3.js" />
+    <Content Include="scripts\cryptojs\components\sha384-min.js" />
+    <Content Include="scripts\cryptojs\components\sha384.js" />
+    <Content Include="scripts\cryptojs\components\sha512-min.js" />
+    <Content Include="scripts\cryptojs\components\sha512.js" />
+    <Content Include="scripts\cryptojs\components\tripledes-min.js" />
+    <Content Include="scripts\cryptojs\components\tripledes.js" />
+    <Content Include="scripts\cryptojs\components\x64-core-min.js" />
+    <Content Include="scripts\cryptojs\components\x64-core.js" />
+    <Content Include="scripts\cryptojs\rollups\aes.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-md5.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-ripemd160.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha1.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha224.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha256.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha3.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha384.js" />
+    <Content Include="scripts\cryptojs\rollups\hmac-sha512.js" />
+    <Content Include="scripts\cryptojs\rollups\md5.js" />
+    <Content Include="scripts\cryptojs\rollups\pbkdf2.js" />
+    <Content Include="scripts\cryptojs\rollups\rabbit-legacy.js" />
+    <Content Include="scripts\cryptojs\rollups\rabbit.js" />
+    <Content Include="scripts\cryptojs\rollups\rc4.js" />
+    <Content Include="scripts\cryptojs\rollups\ripemd160.js" />
+    <Content Include="scripts\cryptojs\rollups\sha1.js" />
+    <Content Include="scripts\cryptojs\rollups\sha224.js" />
+    <Content Include="scripts\cryptojs\rollups\sha256.js" />
+    <Content Include="scripts\cryptojs\rollups\sha3.js" />
+    <Content Include="scripts\cryptojs\rollups\sha384.js" />
+    <Content Include="scripts\cryptojs\rollups\sha512.js" />
+    <Content Include="scripts\cryptojs\rollups\tripledes.js" />
+    <Content Include="scripts\dashboard\flex.js" />
+    <Content Include="scripts\dashboard\plugins\datatables\datatables-bs3.js" />
+    <Content Include="scripts\dashboard\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="scripts\dashboard\plugins\moment\moment.min.js" />
+    <Content Include="scripts\dashboard\plugins\popupoverlay\defaults.js" />
+    <Content Include="scripts\dashboard\plugins\popupoverlay\jquery.popupoverlay.js" />
+    <Content Include="scripts\dashboard\plugins\popupoverlay\logout.js" />
+    <Content Include="scripts\date.js" />
+    <Content Include="scripts\datepick.js" />
+    <Content Include="scripts\datetime-picker.js" />
+    <Content Include="scripts\dirPagination.js" />
+    <Content Include="scripts\html2canvas.min.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\jquery-3.3.1.min.js" />
+    <Content Include="scripts\jquery-ui.js" />
+    <Content Include="scripts\jspdf.min.js" />
+    <Content Include="scripts\jspdf.plugin.autotable.js" />
+    <Content Include="scripts\Main.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
+    <Content Include="scripts\ngStorage.js" />
+    <Content Include="scripts\ng_only_number.js" />
+    <Content Include="scripts\pdf.js" />
+    <Content Include="scripts\pdf.min.js" />
+    <Content Include="scripts\pdfmake.js" />
+    <Content Include="scripts\pdfmake.min.js" />
+    <Content Include="scripts\require.js" />
+    <Content Include="scripts\require.min.js" />
+    <Content Include="scripts\Spinner\angular-loading-spinner.js" />
+    <Content Include="scripts\Spinner\angular-spinner.min.js" />
+    <Content Include="scripts\Spinner\spin.min.js" />
+    <Content Include="scripts\splitimage.js" />
+    <Content Include="scripts\syncfusion\scripts\angular-route.min.js" />
+    <Content Include="scripts\syncfusion\scripts\angular.min.js" />
+    <Content Include="scripts\syncfusion\scripts\bootstrap-notify.js" />
+    <Content Include="scripts\syncfusion\scripts\bootstrap.min.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\clike.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\codemirror.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\codemirror.min.css" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\css.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\htmlmixed.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\javascript.js" />
+    <Content Include="scripts\syncfusion\scripts\CodeMirror\xml.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\ej.culture.en-IN.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.ar-AE.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.de-DE.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.en-US.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.es-ES.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.fr-FR.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.vi-VN.min.js" />
+    <Content Include="scripts\syncfusion\scripts\cultures\globalize.culture.zh-CN.min.js" />
+    <Content Include="scripts\syncfusion\scripts\default.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.core.min.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.grid.min.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.unobtrusive.min.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.web.all.min.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.widget.angular.min.js" />
+    <Content Include="scripts\syncfusion\scripts\ej.widget.ko.min.js" />
+    <Content Include="scripts\syncfusion\scripts\excanvas.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery-1.11.3.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery.easing.1.3.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery.globalize.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery.validate.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jsondata.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jsondatachart.js" />
+    <Content Include="scripts\syncfusion\scripts\jsongridmerge.js" />
+    <Content Include="scripts\syncfusion\scripts\jsonscheduledata.js" />
+    <Content Include="scripts\syncfusion\scripts\jsonTabWiz.min.js" />
+    <Content Include="scripts\syncfusion\scripts\jsrender.min.js" />
+    <Content Include="scripts\syncfusion\scripts\knockout.min.js" />
+    <Content Include="scripts\syncfusion\scripts\largedata.min.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Africa.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Asia.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\ContinentSalesData.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Continent_CountriesData.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Country_LatLongPoints.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Europe.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\FlightRoutes.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\NorthAmerica.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\Oceania.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\ReadMe.txt" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\salesCountry.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\SouthAmerica.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\SyncfusionLocation.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\USA.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\USA_ElectionData.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\USA_State_PopulationData.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\weather.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\WorldMap.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\WorldPopulationData.js" />
+    <Content Include="scripts\syncfusion\scripts\MapsData\WorldSalesData.js" />
+    <Content Include="scripts\syncfusion\scripts\messages_ar.js" />
+    <Content Include="scripts\syncfusion\scripts\onlinedata.js" />
+    <Content Include="scripts\syncfusion\scripts\otherProducts.js" />
+    <Content Include="scripts\syncfusion\scripts\path.js" />
+    <Content Include="scripts\syncfusion\scripts\properties.js" />
+    <Content Include="scripts\syncfusion\scripts\rangeNavigatorSource.fr-FR.js" />
+    <Content Include="scripts\syncfusion\scripts\require.min.js" />
+    <Content Include="scripts\syncfusion\scripts\respond.js" />
+    <Content Include="scripts\syncfusion\scripts\sampleslist.js" />
+    <Content Include="scripts\syncfusion\scripts\templatelocaldata.js" />
+    <Content Include="scripts\syncfusion\scripts\treemapdata.js" />
+    <Content Include="scripts\syncfusion\scripts\xljsondata.js" />
+    <Content Include="scripts\syncfusion\scripts\ZeroClipboard.js" />
+    <Content Include="scripts\syncfusion\scripts\ZeroClipboard.swf" />
+    <Content Include="scripts\toaster.min.js" />
+    <Content Include="scripts\ui-bootstrap-tpls.js" />
+    <Content Include="scripts\ui-cropper.js" />
+    <Content Include="scripts\underscorejs.js" />
+    <Content Include="scripts\xlsx.core.min.js" />
+    <Content Include="style.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BLL\SystemUserauth.cs" />
+    <Compile Include="BLL\SystemUserBLL.cs" />
+    <Compile Include="Controllers\AdminService\AdminServiceController.cs" />
+    <Compile Include="Controllers\CallBackController.cs" />
+    <Compile Include="Controllers\Common\BaseController.cs" />
+    <Compile Include="Controllers\Common\CommunicationController.cs" />
+    <Compile Include="Controllers\GenerateCertificate.cs" />
+    <Compile Include="Controllers\MasterSetting\MasterPageController.cs" />
+    <Compile Include="Controllers\PaymentGateway\BillDeskController.cs" />
+    <Compile Include="Controllers\PaymentGateway\ChallanDetails.cs" />
+    <Compile Include="Controllers\PaymentGateway\PaymentGatewayController.cs" />
+    <Compile Include="Controllers\PaymentGateway\TransactionResponseController.cs" />
+    <Compile Include="Controllers\PaymentGateway\TwalletController.cs" />
+    <Compile Include="Controllers\PreExamination\GenerateNR.cs" />
+    <Compile Include="Controllers\PreExamination\GenerateQP.cs" />
+    <Compile Include="Controllers\PreExamination\PreExaminationController.cs" />
+    <Compile Include="Controllers\Results\BranchSubjectGradeInfo.cs" />
+    <Compile Include="Controllers\Results\BranchWiseReportData.cs" />
+    <Compile Include="Controllers\Results\CollegeSemWiseReport.cs" />
+    <Compile Include="Controllers\Results\ResultModels.cs" />
+    <Compile Include="Controllers\Results\ResultProcess.cs" />
+    <Compile Include="Controllers\SystemEntityRightsController.cs" />
+    <Compile Include="Controllers\Systemadministrator\SystemUserController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\person.cs" />
+    <Compile Include="Controllers\StudentRegistrationController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="FilterConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApplicationRes.cs" />
+    <Compile Include="Models\Database\DataTableHelper.cs" />
+    <Compile Include="Models\ExcelHelper.cs" />
+    <Compile Include="Models\MailRequest.cs" />
+    <Compile Include="Models\MandalInfo.cs" />
+    <Compile Include="Models\Security\AuthToken.cs" />
+    <Compile Include="Models\Security\BCEngine.cs" />
+    <Compile Include="Models\Security\Decryption.cs" />
+    <Compile Include="Models\Security\Encryption.cs" />
+    <Compile Include="Models\Security\HbCrypt.cs" />
+    <Compile Include="Models\Database\PolycetdbHandler.cs" />
+    <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\Security\SHA1.cs" />
+    <Compile Include="Models\Security\SystemUserAuth.cs" />
+    <Compile Include="Models\Security\TwalletCrypt.cs" />
+    <Compile Include="Models\SendSmsInfo.cs" />
+    <Compile Include="Models\StdDetails.cs" />
+    <Compile Include="Models\SystemModules.cs" />
+    <Compile Include="Models\VerifyCasteInfo.cs" />
+    <Compile Include="Models\VerifySmsInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SystemUserService.cs" />
+    <Compile Include="WebAPIConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\cont\font\fontello.eot" />
+    <Content Include="assets\cont\font\fontello.ttf" />
+    <Content Include="assets\cont\font\fontello.woff" />
+    <Content Include="assets\cont\font\fontello.woff2" />
+    <Content Include="assets\fonts\ElegantIcons.eot" />
+    <Content Include="assets\fonts\ElegantIcons.ttf" />
+    <Content Include="assets\fonts\ElegantIcons.woff" />
+    <Content Include="assets\fonts\ElegantIconsd41d.eot" />
+    <Content Include="assets\fonts\fa-brands-400.eot" />
+    <Content Include="assets\fonts\fa-brands-400.ttf" />
+    <Content Include="assets\fonts\fa-brands-400.woff" />
+    <Content Include="assets\fonts\fa-brands-400.woff2" />
+    <Content Include="assets\fonts\fa-brands-400d41d.eot" />
+    <Content Include="assets\fonts\fa-regular-400.eot" />
+    <Content Include="assets\fonts\fa-regular-400.ttf" />
+    <Content Include="assets\fonts\fa-regular-400.woff" />
+    <Content Include="assets\fonts\fa-regular-400.woff2" />
+    <Content Include="assets\fonts\fa-regular-400d41d.eot" />
+    <Content Include="assets\fonts\fa-solid-900.eot" />
+    <Content Include="assets\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fa-solid-900.woff" />
+    <Content Include="assets\fonts\fa-solid-900.woff2" />
+    <Content Include="assets\fonts\fa-solid-900d41d.eot" />
+    <Content Include="assets\fonts\Flaticon.ttf" />
+    <Content Include="assets\fonts\Flaticon.woff" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfont93e3.eot" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfont93e3.ttf" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfont93e3.woff" />
+    <Content Include="assets\fonts\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\fonts\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\fonts\fonts\ionicons28b5.ttf" />
+    <Content Include="assets\fonts\fonts\Simple-Line-Icons.woff" />
+    <Content Include="assets\img\yourTitle.pdf" />
+    <Content Include="assets\Mobileapp-icons\config.json" />
+    <Content Include="assets\Mobileapp-icons\font\fontello.eot" />
+    <Content Include="assets\Mobileapp-icons\font\fontello.ttf" />
+    <Content Include="assets\Mobileapp-icons\font\fontello.woff" />
+    <Content Include="assets\Mobileapp-icons\font\fontello.woff2" />
+    <Content Include="assets\site-fonts\Muli-Black.woff" />
+    <Content Include="assets\site-fonts\Muli-Black.woff2" />
+    <Content Include="assets\site-fonts\Muli-BlackItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-BlackItalic.woff2" />
+    <Content Include="assets\site-fonts\Muli-Bold.woff" />
+    <Content Include="assets\site-fonts\Muli-Bold.woff2" />
+    <Content Include="assets\site-fonts\Muli-BoldItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-BoldItalic.woff2" />
+    <Content Include="assets\site-fonts\Muli-ExtraBold.woff" />
+    <Content Include="assets\site-fonts\Muli-ExtraBold.woff2" />
+    <Content Include="assets\site-fonts\Muli-ExtraBoldItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-ExtraBoldItalic.woff2" />
+    <Content Include="assets\site-fonts\Muli-ExtraLight.woff" />
+    <Content Include="assets\site-fonts\Muli-ExtraLight.woff2" />
+    <Content Include="assets\site-fonts\Muli-ExtraLightItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-ExtraLightItalic.woff2" />
+    <Content Include="assets\site-fonts\Muli-Italic.woff" />
+    <Content Include="assets\site-fonts\Muli-Italic.woff2" />
+    <Content Include="assets\site-fonts\Muli-Light.woff" />
+    <Content Include="assets\site-fonts\Muli-Light.woff2" />
+    <Content Include="assets\site-fonts\Muli-LightItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-LightItalic.woff2" />
+    <Content Include="assets\site-fonts\Muli-Regular.woff" />
+    <Content Include="assets\site-fonts\Muli-Regular.woff2" />
+    <Content Include="assets\site-fonts\Muli-SemiBold.woff" />
+    <Content Include="assets\site-fonts\Muli-SemiBold.woff2" />
+    <Content Include="assets\site-fonts\Muli-SemiBoldItalic.woff" />
+    <Content Include="assets\site-fonts\Muli-SemiBoldItalic.woff2" />
+    <Content Include="contents\css\bootstrap-theme.css.map" />
+    <Content Include="contents\css\bootstrap-theme.min.css.map" />
+    <Content Include="contents\css\bootstrap.css.map" />
+    <Content Include="contents\css\bootstrap.min.css.map" />
+    <Content Include="contents\css\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="contents\css\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="contents\css\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="contents\css\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="contents\css\syncfusion\bootstrap-theme\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\common-images\ejicons.eot" />
+    <Content Include="contents\css\syncfusion\common-images\ejicons.ttf" />
+    <Content Include="contents\css\syncfusion\common-images\ejicons.woff" />
+    <Content Include="contents\css\syncfusion\common-images\navigationdrawer\icons.eot" />
+    <Content Include="contents\css\syncfusion\common-images\navigationdrawer\icons.ttf" />
+    <Content Include="contents\css\syncfusion\common-images\navigationdrawer\icons.woff" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\ejrbnicons.eot" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\ejrbnicons.ttf" />
+    <Content Include="contents\css\syncfusion\common-images\ribbon\ejrbnicons.woff" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\ejxlicons.eot" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\ejxlicons.ttf" />
+    <Content Include="contents\css\syncfusion\common-images\spreadsheet\ejxlicons.woff" />
+    <Content Include="contents\css\syncfusion\default-theme\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.bootstrap.less" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.less" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.material.less" />
+    <Content Include="contents\css\syncfusion\ej.widgets.core.office-365.less" />
+    <Content Include="contents\css\syncfusion\flat-azure-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\flat-lime-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\flat-lime\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\flat-saffron-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\flat-saffron\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-azure-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-azure\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-lime-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-lime\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-saffron-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\gradient-saffron\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\high-contrast-01\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\high-contrast-02\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\material\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\material\icons\ejicons.eot" />
+    <Content Include="contents\css\syncfusion\material\icons\ejicons.ttf" />
+    <Content Include="contents\css\syncfusion\material\icons\ejicons.woff" />
+    <Content Include="contents\css\syncfusion\office-365\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\office-365\icons\ejicons.eot" />
+    <Content Include="contents\css\syncfusion\office-365\icons\ejicons.ttf" />
+    <Content Include="contents\css\syncfusion\office-365\icons\ejicons.woff" />
+    <Content Include="contents\css\syncfusion\themes\bootstrap-theme\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ejicons.eot" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ejicons.ttf" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ejicons.woff" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\ejrbnicons.eot" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\ejrbnicons.ttf" />
+    <Content Include="contents\css\syncfusion\themes\common-images\ribbon\ejrbnicons.woff" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\ejxlicons.eot" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\ejxlicons.ttf" />
+    <Content Include="contents\css\syncfusion\themes\common-images\spreadsheet\ejxlicons.woff" />
+    <Content Include="contents\css\syncfusion\themes\default-theme\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\ej.widgets.core.bootstrap.less" />
+    <Content Include="contents\css\syncfusion\themes\ej.widgets.core.less" />
+    <Content Include="contents\css\syncfusion\themes\flat-azure-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\flat-lime\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\flat-saffron\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-azure\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-lime\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron-dark\ej.theme.less" />
+    <Content Include="contents\css\syncfusion\themes\gradient-saffron\ej.theme.less" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="contents\img\AttendanceReport401-BRILLIANT GRAMMER SCHOOL EDUCATION SOCIETY GROUP OF INSTITUTIONS ABDULLAPURMET_c19b2d8f-9a7c-4561-bf71-e87a00c9c320.pdf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Circulars\2bc8aa76-c2f7-454a-8f08-e8443ad49d89.pdf" />
+    <Content Include="Downloads\polycet-2023.pdf" />
+    <Content Include="Downloads\Polycet-2020.pdf" />
+    <Content Include="Downloads\Polycet-2021.pdf" />
+    <Content Include="Downloads\Polycet-2022.pdf" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - FTP2.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - FTP3.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - ReadOnly - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - ReadOnly - FTP2.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - ReadOnly - FTP3.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - Web Deploy2.pubxml" />
+    <None Include="Properties\PublishProfiles\PolycetDemo - Web Deploy3.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\WebApplication1\config\" />
+    <Folder Include=".vs\WebApplication1\v16\" />
+    <Folder Include="Photos\" />
+    <Folder Include="StudentPhotos\" />
+    <Folder Include="StudentSignatures\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1657</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44355/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target> -->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
