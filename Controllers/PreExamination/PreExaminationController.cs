@@ -619,6 +619,9 @@ namespace TSPOLYCET.Controllers.PreExamination
 
         public class SscDetails
         {
+            public string UserName { get; set; }
+            public string SessionId { get; set; }
+            public string Captcha { get; set; }
             public string RollNo { get; set; }
             public string Year { get; set; }
             public string Stream { get; set; }
@@ -662,61 +665,75 @@ namespace TSPOLYCET.Controllers.PreExamination
             {
                 try
                 {
-                    HttpResponseMessage response = new HttpResponseMessage();
-                    var resMsg = await client.GetAsync(urlwithparam);
-                    var content = await resMsg.Content.ReadAsStringAsync();
-                    XmlDocument PIDResponseXML = new XmlDocument();
-                    PIDResponseXML.LoadXml(content);
-                    if (PIDResponseXML.InnerXml.Length != 22)
+                    var dbHandler = new PolycetdbHandler();
+                    var param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                    param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                    param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                    var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                    if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
                     {
-                        var ROLLNO = string.Empty;
-                        var NAME = string.Empty;
-                        var FNAME = string.Empty;
-                        var MNAME = string.Empty;
-                        var DOB = string.Empty;
-                        var SEX = string.Empty;
-                        var RESULT = string.Empty;
-                        try
+                        HttpResponseMessage response = new HttpResponseMessage();
+                        var resMsg = await client.GetAsync(urlwithparam);
+                        var content = await resMsg.Content.ReadAsStringAsync();
+                        XmlDocument PIDResponseXML = new XmlDocument();
+                        PIDResponseXML.LoadXml(content);
+                        if (PIDResponseXML.InnerXml.Length != 22)
                         {
-                            ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
-                            NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
-                            FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
-                            MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
-                            DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
-                            SEX = PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText;
-                            //RESULT = PIDResponseXML["NewDataSet"]["Table"]["RESULT"].InnerText;
-                        }
-                        catch (Exception ex)
-                        {
-                            ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
-                            NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
-                            FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
-                            MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
-                            DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
-                            SEX = "-";
-                            RESULT = PIDResponseXML["NewDataSet"]["Table"]["RESULT"].InnerText;
+                            var ROLLNO = string.Empty;
+                            var NAME = string.Empty;
+                            var FNAME = string.Empty;
+                            var MNAME = string.Empty;
+                            var DOB = string.Empty;
+                            var SEX = string.Empty;
+                            var RESULT = string.Empty;
+                            try
+                            {
+                                ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
+                                NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
+                                FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
+                                MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
+                                DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
+                                SEX = PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText;
+                                //RESULT = PIDResponseXML["NewDataSet"]["Table"]["RESULT"].InnerText;
+                            }
+                            catch (Exception ex)
+                            {
+                                ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
+                                NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
+                                FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
+                                MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
+                                DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
+                                SEX = "-";
+                                RESULT = PIDResponseXML["NewDataSet"]["Table"]["RESULT"].InnerText;
+                            }
+
+                            //if (RESULT != "")
+                            //{
+                            response = Request.CreateResponse(HttpStatusCode.OK);
+                            response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"200\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
+                            return response;
+                            //}
+                            //else
+                            //{
+                            //    response = Request.CreateResponse(HttpStatusCode.OK);
+                            //    response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
+                            //    return response;
+                            //}
                         }
 
-                        //if (RESULT != "")
-                        //{
-                        response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"200\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
-                        return response;
-                        //}
-                        //else
-                        //{
-                        //    response = Request.CreateResponse(HttpStatusCode.OK);
-                        //    response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
-                        //    return response;
-                        //}
+                        else
+                        {
+                            response = Request.CreateResponse(HttpStatusCode.OK);
+                            response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"Response\" : \"No Data Found\" }"), System.Text.Encoding.UTF8, "application/json");
+                            return response;
+                        }
+
                     }
                     else
                     {
-                        response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"Response\" : \"No Data Found\" }"), System.Text.Encoding.UTF8, "application/json");
-                        return response;
+                        return null;
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -741,14 +758,27 @@ namespace TSPOLYCET.Controllers.PreExamination
             {
                 try
                 {
-                    var resMsg = await client.GetAsync(urlwithparam);
-                    var content = await resMsg.Content.ReadAsStringAsync();
+                    var dbHandler = new PolycetdbHandler();
+                    var param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                    param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                    param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                    var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                    if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                    {
+                        var resMsg = await client.GetAsync(urlwithparam);
+                        var content = await resMsg.Content.ReadAsStringAsync();
 
-                    var PIDResponseXML = new XmlDocument();
-                    PIDResponseXML.LoadXml(content);
-                    var jsonData = JsonConvert.SerializeXmlNode(PIDResponseXML, Newtonsoft.Json.Formatting.None, true);
-                    return Request.CreateResponse(HttpStatusCode.OK, jsonData);
+                        var PIDResponseXML = new XmlDocument();
+                        PIDResponseXML.LoadXml(content);
+                        var jsonData = JsonConvert.SerializeXmlNode(PIDResponseXML, Newtonsoft.Json.Formatting.None, true);
+                        return Request.CreateResponse(HttpStatusCode.OK, jsonData);
 
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -769,55 +799,69 @@ namespace TSPOLYCET.Controllers.PreExamination
             {
                 try
                 {
-                    HttpResponseMessage response = new HttpResponseMessage();
-                    var resMsg = await client.GetAsync(urlwithparam);
-                    var content = await resMsg.Content.ReadAsStringAsync();
-                    XmlDocument PIDResponseXML = new XmlDocument();
-                    PIDResponseXML.LoadXml(content);
-                    if (PIDResponseXML.InnerXml.Length != 22)
+                    var dbHandler = new PolycetdbHandler();
+                    var param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                    param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                    param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                    var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                    if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
                     {
-                        var ROLLNO = string.Empty;
-                        var NAME = string.Empty;
-                        var FNAME = string.Empty;
-                        var MNAME = string.Empty;
-                        var DOB = string.Empty;
-                        var SEX = string.Empty;
-                        try
+                        HttpResponseMessage response = new HttpResponseMessage();
+                        var resMsg = await client.GetAsync(urlwithparam);
+                        var content = await resMsg.Content.ReadAsStringAsync();
+                        XmlDocument PIDResponseXML = new XmlDocument();
+                        PIDResponseXML.LoadXml(content);
+                        if (PIDResponseXML.InnerXml.Length != 22)
                         {
-                            ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
-                            NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
-                            FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
-                            MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
-                            DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
-                            SEX = PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText;
+                            var ROLLNO = string.Empty;
+                            var NAME = string.Empty;
+                            var FNAME = string.Empty;
+                            var MNAME = string.Empty;
+                            var DOB = string.Empty;
+                            var SEX = string.Empty;
+                            try
+                            {
+                                ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
+                                NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
+                                FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
+                                MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
+                                DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
+                                SEX = PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["SEX"].InnerText;
 
+                                response = Request.CreateResponse(HttpStatusCode.OK);
+                                response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"200\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
+                                return response;
+                            }
+                            catch (Exception ex)
+                            {
+                                ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
+                                NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
+                                FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
+                                MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
+                                DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
+                                SEX = "-";
+
+                                response = Request.CreateResponse(HttpStatusCode.OK);
+                                response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
+                                return response;
+                            }
+                        }
+
+                        else
+                        {
                             response = Request.CreateResponse(HttpStatusCode.OK);
-                            response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"200\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
+                            response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"Response\" : \"No Data Found\" }"), System.Text.Encoding.UTF8, "application/json");
                             return response;
                         }
-                        catch (Exception ex)
-                        {
-                            ROLLNO = PIDResponseXML["NewDataSet"]["Table"]["ROLLNO"].InnerText;
-                            NAME = PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["NAME"].InnerText;
-                            FNAME = PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["FNAME"].InnerText;
-                            MNAME = PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["MNAME"].InnerText;
-                            DOB = PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == null || PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText == "-" ? null : PIDResponseXML["NewDataSet"]["Table"]["DOB"].InnerText;
-                            SEX = "-";
 
-                            response = Request.CreateResponse(HttpStatusCode.OK);
-                            response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"RollNo\":\"" + ROLLNO + "\",\"Name\" : \"" + NAME + "\",\"FatherName\" : \"" + FNAME + "\",\"MotherName\" : \"" + MNAME + "\",\"DateOfBirth\" : \"" + DOB + "\",\"Sex\" : \"" + SEX + "\"}"), System.Text.Encoding.UTF8, "application/json");
-                            return response;
-                        }
                     }
-
                     else
                     {
-                        response = Request.CreateResponse(HttpStatusCode.OK);
-                        response.Content = new StringContent(JsonConvert.SerializeObject("{\"Status\" : \"404\",\"Response\" : \"No Data Found\" }"), System.Text.Encoding.UTF8, "application/json");
-                        return response;
+                        return null;
                     }
-
                 }
+
                 catch (Exception ex)
                 {
                     var response = Request.CreateResponse(HttpStatusCode.NotFound);
@@ -841,14 +885,27 @@ namespace TSPOLYCET.Controllers.PreExamination
             {
                 try
                 {
-                    var resMsg = await client.GetAsync(urlwithparam);
-                    var content = await resMsg.Content.ReadAsStringAsync();
+                    var dbHandler = new PolycetdbHandler();
+                    var param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                    param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                    param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                    var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                    if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                    {
+                        var resMsg = await client.GetAsync(urlwithparam);
+                        var content = await resMsg.Content.ReadAsStringAsync();
 
-                    var PIDResponseXML = new XmlDocument();
-                    PIDResponseXML.LoadXml(content);
-                    var jsonData = JsonConvert.SerializeXmlNode(PIDResponseXML, Newtonsoft.Json.Formatting.None, true);
-                    return Request.CreateResponse(HttpStatusCode.OK, jsonData);
+                        var PIDResponseXML = new XmlDocument();
+                        PIDResponseXML.LoadXml(content);
+                        var jsonData = JsonConvert.SerializeXmlNode(PIDResponseXML, Newtonsoft.Json.Formatting.None, true);
+                        return Request.CreateResponse(HttpStatusCode.OK, jsonData);
 
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 catch (Exception ex)
                 {

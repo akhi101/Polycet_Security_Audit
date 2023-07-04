@@ -47,21 +47,46 @@
         //};
 
 
-        this.GetCategories = function () {
-            return DataAccessService.getDataAll('api/StudentRegistration/GetCategories');
+        //this.GetCategories = function () {
+        //    return DataAccessService.getDataAll('api/StudentRegistration/GetCategories');
+        //};
+
+        this.GetCategories = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha };
+            return DataAccessService.getDataWithPara('api/StudentRegistration/GetCategories', paramObject);
+        };
+        this.GetRegions = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/StudentRegistration/GetRegions', paramObject);
         };
 
-        this.GetRegions = function () {
-            return DataAccessService.getDataAll('api/StudentRegistration/GetRegions');
-        };
 
-
-        this.GetMinorities = function () {
-            return DataAccessService.getDataAll('api/StudentRegistration/GetMinorities');
+        this.GetMinorities = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/StudentRegistration/GetMinorities', paramObject);
         };
         
-        this.FeePaymentRequestLog = function (RegistrationID,  MerchantID,  SubMerchantID,  AdditionalInfo1) {
-            var paramObject = { "RegistrationID": RegistrationID, "MerchantID": MerchantID, "SubMerchantID": SubMerchantID, "AdditionalInfo1": AdditionalInfo1 };
+        this.FeePaymentRequestLog = function (RegistrationID, MerchantID, SubMerchantID, AdditionalInfo1, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "RegistrationID": RegistrationID,
+                "MerchantID": MerchantID,
+                "SubMerchantID": SubMerchantID,
+                "AdditionalInfo1": AdditionalInfo1,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+};
             return DataAccessService.getDataWithPara('api/StudentRegistration/FeePaymentRequestLog', paramObject);
         };
 
