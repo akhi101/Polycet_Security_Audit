@@ -190,6 +190,28 @@ namespace TSPOLYCET.Controllers
             }
         }
 
+        [HttpGet, ActionName("VerifyRegistrationDates")]
+        public string VerifyRegistrationDates(int DataType)
+        {
+            var dbHandler = new PolycetdbHandler();
+            try
+            {
+
+               
+
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@DataType", DataType);
+
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Verify_Dates", param1);
+                    return JsonConvert.SerializeObject(ds);
+              
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         [HttpGet, ActionName("DeleteHallTicketData")]
         public string DeleteHallTicketData(string HallticketNo, string Remarks, string UserName)
         {
@@ -268,17 +290,30 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetHallticketByRegistrationId")]
-        public string GetHallticketByRegistrationId(int RegistrationID, string RegistrationNumber, int DataType)
+        public string GetHallticketByRegistrationId(int RegistrationID, string RegistrationNumber, int DataType,string UserName,string SessionId,string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
                 var param = new SqlParameter[3];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", RegistrationNumber);
-                param[2] = new SqlParameter("@DataType", DataType);
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Set_Hallticket", param);
-                return JsonConvert.SerializeObject(dt);
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[3];
+                    param1[0] = new SqlParameter("@RegistrationID", RegistrationID);
+                    param1[1] = new SqlParameter("@RegistrationNumber", RegistrationNumber);
+                    param1[2] = new SqlParameter("@DataType", DataType);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Set_Hallticket", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -306,16 +341,30 @@ namespace TSPOLYCET.Controllers
 
 
         [HttpGet, ActionName("GetStudentFeeData")]
-        public string GetStudentFeeData(int RegistrationID)
+        public string GetStudentFeeData(int RegistrationID,string UserName,string SessionId,string Captcha)
         {
+            var dbHandler = new PolycetdbHandler();
+
             try
             {
-                var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentFeePaymentData", param);
-                return JsonConvert.SerializeObject(dt);
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@RegistrationID", RegistrationID);
+
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentFeePaymentData", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -324,16 +373,30 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetDashboardStatus")]
-        public string GetDashboardStatus(int RegistrationID)
+        public string GetDashboardStatus(int RegistrationID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentDashBoardStatus", param);
-                return JsonConvert.SerializeObject(dt);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@RegistrationID", RegistrationID);
+
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentDashBoardStatus", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -342,16 +405,28 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetStudentApplicationData")]
-        public string GetStudentApplicationData(int RegistrationID)
+        public string GetStudentApplicationData(int RegistrationID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@RegistrationID", RegistrationID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentApplicationData", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentApplicationData", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -863,22 +938,50 @@ namespace TSPOLYCET.Controllers
 
 
 
+        //[HttpGet, ActionName("GetStates")]
+        //public string GetStates()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_States";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        PolycetdbHandler.SaveErorr("SP_Get_States", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
+
         [HttpGet, ActionName("GetStates")]
-        public string GetStates()
+        public string GetStates(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_States";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_States");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_States", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
 
@@ -1011,17 +1114,30 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetDistrictsbyState")]
-        public string GetDistrictsbyState(int DataType, int StateID)
+        public string GetDistrictsbyState(int DataType, int StateID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[2];
-                param[0] = new SqlParameter("@DataType", DataType);
-                param[1] = new SqlParameter("@StateID", StateID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[2];
+                    param1[0] = new SqlParameter("@DataType", DataType);
+                    param1[1] = new SqlParameter("@StateID", StateID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_Districts", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_Districts", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1029,68 +1145,168 @@ namespace TSPOLYCET.Controllers
             }
         }
 
+        //[HttpGet, ActionName("GetPreference1Districts")]
+        //public HttpResponseMessage GetPreference1Districts()
+        //{
+        //    try
+        //    {
+        //        var dbHandler = new PolycetdbHandler();
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_PreferenceDistricts";
+        //        return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+        //}
+
         [HttpGet, ActionName("GetPreference1Districts")]
-        public HttpResponseMessage GetPreference1Districts()
+        public string GetPreference1Districts(string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_PreferenceDistricts";
-                return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+
+                    var ds = dbHandler.ReturnDataSet("SP_Get_PreferenceDistricts");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-                PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ex.Message;
             }
         }
 
         [HttpGet, ActionName("GetPreference2Districts")]
-        public HttpResponseMessage GetPreference2Districts()
+        public string GetPreference2Districts(string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_PreferenceDistricts";
-                return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+
+                    var ds = dbHandler.ReturnDataSet("SP_Get_PreferenceDistricts");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-                PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ex.Message;
             }
         }
 
         [HttpGet, ActionName("GetPreference3Districts")]
-        public HttpResponseMessage GetPreference3Districts()
+        public string GetPreference3Districts(string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_PreferenceDistricts";
-                return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+
+                    var ds = dbHandler.ReturnDataSet("SP_Get_PreferenceDistricts");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-                PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                return ex.Message;
             }
         }
 
+        //[HttpGet, ActionName("GetPreference2Districts")]
+        //public HttpResponseMessage GetPreference2Districts()
+        //{
+        //    try
+        //    {
+        //        var dbHandler = new PolycetdbHandler();
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_PreferenceDistricts";
+        //        return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+        //}
+
+        //[HttpGet, ActionName("GetPreference3Districts")]
+        //public HttpResponseMessage GetPreference3Districts()
+        //{
+        //    try
+        //    {
+        //        var dbHandler = new PolycetdbHandler();
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_PreferenceDistricts";
+        //        return Request.CreateResponse(HttpStatusCode.OK, dbHandler.ReturnDataSet(StrQuery));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PolycetdbHandler.SaveErorr("SP_Get_PreferenceDistricts", 0, ex.Message);
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+        //}
+
         [HttpGet, ActionName("GetMandalsbyDistrict")]
-        public string GetMandalsbyDistrict(int DistrictID)
+        public string GetMandalsbyDistrict(int DistrictID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@DistrictID", DistrictID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@DistrictID", DistrictID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_Mandals", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_Mandals", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1099,16 +1315,29 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetPreference1Mandals")]
-        public string GetPreference1Mandals(int DistrictID)
+        public string GetPreference1Mandals(int DistrictID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@DistrictID", DistrictID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@DistrictID", DistrictID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1117,16 +1346,29 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetPreference2Mandals")]
-        public string GetPreference2Mandals(int DistrictID)
+        public string GetPreference2Mandals(int DistrictID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@DistrictID", DistrictID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@DistrictID", DistrictID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -1135,16 +1377,29 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("GetPreference3Mandals")]
-        public string GetPreference3Mandals(int DistrictID)
+        public string GetPreference3Mandals(int DistrictID, string UserName, string SessionId, string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@DistrictID", DistrictID);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@DistrictID", DistrictID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_PreferenceMandals", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -2363,18 +2618,41 @@ namespace TSPOLYCET.Controllers
         [HttpPost, ActionName("GetCasteDetails")]
         public async Task<HttpResponseMessage> GetCasteDetails([FromBody] CasteDetails ReqData)
         {
+            var dbHandler = new PolycetdbHandler();
 
-            var url = ConfigurationManager.AppSettings["MEESEVA_API"].ToString();
-            //var urlwithparam = url + "?applicationNo=" + ReqData.applicationNo + "&userid=" + ReqData.userid;
-            //using (HttpClient client = new HttpClient())
+            try
+            {
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var url = ConfigurationManager.AppSettings["MEESEVA_API"].ToString();
+                    //var urlwithparam = url + "?applicationNo=" + ReqData.applicationNo + "&userid=" + ReqData.userid;
+                    //using (HttpClient client = new HttpClient())
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.PostAsJsonAsync(RequestURI, ReqData).Result;
-            return response;
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(url);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = client.PostAsJsonAsync(RequestURI, ReqData).Result;
+                    return response;
 
+                }
+                else
+                {
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dt);
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+            
         }
 
 
@@ -2383,6 +2661,9 @@ namespace TSPOLYCET.Controllers
         {
             public string applicationNo { get; set; }
             public string userid { get; set; }
+            public string UserName { get; set; }
+            public string SessionId { get; set; }
+            public string Captcha { get; set; }
         }
 
         public class FeeAmountsInfo
@@ -3060,51 +3341,107 @@ namespace TSPOLYCET.Controllers
 
         }
 
-        [HttpPost, ActionName("GetQualifiedExams")]
-        public string GetQualifiedExams()
+        //[HttpPost, ActionName("GetQualifiedExams")]
+        //public string GetQualifiedExams()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_QualifiedExams";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        PolycetdbHandler.SaveErorr("SP_Get_QualifiedExams", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
+
+        [HttpGet, ActionName("GetQualifiedExams")]
+        public string GetQualifiedExams(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_QualifiedExams";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_QualifiedExams");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_QualifiedExams", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
 
+        //[HttpPost, ActionName("GetTenthYears")]
+        //public string GetTenthYears()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_TenthYears";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-        [HttpPost, ActionName("GetTenthYears")]
-        public string GetTenthYears()
+        //        PolycetdbHandler.SaveErorr("SP_Get_TenthYears", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
+
+        [HttpGet, ActionName("GetTenthYears")]
+        public string GetTenthYears(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_TenthYears";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_TenthYears");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_TenthYears", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
 
         public class StudentDetailsInfo
         {
-
+            public string SessionId { get; set; }
+            public string Captcha { get; set; }
+            public string UserName { get; set; }
             public string HallicketNo { get; set; }
             public string HallticketNo { get; set; }
-            public string UserName { get; set; }
             public int DataType { get; set; }
             public bool SscPhotoType { get; set; }
 
@@ -3371,12 +3708,23 @@ namespace TSPOLYCET.Controllers
 
             try
             {
-
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentDetails", param);
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dt);
-                return response;
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", data.SessionId);
+                param[1] = new SqlParameter("@UserName", data.UserName);
+                param[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Get_StudentDetails", param1);
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, ds);
+                    return response;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {
@@ -3387,16 +3735,29 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("SetApplicationSubmit")]
-        public string SetApplicationSubmit(int RegistrationID)
+        public string SetApplicationSubmit(int RegistrationID,string UserName,string SessionId,string Captcha)
         {
             try
             {
                 var dbHandler = new PolycetdbHandler();
-                var param = new SqlParameter[1];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Set_StudentApplicationSubmit", param);
-                return JsonConvert.SerializeObject(dt);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName",UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param1 = new SqlParameter[1];
+                    param1[0] = new SqlParameter("@RegistrationID", RegistrationID);
+
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Set_StudentApplicationSubmit", param1);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -3413,23 +3774,36 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[13];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@QualifiedExamID", data.QualifiedExamID);
-                param[3] = new SqlParameter("@TenthHallticketNumber", data.TenthHallticketNumber);
-                param[4] = new SqlParameter("@TenthYear", data.TenthYear);
-                param[5] = new SqlParameter("@ExaminationType", data.ExaminationType);
-                param[6] = new SqlParameter("@StudentName", data.StudentName);
-                param[7] = new SqlParameter("@FatherName", data.FatherName);
-                param[8] = new SqlParameter("@MotherName", data.MotherName);
-                param[9] = new SqlParameter("@DateofBirth", data.DateofBirth);
-                param[10] = new SqlParameter("@Gender", data.Gender);
-                param[11] = new SqlParameter("@SSCVerified", data.SSCVerified);
-                param[12] = new SqlParameter("@DateOfBirthText", data.DateOfBirthText);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[13];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@QualifiedExamID", data.QualifiedExamID);
+                    param[3] = new SqlParameter("@TenthHallticketNumber", data.TenthHallticketNumber);
+                    param[4] = new SqlParameter("@TenthYear", data.TenthYear);
+                    param[5] = new SqlParameter("@ExaminationType", data.ExaminationType);
+                    param[6] = new SqlParameter("@StudentName", data.StudentName);
+                    param[7] = new SqlParameter("@FatherName", data.FatherName);
+                    param[8] = new SqlParameter("@MotherName", data.MotherName);
+                    param[9] = new SqlParameter("@DateofBirth", data.DateofBirth);
+                    param[10] = new SqlParameter("@Gender", data.Gender);
+                    param[11] = new SqlParameter("@SSCVerified", data.SSCVerified);
+                    param[12] = new SqlParameter("@DateOfBirthText", data.DateOfBirthText);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentPersonalDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentPersonalDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -3446,26 +3820,38 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[16];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@MobileNumber", data.MobileNumber);
-                param[3] = new SqlParameter("@AlternateMobileNumber", data.AlternateMobileNumber);
-                param[4] = new SqlParameter("@Email", data.Email);
-                param[5] = new SqlParameter("@HouseNumber", data.HouseNumber);
-                param[6] = new SqlParameter("@StreetName", data.StreetName);
-                param[7] = new SqlParameter("@Locality", data.Locality);
-                param[8] = new SqlParameter("@Landmark", data.Landmark);
-                param[9] = new SqlParameter("@Village", data.Village);
-                param[10] = new SqlParameter("@StateID", data.StateID);
-                param[11] = new SqlParameter("@DistrictID", data.DistrictID);
-                param[12] = new SqlParameter("@DistrictName", data.DistrictName);
-                param[13] = new SqlParameter("@MandalID", data.MandalID);
-                param[14] = new SqlParameter("@MandalName", data.MandalName);
-                param[15] = new SqlParameter("@Pincode", data.Pincode);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[16];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@MobileNumber", data.MobileNumber);
+                    param[3] = new SqlParameter("@AlternateMobileNumber", data.AlternateMobileNumber);
+                    param[4] = new SqlParameter("@Email", data.Email);
+                    param[5] = new SqlParameter("@HouseNumber", data.HouseNumber);
+                    param[6] = new SqlParameter("@StreetName", data.StreetName);
+                    param[7] = new SqlParameter("@Locality", data.Locality);
+                    param[8] = new SqlParameter("@Landmark", data.Landmark);
+                    param[9] = new SqlParameter("@Village", data.Village);
+                    param[10] = new SqlParameter("@StateID", data.StateID);
+                    param[11] = new SqlParameter("@DistrictID", data.DistrictID);
+                    param[12] = new SqlParameter("@DistrictName", data.DistrictName);
+                    param[13] = new SqlParameter("@MandalID", data.MandalID);
+                    param[14] = new SqlParameter("@MandalName", data.MandalName);
+                    param[15] = new SqlParameter("@Pincode", data.Pincode);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentCommunicationDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentCommunicationDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -3482,19 +3868,32 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[9];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@CasteCategoryID", data.CasteCategoryID);
-                param[3] = new SqlParameter("@AadharNumber", data.AadharNumber);
-                param[4] = new SqlParameter("@CasteCertificateNumber", data.CasteCertificateNumber);
-                param[5] = new SqlParameter("@CasteVerified", data.CasteVerified);
-                param[6] = new SqlParameter("@EWS", data.EWS);
-                param[7] = new SqlParameter("@EWSNumber", data.EWSNumber);
-                param[8] = new SqlParameter("@EWSVerified", data.EWSVerified);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[9];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@CasteCategoryID", data.CasteCategoryID);
+                    param[3] = new SqlParameter("@AadharNumber", data.AadharNumber);
+                    param[4] = new SqlParameter("@CasteCertificateNumber", data.CasteCertificateNumber);
+                    param[5] = new SqlParameter("@CasteVerified", data.CasteVerified);
+                    param[6] = new SqlParameter("@EWS", data.EWS);
+                    param[7] = new SqlParameter("@EWSNumber", data.EWSNumber);
+                    param[8] = new SqlParameter("@EWSVerified", data.EWSVerified);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentCategoryDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentCategoryDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -3510,15 +3909,28 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[5];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@AadharNumber", data.AadharNumber);
-                param[3] = new SqlParameter("@CasteCertificateNumber", data.CasteCertificateNumber);
-                param[4] = new SqlParameter("@CasteVerified", data.CasteVerified);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[5];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@AadharNumber", data.AadharNumber);
+                    param[3] = new SqlParameter("@CasteCertificateNumber", data.CasteCertificateNumber);
+                    param[4] = new SqlParameter("@CasteVerified", data.CasteVerified);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Update_CasteFeeDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Update_CasteFeeDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
+
             }
             catch (Exception ex)
             {
@@ -3535,21 +3947,33 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[11];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@RegionID", data.RegionID);
-                param[3] = new SqlParameter("@MinorityID", data.MinorityID);
-                param[4] = new SqlParameter("@AssistanceinUrdu", data.AssistanceinUrdu);
-                param[5] = new SqlParameter("@PH", data.PH);
-                param[6] = new SqlParameter("@NCC", data.NCC);
-                param[7] = new SqlParameter("@SportsAndGames", data.SportsAndGames);
-                param[8] = new SqlParameter("@CAP", data.CAP);
-                param[9] = new SqlParameter("@PMCares", data.PMCares);
-                param[10] = new SqlParameter("@AppearedForBiology", data.AppearedForBiology);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[11];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@RegionID", data.RegionID);
+                    param[3] = new SqlParameter("@MinorityID", data.MinorityID);
+                    param[4] = new SqlParameter("@AssistanceinUrdu", data.AssistanceinUrdu);
+                    param[5] = new SqlParameter("@PH", data.PH);
+                    param[6] = new SqlParameter("@NCC", data.NCC);
+                    param[7] = new SqlParameter("@SportsAndGames", data.SportsAndGames);
+                    param[8] = new SqlParameter("@CAP", data.CAP);
+                    param[9] = new SqlParameter("@PMCares", data.PMCares);
+                    param[10] = new SqlParameter("@AppearedForBiology", data.AppearedForBiology);
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentSpecialCategoryDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentSpecialCategoryDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -3565,54 +3989,66 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[42];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@Class1Year", data.Class1Year);
-                param[3] = new SqlParameter("@Class1StateID", data.Class1StateID);
-                param[4] = new SqlParameter("@Class1DistrictID", data.Class1DistrictID);
-                param[5] = new SqlParameter("@Class1Place", data.Class1Place);
-                param[6] = new SqlParameter("@Class2Year", data.Class2Year);
-                param[7] = new SqlParameter("@Class2StateID", data.Class2StateID);
-                param[8] = new SqlParameter("@Class2DistrictID", data.Class2DistrictID);
-                param[9] = new SqlParameter("@Class2Place", data.Class2Place);
-                param[10] = new SqlParameter("@Class3Year", data.Class3Year);
-                param[11] = new SqlParameter("@Class3StateID", data.Class3StateID);
-                param[12] = new SqlParameter("@Class3DistrictID", data.Class3DistrictID);
-                param[13] = new SqlParameter("@Class3Place", data.Class3Place);
-                param[14] = new SqlParameter("@Class4Year", data.Class4Year);
-                param[15] = new SqlParameter("@Class4StateID", data.Class4StateID);
-                param[16] = new SqlParameter("@Class4DistrictID", data.Class4DistrictID);
-                param[17] = new SqlParameter("@Class4Place", data.Class4Place);
-                param[18] = new SqlParameter("@Class5Year", data.Class5Year);
-                param[19] = new SqlParameter("@Class5StateID", data.Class5StateID);
-                param[20] = new SqlParameter("@Class5DistrictID", data.Class5DistrictID);
-                param[21] = new SqlParameter("@Class5Place", data.Class5Place);
-                param[22] = new SqlParameter("@Class6Year", data.Class6Year);
-                param[23] = new SqlParameter("@Class6StateID", data.Class6StateID);
-                param[24] = new SqlParameter("@Class6DistrictID", data.Class6DistrictID);
-                param[25] = new SqlParameter("@Class6Place", data.Class6Place);
-                param[26] = new SqlParameter("@Class7Year", data.Class7Year);
-                param[27] = new SqlParameter("@Class7StateID", data.Class7StateID);
-                param[28] = new SqlParameter("@Class7DistrictID", data.Class7DistrictID);
-                param[29] = new SqlParameter("@Class7Place", data.Class7Place);
-                param[30] = new SqlParameter("@Class8Year", data.Class8Year);
-                param[31] = new SqlParameter("@Class8StateID", data.Class8StateID);
-                param[32] = new SqlParameter("@Class8DistrictID", data.Class8DistrictID);
-                param[33] = new SqlParameter("@Class8Place", data.Class8Place);
-                param[34] = new SqlParameter("@Class9Year", data.Class9Year);
-                param[35] = new SqlParameter("@Class9StateID", data.Class9StateID);
-                param[36] = new SqlParameter("@Class9DistrictID", data.Class9DistrictID);
-                param[37] = new SqlParameter("@Class9Place", data.Class9Place);
-                param[38] = new SqlParameter("@Class10Year", data.Class10Year);
-                param[39] = new SqlParameter("@Class10StateID", data.Class10StateID);
-                param[40] = new SqlParameter("@Class10DistrictID", data.Class10DistrictID);
-                param[41] = new SqlParameter("@Class10Place", data.Class10Place);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[42];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@Class1Year", data.Class1Year);
+                    param[3] = new SqlParameter("@Class1StateID", data.Class1StateID);
+                    param[4] = new SqlParameter("@Class1DistrictID", data.Class1DistrictID);
+                    param[5] = new SqlParameter("@Class1Place", data.Class1Place);
+                    param[6] = new SqlParameter("@Class2Year", data.Class2Year);
+                    param[7] = new SqlParameter("@Class2StateID", data.Class2StateID);
+                    param[8] = new SqlParameter("@Class2DistrictID", data.Class2DistrictID);
+                    param[9] = new SqlParameter("@Class2Place", data.Class2Place);
+                    param[10] = new SqlParameter("@Class3Year", data.Class3Year);
+                    param[11] = new SqlParameter("@Class3StateID", data.Class3StateID);
+                    param[12] = new SqlParameter("@Class3DistrictID", data.Class3DistrictID);
+                    param[13] = new SqlParameter("@Class3Place", data.Class3Place);
+                    param[14] = new SqlParameter("@Class4Year", data.Class4Year);
+                    param[15] = new SqlParameter("@Class4StateID", data.Class4StateID);
+                    param[16] = new SqlParameter("@Class4DistrictID", data.Class4DistrictID);
+                    param[17] = new SqlParameter("@Class4Place", data.Class4Place);
+                    param[18] = new SqlParameter("@Class5Year", data.Class5Year);
+                    param[19] = new SqlParameter("@Class5StateID", data.Class5StateID);
+                    param[20] = new SqlParameter("@Class5DistrictID", data.Class5DistrictID);
+                    param[21] = new SqlParameter("@Class5Place", data.Class5Place);
+                    param[22] = new SqlParameter("@Class6Year", data.Class6Year);
+                    param[23] = new SqlParameter("@Class6StateID", data.Class6StateID);
+                    param[24] = new SqlParameter("@Class6DistrictID", data.Class6DistrictID);
+                    param[25] = new SqlParameter("@Class6Place", data.Class6Place);
+                    param[26] = new SqlParameter("@Class7Year", data.Class7Year);
+                    param[27] = new SqlParameter("@Class7StateID", data.Class7StateID);
+                    param[28] = new SqlParameter("@Class7DistrictID", data.Class7DistrictID);
+                    param[29] = new SqlParameter("@Class7Place", data.Class7Place);
+                    param[30] = new SqlParameter("@Class8Year", data.Class8Year);
+                    param[31] = new SqlParameter("@Class8StateID", data.Class8StateID);
+                    param[32] = new SqlParameter("@Class8DistrictID", data.Class8DistrictID);
+                    param[33] = new SqlParameter("@Class8Place", data.Class8Place);
+                    param[34] = new SqlParameter("@Class9Year", data.Class9Year);
+                    param[35] = new SqlParameter("@Class9StateID", data.Class9StateID);
+                    param[36] = new SqlParameter("@Class9DistrictID", data.Class9DistrictID);
+                    param[37] = new SqlParameter("@Class9Place", data.Class9Place);
+                    param[38] = new SqlParameter("@Class10Year", data.Class10Year);
+                    param[39] = new SqlParameter("@Class10StateID", data.Class10StateID);
+                    param[40] = new SqlParameter("@Class10DistrictID", data.Class10DistrictID);
+                    param[41] = new SqlParameter("@Class10Place", data.Class10Place);
 
 
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentStudyDetails", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentStudyDetails", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -3630,155 +4066,167 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                //var Photo_Url = ConfigurationManager.AppSettings["Student_Photos"].ToString();
-                var dir = AppDomain.CurrentDomain.BaseDirectory + @"\Photos\";
-                var photo_url = dir + "Photo_" + data.RegistrationNumber + ".JPG";
-                var StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
-                var photo_signature = dir + "Signature_" + data.RegistrationNumber + ".JPG";
-                var StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
-                var path = string.Empty;
-                string relativePath = string.Empty;
-                var StudentPhotopath = string.Empty;
-                var StudentSignaturepath = string.Empty;
-                if (data.PhotoUpdate == true && data.SscPhotoType == false)
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
                 {
-                    photo_url = data.StudentPhoto;
-                }
-                else
-                {
-                    if (data.SSCPhoto == false && data.SscPhotoType == false)
+                    //var Photo_Url = ConfigurationManager.AppSettings["Student_Photos"].ToString();
+                    var dir = AppDomain.CurrentDomain.BaseDirectory + @"\Photos\";
+                    var photo_url = dir + "Photo_" + data.RegistrationNumber + ".JPG";
+                    var StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
+                    var photo_signature = dir + "Signature_" + data.RegistrationNumber + ".JPG";
+                    var StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
+                    var path = string.Empty;
+                    string relativePath = string.Empty;
+                    var StudentPhotopath = string.Empty;
+                    var StudentSignaturepath = string.Empty;
+                    if (data.PhotoUpdate == true && data.SscPhotoType == false)
                     {
-                        if (data.StudentPhoto != "")
-                        {
-                            StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            string imgPath = Path.Combine(path, StdPhoto);
-                            byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
-                            File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_url = relativePath;
-                        }
-                        else
-                        {
-                            photo_url = "";
-                        }
-                    }
-                    else
-                   if (data.SSCPhoto == true || data.SscPhotoType == false)
-                    {
-                        using (WebClient client = new WebClient())
-                        {
-                            client.DownloadFile(new Uri(data.StudentPhoto), photo_url);
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            //string imgPath = Path.Combine(path, photo_url);
-                            //byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
-                            //File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = dir.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_url = relativePath + StdPhoto;
-                            // OR   
-                        }
+                        photo_url = data.StudentPhoto;
                     }
                     else
                     {
-                        if (data.StudentPhoto != "")
+                        if (data.SSCPhoto == false && data.SscPhotoType == false)
                         {
-                            StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            string imgPath = Path.Combine(path, StdPhoto);
-                            byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
-                            File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_url = relativePath;
+                            if (data.StudentPhoto != "")
+                            {
+                                StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                string imgPath = Path.Combine(path, StdPhoto);
+                                byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
+                                File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_url = relativePath;
+                            }
+                            else
+                            {
+                                photo_url = "";
+                            }
+                        }
+                        else
+                       if (data.SSCPhoto == true || data.SscPhotoType == false)
+                        {
+                            using (WebClient client = new WebClient())
+                            {
+                                client.DownloadFile(new Uri(data.StudentPhoto), photo_url);
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                //string imgPath = Path.Combine(path, photo_url);
+                                //byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
+                                //File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = dir.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_url = relativePath + StdPhoto;
+                                // OR   
+                            }
                         }
                         else
                         {
-                            photo_url = "";
-                        }
-                    }
-
-                }
-                if (data.PhotoUpdate == true && data.SscSignType == false)
-                {
-                    photo_signature = data.StudentSignature;
-                }
-                else
-                {
-                    if (data.SSCSign == false && data.SscSignType == false)
-                    {
-                        if (data.StudentSignature != "")
-                        {
-                            StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            string imgPath = Path.Combine(path, StdSign);
-                            byte[] Bytes = Convert.FromBase64String(data.StudentSignature);
-                            File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_signature = relativePath;
-                        }
-                        else
-                        {
-                            photo_signature = "";
+                            if (data.StudentPhoto != "")
+                            {
+                                StdPhoto = "Photo_" + data.RegistrationNumber + ".JPG";
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                string imgPath = Path.Combine(path, StdPhoto);
+                                byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
+                                File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_url = relativePath;
+                            }
+                            else
+                            {
+                                photo_url = "";
+                            }
                         }
 
                     }
-                    else if (data.SSCSign == true || data.SscSignType == false)
+                    if (data.PhotoUpdate == true && data.SscSignType == false)
                     {
-                        using (WebClient client = new WebClient())
-                        {
-                            client.DownloadFileAsync(new Uri(data.StudentSignature), photo_signature);
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            //string imgPath = Path.Combine(path, photo_signature);
-                            //byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
-                            //File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = dir.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_signature = relativePath + StdSign;
-                        }
+                        photo_signature = data.StudentSignature;
                     }
                     else
                     {
-                        if (data.StudentSignature != "")
+                        if (data.SSCSign == false && data.SscSignType == false)
                         {
-                            StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
-                            path = dir;
-                            bool foldrExists = Directory.Exists(dir);
-                            if (!foldrExists)
-                                Directory.CreateDirectory(dir);
-                            string imgPath = Path.Combine(path, StdSign);
-                            byte[] Bytes = Convert.FromBase64String(data.StudentSignature);
-                            File.WriteAllBytes(imgPath, Bytes);
-                            relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
-                            photo_signature = relativePath;
+                            if (data.StudentSignature != "")
+                            {
+                                StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                string imgPath = Path.Combine(path, StdSign);
+                                byte[] Bytes = Convert.FromBase64String(data.StudentSignature);
+                                File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_signature = relativePath;
+                            }
+                            else
+                            {
+                                photo_signature = "";
+                            }
+
+                        }
+                        else if (data.SSCSign == true || data.SscSignType == false)
+                        {
+                            using (WebClient client = new WebClient())
+                            {
+                                client.DownloadFileAsync(new Uri(data.StudentSignature), photo_signature);
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                //string imgPath = Path.Combine(path, photo_signature);
+                                //byte[] Bytes = Convert.FromBase64String(data.StudentPhoto);
+                                //File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = dir.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_signature = relativePath + StdSign;
+                            }
                         }
                         else
                         {
-                            photo_signature = "";
+                            if (data.StudentSignature != "")
+                            {
+                                StdSign = "Signature_" + data.RegistrationNumber + ".JPG";
+                                path = dir;
+                                bool foldrExists = Directory.Exists(dir);
+                                if (!foldrExists)
+                                    Directory.CreateDirectory(dir);
+                                string imgPath = Path.Combine(path, StdSign);
+                                byte[] Bytes = Convert.FromBase64String(data.StudentSignature);
+                                File.WriteAllBytes(imgPath, Bytes);
+                                relativePath = imgPath.Replace(HttpContext.Current.Request.PhysicalApplicationPath, GetWebAppRoot()).Replace(@"\", "/");
+                                photo_signature = relativePath;
+                            }
+                            else
+                            {
+                                photo_signature = "";
+                            }
                         }
                     }
+                    var param = new SqlParameter[6];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@StudentPhoto", photo_url);
+                    param[3] = new SqlParameter("@StudentSignature", photo_signature);
+                    param[4] = new SqlParameter("@SSCPhoto", data.SSCPhoto);
+                    param[5] = new SqlParameter("@SSCSign", data.SSCSign);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Add_StudentPhotoSignature", param);
+                    return JsonConvert.SerializeObject(ds);
                 }
-                var param = new SqlParameter[6];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@StudentPhoto", photo_url);
-                param[3] = new SqlParameter("@StudentSignature", photo_signature);
-                param[4] = new SqlParameter("@SSCPhoto", data.SSCPhoto);
-                param[5] = new SqlParameter("@SSCSign", data.SSCSign);
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Add_StudentPhotoSignature", param);
-                return JsonConvert.SerializeObject(dt);
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+                }
             }
             catch (Exception ex)
             {
@@ -3872,20 +4320,59 @@ namespace TSPOLYCET.Controllers
         }
 
 
+        //[HttpPost, ActionName("GetPolycetEWSVerification")]
+        //public async Task<HttpResponseMessage> GetPolycetEWSVerification([FromBody] EWSDetails ReqData)
+        //{
+
+        //    var url = ConfigurationManager.AppSettings["EWS_API"].ToString();
+        //    //var urlwithparam = url + "?applicationNo=" + ReqData.applicationNo + "&userid=" + ReqData.userid;
+        //    //using (HttpClient client = new HttpClient())
+
+        //    HttpClient client = new HttpClient();
+        //    client.BaseAddress = new Uri(url);
+        //    client.DefaultRequestHeaders.Accept.Clear();
+        //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //    HttpResponseMessage response = client.PostAsJsonAsync(RequestURI, ReqData).Result;
+        //    return response;
+
+        //}
+
         [HttpPost, ActionName("GetPolycetEWSVerification")]
-        public async Task<HttpResponseMessage> GetPolycetEWSVerification([FromBody] EWSDetails ReqData)
+        public async Task<HttpResponseMessage> GetPolycetEWSVerification([FromBody] CasteDetails ReqData)
         {
+            var dbHandler = new PolycetdbHandler();
 
-            var url = ConfigurationManager.AppSettings["EWS_API"].ToString();
-            //var urlwithparam = url + "?applicationNo=" + ReqData.applicationNo + "&userid=" + ReqData.userid;
-            //using (HttpClient client = new HttpClient())
+            try
+            {
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", ReqData.SessionId);
+                param[1] = new SqlParameter("@UserName", ReqData.UserName);
+                param[2] = new SqlParameter("@Captcha", ReqData.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var url = ConfigurationManager.AppSettings["EWS_API"].ToString();
+                    //var urlwithparam = url + "?applicationNo=" + ReqData.applicationNo + "&userid=" + ReqData.userid;
+                    //using (HttpClient client = new HttpClient())
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage response = client.PostAsJsonAsync(RequestURI, ReqData).Result;
-            return response;
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(url);
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage response = client.PostAsJsonAsync(RequestURI, ReqData).Result;
+                    return response;
+
+                }
+                else
+                {
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dt);
+                    return response;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
         }
 
@@ -3904,20 +4391,33 @@ namespace TSPOLYCET.Controllers
             var dbHandler = new PolycetdbHandler();
             try
             {
-                var param = new SqlParameter[9];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
-                param[2] = new SqlParameter("@PreferenceDistrictID1", data.PreferenceDistrictID1);
-                param[3] = new SqlParameter("@PreferenceMandalID1", data.PreferenceMandalID1);
-                param[4] = new SqlParameter("@PreferenceDistrictID2", data.PreferenceDistrictID2);
-                param[5] = new SqlParameter("@PreferenceMandalID2", data.PreferenceMandalID2);
-                param[6] = new SqlParameter("@PreferenceDistrictID3", data.PreferenceDistrictID3);
-                param[7] = new SqlParameter("@PreferenceMandalID3", data.PreferenceMandalID3);
-                param[8] = new SqlParameter("@DataType", data.DataType);
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[9];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@RegistrationNumber", data.RegistrationNumber);
+                    param[2] = new SqlParameter("@PreferenceDistrictID1", data.PreferenceDistrictID1);
+                    param[3] = new SqlParameter("@PreferenceMandalID1", data.PreferenceMandalID1);
+                    param[4] = new SqlParameter("@PreferenceDistrictID2", data.PreferenceDistrictID2);
+                    param[5] = new SqlParameter("@PreferenceMandalID2", data.PreferenceMandalID2);
+                    param[6] = new SqlParameter("@PreferenceDistrictID3", data.PreferenceDistrictID3);
+                    param[7] = new SqlParameter("@PreferenceMandalID3", data.PreferenceMandalID3);
+                    param[8] = new SqlParameter("@DataType", data.DataType);
 
 
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentExamCentrePreferences", param);
-                return JsonConvert.SerializeObject(dt);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Add_StudentExamCentrePreferences", param);
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
@@ -4013,14 +4513,26 @@ namespace TSPOLYCET.Controllers
 
             try
             {
-
-                var param = new SqlParameter[3];
-                param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
-                param[1] = new SqlParameter("@HallicketNo", data.HallicketNo);
-                param[2] = new SqlParameter("@UserName", data.UserName);
-                var dt = dbHandler.ReturnDataWithStoredProcedureTable("SP_Set_StudentHallticketLog", param);
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dt);
-                return response;
+                var param1 = new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId", data.SessionId);
+                param1[1] = new SqlParameter("@UserName", data.UserName);
+                param1[2] = new SqlParameter("@Captcha", data.Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[3];
+                    param[0] = new SqlParameter("@RegistrationID", data.RegistrationID);
+                    param[1] = new SqlParameter("@HallicketNo", data.HallicketNo);
+                    param[2] = new SqlParameter("@UserName", data.UserName);
+                    var ds = dbHandler.ReturnDataWithStoredProcedureTable("SP_Set_StudentHallticketLog", param);
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, ds);
+                    return response;
+                }
+                else
+                {
+                    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, dt);
+                    return response;
+                }
             }
             catch (Exception ex)
             {

@@ -30,6 +30,8 @@
             return promise;
         };
 
+
+
         this.getSSCNewImageDetails = function (object) {
             var promise = DataAccessService.postData('api/PreExamination/GetSSCNewImageDetails', object);
             return promise;

@@ -13,6 +13,7 @@ using System.Web.Http;
 using RestSharp;
 using System.Configuration;
 using System.Net.Http.Headers;
+using Org.BouncyCastle.Ocsp;
 
 namespace TSPOLYCET.Controllers
 {
@@ -228,8 +229,9 @@ namespace TSPOLYCET.Controllers
                 {
                     int RegistrationID = (int)Convert.ToInt64(dt.Tables[1].Rows[0]["RegistrationID"]);
                     string RegistrationNumber = dt.Tables[1].Rows[0]["RegistrationNumber"].ToString();
+                    string Captcha = dt.Tables[1].Rows[0]["Captcha"].ToString();
 
-                   dt1 = FeePaymentRequestLog(RegistrationID, marchantid, subMarchantid =null, RegistrationNumber);
+                   dt1 = FeePaymentRequestLog(RegistrationID, marchantid, subMarchantid =null, RegistrationNumber,Captcha=null);
                     response = Request.CreateResponse(HttpStatusCode.OK, dt1);
                 }
                 else
@@ -248,26 +250,37 @@ namespace TSPOLYCET.Controllers
         }
 
         [HttpGet, ActionName("FeePaymentRequestLog")]
-        public string FeePaymentRequestLog(int RegistrationID,string MerchantID, string SubMerchantID = null, string AdditionalInfo1 = null, string AdditionalInfo2 = null, string AdditionalInfo3 = null, string AdditionalInfo4 = null, string AdditionalInfo5 = null, string AdditionalInfo6 = null, string AdditionalInfo7 = null)
+        public string FeePaymentRequestLog(int RegistrationID,string MerchantID, string UserName, string SessionId, string Captcha ,string SubMerchantID = null, string AdditionalInfo1 = null, string AdditionalInfo2 = null, string AdditionalInfo3 = null, string AdditionalInfo4 = null, string AdditionalInfo5 = null, string AdditionalInfo6 = null, string AdditionalInfo7 = null)
         {
             var dbHandler = new PolycetdbHandler();
 
             try
             {
-
-                var param = new SqlParameter[10];
-                param[0] = new SqlParameter("@RegistrationID", RegistrationID);
-                param[1] = new SqlParameter("@MerchantID", MerchantID);
-                param[2] = new SqlParameter("@SubMerchantID", SubMerchantID);
-                param[3] = new SqlParameter("@AdditionalInfo1", AdditionalInfo1);
-                param[4] = new SqlParameter("@AdditionalInfo2", AdditionalInfo2);
-                param[5] = new SqlParameter("@AdditionalInfo3", AdditionalInfo3);
-                param[6] = new SqlParameter("@AdditionalInfo4", AdditionalInfo4);
-                param[7] = new SqlParameter("@AdditionalInfo5", AdditionalInfo5);
-                param[8] = new SqlParameter("@AdditionalInfo6", AdditionalInfo6);
-                param[9] = new SqlParameter("@AdditionalInfo7", AdditionalInfo7);
-                var dt = dbHandler.ReturnDataWithStoredProcedure("SP_Set_FeePaymentRequestLog", param);
-                return JsonConvert.SerializeObject(dt); ;
+                var param1= new SqlParameter[3];
+                param1[0] = new SqlParameter("@SessionId",SessionId);
+                param1[1] = new SqlParameter("@UserName", UserName);
+                param1[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param1);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var param = new SqlParameter[10];
+                    param[0] = new SqlParameter("@RegistrationID", RegistrationID);
+                    param[1] = new SqlParameter("@MerchantID", MerchantID);
+                    param[2] = new SqlParameter("@SubMerchantID", SubMerchantID);
+                    param[3] = new SqlParameter("@AdditionalInfo1", AdditionalInfo1);
+                    param[4] = new SqlParameter("@AdditionalInfo2", AdditionalInfo2);
+                    param[5] = new SqlParameter("@AdditionalInfo3", AdditionalInfo3);
+                    param[6] = new SqlParameter("@AdditionalInfo4", AdditionalInfo4);
+                    param[7] = new SqlParameter("@AdditionalInfo5", AdditionalInfo5);
+                    param[8] = new SqlParameter("@AdditionalInfo6", AdditionalInfo6);
+                    param[9] = new SqlParameter("@AdditionalInfo7", AdditionalInfo7);
+                    var ds = dbHandler.ReturnDataWithStoredProcedure("SP_Set_FeePaymentRequestLog", param);
+                    return JsonConvert.SerializeObject(ds); ;
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt); ;
+                }
             }
             catch (Exception ex)
             {
@@ -330,68 +343,150 @@ namespace TSPOLYCET.Controllers
         }
 
 
+        //[HttpGet, ActionName("GetCategories")]
+        //public string GetCategories()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_CasteCategories";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        PolycetdbHandler.SaveErorr("SP_Get_CasteCategories", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
+
         [HttpGet, ActionName("GetCategories")]
-        public string GetCategories()
+        public string GetCategories(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_CasteCategories";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_CasteCategories");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_CasteCategories", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
+
+        //[HttpGet, ActionName("GetRegions")]
+        //public string GetRegions()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_Regions";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        PolycetdbHandler.SaveErorr("SP_Get_Regions", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
+
 
         [HttpGet, ActionName("GetRegions")]
-        public string GetRegions()
+        public string GetRegions(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_Regions";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_Regions");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_Regions", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
 
+        //[HttpGet, ActionName("GetMinorities")]
+        //public string GetMinorities()
+        //{
+        //    var dbHandler = new PolycetdbHandler();
+        //    try
+        //    {
+        //        string StrQuery = "";
+        //        StrQuery = "exec SP_Get_Minorities";
+        //        var res = dbHandler.ReturnDataSet(StrQuery);
+        //        return JsonConvert.SerializeObject(res);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
+        //        PolycetdbHandler.SaveErorr("SP_Get_Minorities", 0, ex.Message);
+        //        throw ex;
+        //    }
+        //}
 
 
         [HttpGet, ActionName("GetMinorities")]
-        public string GetMinorities()
+        public string GetMinorities(string UserName, string SessionId, string Captcha)
         {
             var dbHandler = new PolycetdbHandler();
             try
             {
-                string StrQuery = "";
-                StrQuery = "exec SP_Get_Minorities";
-                var res = dbHandler.ReturnDataSet(StrQuery);
-                return JsonConvert.SerializeObject(res);
+                var param = new SqlParameter[3];
+                param[0] = new SqlParameter("@SessionId", SessionId);
+                param[1] = new SqlParameter("@UserName", UserName);
+                param[2] = new SqlParameter("@Captcha", Captcha);
+                var dt = dbHandler.ReturnDataWithStoredProcedure("USP_GET_CaptchaSessionLog", param);
+                if (dt.Tables[0].Rows[0]["ResponseCode"].ToString() == "200")
+                {
+                    var ds = dbHandler.ReturnDataSet("SP_Get_Minorities");
+                    return JsonConvert.SerializeObject(ds);
+                }
+                else
+                {
+                    return JsonConvert.SerializeObject(dt);
+
+                }
             }
             catch (Exception ex)
             {
-
-                PolycetdbHandler.SaveErorr("SP_Get_Minorities", 0, ex.Message);
-                throw ex;
+                return ex.Message;
             }
         }
 
 
-      
 
 
     }

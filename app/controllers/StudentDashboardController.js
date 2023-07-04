@@ -169,7 +169,7 @@
         }
 
         $scope.getTenthYears = function () {
-            var tenthyr = AdminService.GetTenthYears();
+            var tenthyr = AdminService.GetTenthYears($scope.UserName, $scope.Session, '');
             tenthyr.then(function (response) {
                 try {
                     var res = JSON.parse(response)
@@ -211,7 +211,7 @@
 
         $scope.getDashboardStatus = function (RegistrationNumber) {
             $scope.RegistrationNumber = RegistrationNumber;
-            var getdashboardstatus = AdminService.GetDashboardStatus($scope.RegistrationId);
+            var getdashboardstatus = AdminService.GetDashboardStatus($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             getdashboardstatus.then(function (response) {
 
                 var res = JSON.parse(response)
@@ -283,7 +283,7 @@
         }
 
         $scope.GETFeeData = function () {
-            var feedata = AdminService.GetStudentFeeData($scope.RegistrationId);
+            var feedata = AdminService.GetStudentFeeData($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             feedata.then(function (response) {
 
                 var res = JSON.parse(response);
@@ -302,7 +302,7 @@
 
         $scope.GETDashboardStatus = function (RegistrationNumber) {
             $scope.RegistrationNumber = RegistrationNumber;
-            var getdashboardstatus = AdminService.GetDashboardStatus($scope.RegistrationId);
+            var getdashboardstatus = AdminService.GetDashboardStatus($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             getdashboardstatus.then(function (response) {
 
                 var res = JSON.parse(response)
@@ -888,7 +888,10 @@
                 "DateofBirth": DateofBirth,
                 "Gender": Gender,
                 "SSCVerified": isSSCVerified,
-                "DateofBirthText": $scope.DOB_TEXT
+                "DateofBirthText": $scope.DOB_TEXT,
+                "UserName":$scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha":''
 
             }
             $scope.tabsbutton = true;
@@ -1065,6 +1068,9 @@
                 "MandalID": MandalID,
                 "MandalName": MandalName,
                 "Pincode": Pincode,
+                "UserName": $scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha": ''
 
             }
             $scope.tabsbutton = true;
@@ -1203,6 +1209,9 @@
                 "EWS": EwsCertificate,
                 "EWSNumber": EWSNumber,
                 "EWSVerified": EWSVerified,
+                "UserName": $scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha": ''
 
             }
             $scope.tabsbutton = true;
@@ -1372,6 +1381,9 @@
                 "CAP": CAP,
                 "PMCares": PMCares,
                 "AppearedForBiology": AppearforBiology,
+                "UserName": $scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha": ''
 
             }
             $scope.tabsbutton = true;
@@ -1744,6 +1756,9 @@
                 "Class10StateID": State10,
                 "Class10DistrictID": District10,
                 "Class10Place": PLACE10,
+                "UserName": $scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha": ''
 
             }
             $scope.tabsbutton = true;
@@ -1881,7 +1896,11 @@
                 "SSCSign": $scope.StudentSign1,
                 "SscPhotoType": $scope.Addphoto,
                 "SscSignType": $scope.AddSign,
-                "PhotoUpdate": $scope.PhotoUpdate
+                "PhotoUpdate": $scope.PhotoUpdate,
+                "UserName": $scope.UserName,
+                "SessionId": $scope.Session,
+                "Captcha": ''
+
             }
             $scope.tabsbutton = true;
             $scope.loader7 = true;
@@ -2090,7 +2109,9 @@
             var paramObject = {
                 "RegistrationID": $scope.RegistrationId,
                 "HallicketNo": $scope.HallticketHallticketNumber,
-                "UserName": $scope.RegistrationNumber
+                "UserName": $scope.RegistrationNumber,
+                "SessionId": $scope.Session,
+                "Captcha":''
 
             }
             var downloadlog = AdminService.SetStdHtLog(paramObject);
@@ -2180,7 +2201,7 @@
         //    });
 
         $scope.getCasteCategory = function () {
-            var getcategory = StudentRegistrationService.GetCategories();
+            var getcategory = StudentRegistrationService.GetCategories($scope.UserName, $scope.Session, '');
             getcategory.then(function (response) {
                 try {
                     var res = JSON.parse(response);
@@ -2198,7 +2219,7 @@
         }
 
         $scope.getRegions = function () {
-            var getcategory = StudentRegistrationService.GetRegions();
+            var getcategory = StudentRegistrationService.GetRegions($scope.UserName, $scope.Session, '');
             getcategory.then(function (response) {
                 try {
                     var res = JSON.parse(response);
@@ -2215,7 +2236,7 @@
         }
 
         $scope.getMinorities = function () {
-            var getcategory = StudentRegistrationService.GetMinorities();
+            var getcategory = StudentRegistrationService.GetMinorities($scope.UserName, $scope.Session, '');
             getcategory.then(function (response) {
                 try {
                     var res = JSON.parse(response);
@@ -2233,7 +2254,7 @@
 
 
         $scope.getStudentApplicationData = function () {
-            var applicationstatus = AdminService.GetStudentApplicationData($scope.RegistrationId);
+            var applicationstatus = AdminService.GetStudentApplicationData($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             applicationstatus.then(function (response) {
                 try {
                     var res = JSON.parse(response)
@@ -2317,7 +2338,7 @@
 
         $scope.getStates = function () {
 
-            var getstates = AdminService.GetStates();
+            var getstates = AdminService.GetStates($scope.UserName, $scope.Session,'');
             getstates.then(function (response) {
                 try {
                     var res = JSON.parse(response);
@@ -2340,7 +2361,7 @@
             $scope.DistrictName = '';
             $scope.MandalName = '';
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2365,7 +2386,7 @@
 
         $scope.getClass1Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State1);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State1, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2391,7 +2412,7 @@
 
         $scope.getClass2Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State2);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State2, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2416,7 +2437,7 @@
 
         $scope.getClass3Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State3);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State3, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2441,7 +2462,7 @@
 
         $scope.getClass4Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State4);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State4, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2466,7 +2487,7 @@
 
         $scope.getClass5Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State5);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State5, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2491,7 +2512,7 @@
 
         $scope.getClass6Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State6);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State6, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2516,7 +2537,7 @@
 
         $scope.getClass7Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State7);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State7, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2541,7 +2562,7 @@
 
         $scope.getClass8Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State8);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State8, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2566,7 +2587,7 @@
 
         $scope.getClass9Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State9);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State9, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2591,7 +2612,7 @@
 
         $scope.getClass10Districts = function () {
             var DataType = 2;//Get Districts by State ID
-            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State10);
+            var getdistrict = AdminService.GetDistrictsbyState(DataType, $scope.State10, $scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2622,7 +2643,7 @@
             //$scope.TelanganaDistrict1Name = data.DistrictName;
             let dist1obj = [];
             dist1obj = { "DistrictID": $scope.Preference1District.DistrictID, "DistrictName": $scope.Preference1District.DistrictName }
-            var getmandal = AdminService.GetPreference1Mandals($scope.Preference1District.DistrictID);
+            var getmandal = AdminService.GetPreference1Mandals($scope.Preference1District.DistrictID, $scope.UserName, $scope.Session, '');
             getmandal.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2668,7 +2689,7 @@
         $scope.ChangeDistricts2 = function (Preference2District) {
             let dist2obj = [];
             dist2obj = { "DistrictID": $scope.Preference2District.DistrictID, "DistrictName": $scope.Preference2District.DistrictName }
-            var getmandal = AdminService.GetPreference2Mandals($scope.Preference2District.DistrictID);
+            var getmandal = AdminService.GetPreference2Mandals($scope.Preference2District.DistrictID, $scope.UserName, $scope.Session, '');
             getmandal.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2707,7 +2728,7 @@
         $scope.ChangeDistricts3 = function (Preference3District) {
             let dist3obj = [];
             dist3obj = { "DistrictID": $scope.Preference3District.DistrictID, "DistrictName": $scope.Preference3District.DistrictName }
-            var getmandal = AdminService.GetPreference3Mandals($scope.Preference3District.DistrictID);
+            var getmandal = AdminService.GetPreference3Mandals($scope.Preference3District.DistrictID, $scope.UserName, $scope.Session, '');
             getmandal.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2806,7 +2827,7 @@
 
         $scope.getAddressMandals = function () {
 
-            var getmandal = AdminService.GetMandalsbyDistrict($scope.District);
+            var getmandal = AdminService.GetMandalsbyDistrict($scope.District, $scope.UserName, $scope.Session, '');
             getmandal.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -2834,15 +2855,15 @@
 
 
         $scope.getPreference1Districts = function () {
-            var getdistrict = AdminService.GetPreference1Districts();
+            var getdistrict = AdminService.GetPreference1Districts($scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
-                //try {
-                //    var res = JSON.parse(resp);
-                //}
-                //catch (err) { }
+                try {
+                    var res = JSON.parse(resp);
+                }
+                catch (err) { }
 
-                if (resp.Table.length > 0) {
-                    $scope.Preference1DistrictsData = resp.Table;
+                if (res.Table.length > 0) {
+                    $scope.Preference1DistrictsData = res.Table;
                 }
                 else {
                     $scope.Preference1DistrictsData = [];
@@ -2856,7 +2877,7 @@
         }
 
         $scope.getPreference2Districts = function () {
-            var getdistrict = AdminService.GetPreference2Districts();
+            var getdistrict = AdminService.GetPreference2Districts($scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 //try {
                 //    var res = JSON.parse(resp);
@@ -2878,7 +2899,7 @@
         }
 
         $scope.getPreference3Districts = function () {
-            var getdistrict = AdminService.GetPreference3Districts();
+            var getdistrict = AdminService.GetPreference3Districts($scope.UserName, $scope.Session, '');
             getdistrict.then(function (resp) {
                 //try {
                 //    var res = JSON.parse(resp);
@@ -2900,7 +2921,7 @@
         }
 
         $scope.getQualifiedExams = function () {
-            var qualifiedexam = AdminService.GetQualifiedExams();
+            var qualifiedexam = AdminService.GetQualifiedExams($scope.UserName, $scope.Session, '');
             qualifiedexam.then(function (response) {
                 try {
                     var res = JSON.parse(response)
@@ -2970,7 +2991,10 @@
             var reqData = {
                 RollNo: sscHallticket,
                 Year: passedoutYear,
-                Stream: sscType
+                Stream: sscType,
+                UserName: $scope.UserName,
+                SessionId: $scope.Session,
+                Captcha:''
             };
 
             if (passedoutYear == '2023') {
@@ -3292,7 +3316,7 @@
             }
             $scope.Loader1 = true;
             $scope.Userid = "MEESEVA";
-            var captcha = AdminService.GetCasteDetails($scope.CasteCertificateNumber, $scope.Userid);
+            var captcha = AdminService.GetCasteDetails($scope.CasteCertificateNumber, $scope.Userid, $scope.UserName, $scope.Session, '');
             captcha.then(function (res) {
                 if (res.errorcode == 200) {
                     $scope.Loader1 = false;
@@ -3533,7 +3557,7 @@
             }
             $scope.Loader2 = true;
             $scope.userid = "MEESEVA";
-            var ewsdetails = AdminService.GetPolycetEWSVerification($scope.EWSNumber, $scope.userid);
+            var ewsdetails = AdminService.GetPolycetEWSVerification($scope.EWSNumber, $scope.userid, $scope.UserName, $scope.Session, '');
             ewsdetails.then(function (res) {
                 if (res.errorcode == 200) {
                     $scope.Loader2 = false;
@@ -3673,22 +3697,7 @@
 
         //}
 
-        $scope.ChangePassword = function () {
-            $state.go('StudentDashboard.ChangePassword');
-        }
-
-        $scope.logOut = function () {
-            sessionStorage.loggedIn = "no";
-            delete $localStorage.authorizationData;
-
-            $scope.authentication = {
-                isAuth: false,
-                UserId: 0,
-                //    userName: ""
-            };
-            $state.go('index')
-        }
-
+ 
         $scope.PayFee = function () {
             $scope.PayFeeDisable = true;
             $scope.FeeLoader = true;
@@ -3696,7 +3705,7 @@
             var subMarchantid = " ";
 
             //var EncriptedPassword = $crypto.encrypt($crypto.encrypt($scope.CreatePass, 'HBSBP9214EDU00TS'), $scope.RegistrationEKey) + '$$@@$$' + $scope.RegistrationEKey;
-            var submitstddetails = StudentRegistrationService.FeePaymentRequestLog($scope.StudentData.RegistrationID, marchantid, subMarchantid, $scope.StudentData.RegistrationNumber);
+            var submitstddetails = StudentRegistrationService.FeePaymentRequestLog($scope.StudentData.RegistrationID, marchantid, subMarchantid, $scope.StudentData.RegistrationNumber, $scope.UserName, $scope.Session, '');
             submitstddetails.then(function (res) {
                 try {
                     var res = JSON.parse(res)
@@ -4459,7 +4468,7 @@
         $scope.getStudentDetails = function () {
             //$scope.loading = true;
             $scope.nodata = false;
-            var getstddetails = AdminService.GetStudentDetails($scope.RegistrationId);
+            var getstddetails = AdminService.GetStudentDetails($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             getstddetails.then(function (res) {
 
                 try {
@@ -5034,7 +5043,7 @@
                 var RegistrationID = $scope.RegistrationId;
                 var DataType = 2
             }
-            var getdetails = AdminService.GetHallticketByRegistrationId(RegistrationID, $scope.RegistrationNumber, DataType);
+            var getdetails = AdminService.GetHallticketByRegistrationId(RegistrationID, $scope.RegistrationNumber, DataType, $scope.UserName, $scope.Session, '');
             getdetails.then(function (resp) {
                 try {
                     var res = JSON.parse(resp);
@@ -5161,7 +5170,7 @@
 
         $scope.ConfirmSubmit = function () {
             $scope.tabsbutton = true;
-            var submitapplication = AdminService.SetApplicationSubmit($scope.RegistrationId);
+            var submitapplication = AdminService.SetApplicationSubmit($scope.RegistrationId, $scope.UserName, $scope.Session, '');
             submitapplication.then(function (response) {
                 try {
                     var res = JSON.parse(response)
@@ -5315,6 +5324,9 @@
                     "PreferenceDistrictID3": $scope.Preference3District.DistrictID,
                     "PreferenceMandalID3": $scope.Preference3Mandal.MandalID,
                     "DataType": 1,
+                    "UserName": $scope.UserName,
+                    "SessionId": $scope.Session,
+                    "Captcha":''
                 }
             } else if ($scope.Assistance_Urdu == 'true') {
                 var paramObj = {
@@ -5327,6 +5339,9 @@
                     "PreferenceDistrictID3": 0,
                     "PreferenceMandalID3": 0,
                     "DataType": 2,
+                    "UserName": $scope.UserName,
+                    "SessionId": $scope.Session,
+                    "Captcha": ''
                 }
             }
             $scope.tabsbutton = true;
@@ -5344,7 +5359,7 @@
                     $scope.getHallticket($scope.StudentData.RegistrationNumber);
                     $scope.getStudentDetails();
                     var DataType = 7
-                    var VerifyDate = AdminService.VerifyHtDates(DataType);
+                    var VerifyDate = AdminService.VerifyHtDates(DataType, $scope.UserName, $scope.Session,'');
                     VerifyDate.then(function (response) {
                         try {
                             var res = JSON.parse(response)
@@ -5419,7 +5434,7 @@
         $scope.logOut = function () {
             sessionStorage.loggedIn = "no";
 
-            var GetUserLogout = SystemUserService.PostUserLogout(2, $scope.RegistrationId, $scope.SessionID, $scope.Session);
+            var GetUserLogout = SystemUserService.PostUserLogout(2, authData.UserName, $scope.SessionID, $scope.Session);
             delete $localStorage.authorizationData;
             delete $localStorage.authToken;
             delete $scope.SessionID;
@@ -5428,7 +5443,7 @@
                 UserId: 0,
                 userName: ""
             };
-            $state.go('index.Login')
+            $state.go('index.OfficialsLogin')
         }
 
 
