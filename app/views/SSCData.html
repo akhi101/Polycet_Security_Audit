@@ -1,0 +1,1269 @@
+﻿<style>
+    .sign {
+        position: absolute;
+        top: -39px;
+    }
+
+    .card1 {
+        background: #fff;
+        min-height: 50px;
+        box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+        position: relative;
+        margin-bottom: 20px;
+        transition: .5s;
+        border-radius: 0;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .card1 {
+        border: 1px solid #ced4da;
+        width: 100%;
+        float: left;
+        padding: 20px;
+        margin: 10px 0px 10px 0px;
+    }
+
+    .head_txt {
+        font-family: serif;
+        font-weight: bold;
+    }
+
+    .row1 {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+
+    div1 {
+        line-height: 2.6;
+    }
+
+    .table1.table1-bordered {
+        border: 1px solid #000 !important;
+    }
+
+    .table1 {
+        width: 100%;
+        max-width: 100%;
+        margin: 15px 0px;
+    }
+
+    .table1-rounded {
+        border-collapse: separate;
+        -webkit-box-shadow: 0px 0px 6px 1px rgb(221 221 221);
+        -moz-box-shadow: 0px 0px 6px 1px rgba(221,221,221,1);
+        box-shadow: 0px 0px 6px 1px rgb(221 221 221);
+    }
+
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+
+
+    .btn_margin {
+        margin-top: 23px;
+    }
+
+    .padding-0 {
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<style>
+    legend {
+        display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: inherit;
+        color: #333;
+        border: 0 !important;
+        /* border-bottom: 1px solid #e5e5e5; */
+    }
+
+    element.style {
+    }
+
+    fieldset {
+        /* min-width: 0; */
+        /* padding: 0; */
+        /* margin: 0; */
+        /* border: 0; */
+    }
+
+    fieldset {
+        /* padding: 0.35em 0.625em 0.75em; */
+        /* margin: 0 2px; */
+        /* border: 1px solid silver; */
+    }
+
+    * {
+        /* padding: 0; */
+        /* margin: 0; */
+    }
+
+    * {
+        /* -webkit-box-sizing: border-box; */
+        -moz-box-sizing: border-box;
+        /* box-sizing: border-box; */
+    }
+
+    fieldset {
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: rgb(192, 192, 192);
+        border-image: initial;
+        border-radius: 10px;
+        margin: 20px 0px;
+    }
+
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+
+    .sub_btn {
+        margin-top: 35px !important;
+    }
+
+    .pre-text {
+        padding: 5px 10px 5px 10px
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .breadcrumb-header {
+            margin-top: 95px;
+        }
+
+        nav.navbar.bootsnav .navbar-collapse.collapse.in {
+            margin-bottom: 0px;
+        }
+
+        nav.navbar.bootsnav ul.nav > li > a {
+            margin: 20px 10px;
+            cursor: pointer;
+            border: 2px solid #fff !important;
+            padding: 10px 10px !important;
+        }
+
+
+        fieldset {
+            min-inline-size: auto;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a, .with-nav-tabs.panel-primary .nav-tabs > li > a:hover, .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            /* color: #fff; */
+
+            width: 100% !important;
+            border-radius: 5px;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -1px;
+            width: 100%;
+            margin: 5px 0px;
+        }
+
+        .panel-primary {
+            border-color: #337ab7;
+            margin-top: 20px;
+        }
+    }
+    /********************************************************************/
+    /*** PANEL PRIMARY ***/
+    .with-nav-tabs.panel-primary .nav-tabs > li > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        /*color: #fff;*/
+        color: #fff;
+        background-color: #337ab7;
+        /*min-height: 62px;*/
+        font-size: 13px;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+            background-color: #3071a9;
+            border-color: transparent;
+        }
+
+
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #428bca;
+        border-color: #3071a9;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+                background-color: #3071a9;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+            background-color: #4a9fe9;
+        }
+
+    /********************************************************************/
+    .panel.with-nav-tabs .panel-heading {
+        padding: 5px 5px 0 5px;
+        background-color: #fff;
+    }
+
+    .panel.with-nav-tabs .nav-tabs {
+        border-bottom: none;
+    }
+
+    .panel.with-nav-tabs .nav-justified {
+        margin-bottom: -1px;
+    }
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+    .test {
+        background-color: #5cb85c !important;
+        color: #fff !important;
+    }
+
+    .clr_danger {
+        background-color: #d9534f !important;
+        color: #fff !important;
+    }
+
+
+    a {
+        cursor: pointer;
+    }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+        color: #fff !important;
+        background-color: #428bca !important;
+        border-color: #428bca;
+        border-bottom-color: transparent;
+        /*min-height: 62px;*/
+        font-weight: 600;
+        border: 1px solid #ddd;
+        /*padding-top: 5px;*/
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #fff !important;
+            background-color: #428bca !important;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+            /*min-height: 62px;*/
+            font-weight: 600;
+            border: 1px solid #ddd;
+            /*padding-top: 5px;*/
+        }
+
+    .label_preview {
+        margin: 5px 0px 5px 0px;
+        font-weight: 600;
+    }
+
+    .photo_preview {
+        height: 160px;
+        width: 140px;
+        display: block;
+    }
+
+    .sign_preview {
+        height: 40px;
+        width: 130px;
+    }
+
+    .preview_header {
+        display: none;
+    }
+
+    .textBold {
+        padding: 0px !important;
+    }
+
+    @media print {
+        .photo_preview {
+            height: 150px;
+            width: 130px;
+            display: block;
+        }
+
+        .sign_preview {
+            height: 40px;
+            width: 130px;
+        }
+
+        .preview_header {
+            display: none;
+        }
+
+        .preview_header {
+            display: block;
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .logoImg {
+            height: 65px;
+            width: 65px;
+        }
+
+        .hall_head {
+            margin-top: 20px;
+        }
+
+        .hall_head1 {
+            margin-top: 5px;
+        }
+
+        .panel-heading {
+            display: none;
+        }
+
+        .sm-spacer {
+            height: 0px;
+        }
+
+        label {
+            margin: 0px !important;
+        }
+
+        #table-print {
+            display: block !important;
+        }
+
+        fieldset {
+            margin: 0px;
+            border-radius: 0px;
+            border: 0px;
+            border-top: 2px solid #000;
+        }
+
+        legend {
+            margin: 0px;
+            display: none;
+        }
+
+        .btn_submitt {
+            display: none;
+        }
+
+        .label_preview {
+            margin: 0px !important;
+            font-size: 10px !important;
+            font-weight: 600;
+        }
+
+        .pre-text {
+            padding: 0px;
+            font-size: 10px !important;
+        }
+
+        .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 1px !important;
+            margin: 0px !important;
+        }
+        /* fieldset{
+            display:none;
+        }
+        legend {
+            display: none;
+        }*/
+    }
+
+    /*
+    #Preview {
+        display: block !important;
+    }*/
+
+</style>
+
+<link href="../../../assets/css/studentdashboardstyle.css" rel="stylesheet" />
+<style>
+    .head_section {
+        margin: 20px;
+    }
+
+    #helpDesk {
+        display: none;
+    }
+
+    #idtoDivPrint {
+        /*display: flex;*/
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #000;
+    }
+
+    .submit-btn button:focus {
+        outline: none !important;
+    }
+
+    .sign {
+        position: absolute;
+        top: -39px;
+        left: 382px;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+    }
+
+
+    .photo-img {
+        height: 126px !important;
+        width: 126px !important;
+    }
+
+    .logoImg {
+        height: 70px !important;
+        width: 70px !important;
+    }
+
+    .photo-img {
+        height: 136px !important;
+        width: 126px !important;
+        margin-top: 10px;
+    }
+
+    @media print {
+        .main {
+            display: none !important;
+        }
+
+        .header_area {
+            display: none !important;
+        }
+
+        .header {
+            display: none !important;
+        }
+
+        .photo-img {
+            height: 110px !important;
+            width: 95px !important;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: left;
+        }
+
+        .col-md-12 {
+            width: 100%;
+        }
+
+        .col-md-11 {
+            width: 91.66666666666666%;
+        }
+
+        .col-md-10 {
+            width: 83.333333%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-8 {
+            width: 66.66666666666666%;
+        }
+
+        .col-md-7 {
+            width: 58.333333333333336%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-5 {
+            width: 41.66666666666667%;
+        }
+
+        .col-md-4 {
+            width: 33.33333333333333%;
+        }
+
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-2 {
+            width: 16.666666666666664%;
+        }
+
+        .col-md-1 {
+            width: 8.333333333333332%;
+        }
+
+        .o-info {
+            display: none;
+        }
+
+        .top_row {
+            display: none;
+        }
+        /*.logo-image{
+              display:none;
+          }*/
+        .time {
+            display: none;
+        }
+
+        .top_logo {
+            width: 100%;
+            text-align: center;
+        }
+        /*.mtp-50{
+              display:none;
+          }*/
+        .empty-space {
+            display: none;
+        }
+
+        .main {
+            display: none;
+        }
+
+        .inputs {
+            border: none;
+            border-bottom: 0px solid #000;
+            width: 75%;
+        }
+
+        .pree-text {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .photo-img {
+            margin-top: 3px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border-bottom: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .college-details {
+            display: none;
+        }
+
+        .header-top-section {
+            display: none;
+        }
+
+        .breadcrumb-header {
+            display: none;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+            border-top: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead2 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead3 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody1 {
+            /*// border: 0px solid #000 !important;*/
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+            border-bottom: 0px solid #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border-right: 0px !important;
+        }
+
+        .mySpacer {
+            height: 65px;
+        }
+
+
+
+        .print_btn {
+            display: none;
+        }
+
+        .bck_btn {
+            display: none;
+        }
+
+        .logoImg {
+            height: 60px !important;
+            width: 60px !important;
+        }
+
+        .scroll-top-wrapper.show {
+            display: none;
+            visibility: hidden !important;
+        }
+
+        .footer_section {
+            display: none;
+        }
+
+        /* .tbl {
+            border: 0px solid #000 !important;
+        }*/
+
+        /*.top_table {
+            width: 60%;
+        }*/
+
+        .top-tables {
+            border-bottom: 0px !important;
+            border-left: 0px !important;
+        }
+
+        .logo-image h2 {
+            margin: -12px 0px 16px 85px !important;
+            font-size: 17px !important;
+        }
+
+        .head2 {
+            font-size: 16px !important;
+        }
+
+        .terms_card {
+            margin: 5px !important;
+            font-size: 10px;
+        }
+
+        .sign_layout {
+            float: right;
+            width: auto;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border: 0px !important;
+        }
+
+        .textIndent {
+            padding-left: 15px;
+            text-indent: -15px;
+        }
+
+        .sign {
+            float: right;
+            position: absolute;
+            top: -40px;
+            left: 133px;
+        }
+
+        .downloadForm {
+            display: none;
+        }
+
+        .content {
+            padding-top: 0px;
+        }
+
+        .hall_head {
+            margin-top: 0px;
+            font-size: 16px !important;
+        }
+
+        /*  .col-md-2.logo {
+            width: 11.666667%;
+            padding: 0px;
+        }*/
+
+        .col-md-10.title {
+            width: 88.3333%;
+            padding: 0px;
+        }
+
+        h4.text-center.hall_head {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            /*border: 1px solid #ddd !important;
+        color: #788598;*/
+            font-size: 11px !important;
+            padding: 4px !important;
+        }
+
+        .mySpacer.bottom {
+            display: none !important;
+        }
+
+        .resultsHeader {
+            display: none !important;
+        }
+
+        #mainfooter {
+            display: none !important;
+        }
+
+        .fd-form {
+            display: none !important;
+        }
+
+        #idtoDivPrint {
+            border: 1px solid #000;
+            padding: 0px;
+        }
+
+        .photo-img {
+            height: 136px !important;
+            width: 126px !important;
+            margin-top: 5px;
+        }
+
+        .table-bordered {
+            border: 0px solid #000;
+        }
+
+        .table {
+            margin-bottom: 0px;
+        }
+
+        hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 0;
+            border-top: 1px solid #000;
+        }
+
+        .photo_preview {
+            height: 145px;
+            width: 130px;
+            display: inline;
+        }
+
+        .panel-primary {
+            border: 0px;
+        }
+    }
+
+    .panel-primary {
+        border-color: #337ab7;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 0px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+        background-color: #fff;
+    }
+
+    .photo_preview {
+        height: 145px;
+        width: 130px;
+        display: inline;
+    }
+
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #000;
+    }
+
+    .myeads {
+        border-right: 0px !important;
+    }
+
+    .spacer {
+        height: 30px;
+    }
+
+    .footer {
+        display: none;
+    }
+    /*.table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+      border: 0px solid #000 !important;
+      border-left:0px!important;
+    }*/
+    .pree-text {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .top-box {
+        border: 0px solid #000;
+    }
+
+    .terms_card {
+        margin: 5px !important;
+        font-size: 10px;
+    }
+
+    .sign_layout {
+        float: right;
+        width: auto;
+    }
+
+    .lg-spacer {
+        height: 70px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .terms_card {
+        /*width: 100% !important;*/
+        text-align: left !important;
+        height: auto !important;
+        border-top: 1px solid #000;
+    }
+
+    .mySpacer {
+        height: 48px;
+    }
+
+    .textIndent {
+        padding-left: 15px;
+        text-indent: -15px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+        border: 0px;
+    }
+
+    .table-bordered {
+        border: 0px solid #ddd;
+    }
+
+    #idtoDivPrint {
+        padding: 0px;
+        border: 1px solid #000;
+        width: 100%;
+    }
+
+    @media print {
+        #idtoDivPrint {
+            padding: 0px;
+            border: 1px solid #000;
+            width: auto;
+        }
+
+        .default-padding {
+            padding: 0px;
+        }
+    }
+</style>
+<ui-view>
+    <div ng-controller="SSCDataController">
+        <header id="home">
+
+            <!--  Start Navigation-->
+            <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+                <div class="container">
+                    <!-- Start Header Navigation-->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                        </a>
+                        <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                    </div>
+                    <!--End Header Navigation
+            Collect the nav links, forms, and other content for toggling-->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                            <li><a><i class="fa fa-user" aria-hidden="true"></i> {{UserName}}</a></li>
+                            <li ng-click="ChangePassword()"><a><i class="user-login" aria-hidden="true"></i>Change Password</a></li>
+                            <li ng-click="logOut()"><a><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+
+            </nav>
+            <!-- End Navigation -->
+
+        </header>
+        <div class="sm-spacer"></div>
+
+        <div class="container">
+            <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+        <div class="container">
+
+
+
+            <!--<h3><center>Comming Soon.........</center></h3>-->
+            <div class="">
+                <!--  <div class="sm-spacer"></div>-->
+                <!-- Start Login
+            ============================================= -->
+                <div class="login-area default-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel with-nav-tabs panel-primary">
+
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="" id="SSC">
+                                                <fieldset>
+                                                    <legend>Qualified Exam Details</legend>
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label> Tenth Hallticket Number </label>
+                                                                <input class="form-control" ng-disabled="ENTEREDSSCHALLTICKET" ng-model="sscHallticket" placeholder="Tenth Hallticket Number" type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>
+                                                            Tenth Passed / Appearing Year
+                                                        </label>
+                                                        <select class="form-control " ng-model="passedoutYear" name="" ng-disabled="ENTEREDYEAR">
+                                                            <option value="" selected="selected">Select Tenth Passed</option>
+                                                            <option value="{{data.TenthYear}}" ng-repeat="data in TenthYearData" class="">
+                                                                {{data.TenthYear}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label for="exampasstype">Examination Stream </label>
+                                                                <select class="form-control" ng-disabled="ENTEREDSSCTYPE" ng-model="sscType">
+                                                                    <option value="">Select Examination Stream</option>
+                                                                    <option value="R">Regular</option>
+                                                                    <option value="A">Supplmentary</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <button type="submit" ng-disabled="GETSSCDETAILSBUTTON" ng-click="getSSCDetails(sscHallticket,passedoutYear,sscType)" class="btn pull-right sub_btn btn-success btn_margin">
+                                                                Get Details
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <div class="form-group">
+                                                            <button type="submit" ng-disabled="" ng-click="CancelSSC()" class="btn sub_btn  btn-danger btn_margin">
+                                                                Cancel
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                                <div class="col-md-12" ng-show="loading">
+                                                    <div class="sm-spacer"></div>
+                                                    <div style="width:100%;text-align:center;">
+                                                        <img src="../../../contents/img/loader1.gif" ng-show="loading" width="100" />
+                                                    </div>
+                                                </div>
+                                                <fieldset ng-show="SSCBUTTONCLICK">
+                                                    <legend>Personal Details</legend>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Student Name </label>
+                                                                <input class="form-control" ng-model="CNAME" ng-disabled="CandidateNamefound" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' maxlength="50" placeholder="Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Father Name </label>
+                                                                <input class="form-control" ng-model="FNAME" ng-disabled="FatherNameFound" maxlength="50" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Father Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Mother Name </label>
+                                                                <input class="form-control" ng-model="MNAME" ng-disabled="MotherNamefound" maxlength="50" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Mother Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label for="date-picker-example">Date Of Birth(dd/mm/yyyy)</label>
+                                                                <p class="input-group1" style="margin-left: 0px; border-left-width: 0px;  margin-right: 0px; padding-right: 12px; right: 155px;width:155px ">
+                                                                    <input type="text" style="width:242px" show-weeks="false" class="form-control" disabled id="datetimepicker" placeholder="DD/MM/YYYY" autocomplete="off" name="DateOfBirth" datetime-picker="dd/MM/yyyy" ng-model="DOB_DATE" ng-change="checkDate(DOB_DATE)" is-open="showFlag1" required />
+                                                                    <!--<span class="input-group-btn" style=" right: -155px; top: -40px;">
+                                                                    <button type="button" class="btn btn-primary btn_cal" ng-disabled="Calender" ng-click="showFlag1 = true"><i class="fa fa-calendar"></i></button>
+                                                                </span>-->
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Gender</label>
+                                                                <select class="form-control" name="applicationForm.Gender" ng-model="Gender" ng-disabled="Genderfound" required>
+                                                                    <option value="">Select Gender</option>
+                                                                    <option value="M">Male</option>
+                                                                    <option value="F">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <div class="form-group required custom-img">
+                                                            <label class="font-weight-bold">Photo</label>
+                                                            <img ng-src="{{StudentPhoto}}" class="img img-responsive" id="stdPhotoImg" style="width:150px;height:150px" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group required custom-img">
+                                                            <img ng-src="{{StudentSign}}" style="width:250px;height:100px;margin-top:50px" class="img img-responsive" id="stdSignImg" />
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Login Area -->
+                    </div>
+                    <div class="sm-spacer"></div>
+                    <div class="sm-spacer"></div>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="bg-dark text-light ng-scope">
+
+            <!-- Start Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                            </div>
+                            <div class="col-md-3 text-right link">
+                                <span class="float-right">Total Site Views: </span>
+                                <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer Bottom -->
+        </footer>
+</ui-view>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+
+
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary').addClass('active')
+                if ($item.addClass('btn-primary').addClass('active')) {
+                    ($item.addClass('active').addClass('active_btn'))
+                    allNextBtn = $('.nextBtn');
+                }
+                $item.addClass('active');
+                //$("p").addClass("cls_active");
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            //validation = true;
+            //$target.show();
+
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+            $(this).removeClass('active')
+            $("p").addClass("cls_active");
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+
+</script>

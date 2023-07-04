@@ -1,0 +1,74 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Delete Confirmation</h2>
+        <button type="button" class="close" ng-click="closeModal2()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <strong class="course-label">Hall Ticket Number:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].HallticketNumber}}
+            </span>
+            <hr>
+            <strong class="course-label">Student Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].StudentName}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Father Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].FatherName}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Alloted Centre:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].CentreName}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Caste Category Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].CasteCategoryName}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Registration Number:</strong>
+            <span class="text-muted word-break fl-right">
+                {{StudentData[0].RegistrationNumber}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Remarks:</strong>
+
+            <!--<input class="form-control" rows="2" type="text" maxlength="100" placeholder="Remarks" ng-model="Remarks">-->
+            <textarea id="remarks" name="remarks" style="font-family:sans-serif;font-size:1.2em; color:red" rows="3" cols="50" maxlength="100" ng-model="Remarks">
+
+                </textarea>
+            <hr>
+
+            <a title="Ht Ht" class="lost-pass-link1" style="font-size:20px">Are you sure to Delete Hall ticket?</a>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="ConfirmDelete(StudentData,Remarks)">Yes</button>
+        <button type="button" class="btn btn-primary" ng-click="closeModal2()">No</button>
+    </div>
+</div>
+

@@ -1,0 +1,72 @@
+﻿<style>
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<div class="modal-header ">
+    <h4 class="modal-title text-center">
+        <b>Attendance List</b>
+        <!--<button type="button" class="btn btn-circle btn-close btn-modal-close" ng-click="closeModal()">&times;</button>-->
+    </h4>
+</div>
+<div class="modal-body">
+    <!--<b class="text-success">Present with SG List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='2'"> {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}</span>-->
+
+    <br><b class="text-danger">Absent List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='3'"> {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}</span>
+
+    <br><b class="text-danger">Malpractice List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='4'">
+        {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}
+
+    </span>
+    <div class="sm-spacer"></div>
+    <a title="" class="lost-pass-link">Are you sure to Submit Attendance?</a>
+    <!--<div class="col-md-12">
+    <div class="notifylabel pull-right" for="sel1" style="color: red;margin-bottom:10px;font-size:16px">
+        NOTE : Attendance once Submitted cannot edit
+    </div>
+    </div>-->
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success pull-right" ng-click="SubmitData()"> 
+        <span ng-show="!btnLoading2">Proceed</span>
+        <span ng-show="btnLoading2"><div class="loader"> </div></span>
+    </button>
+    <button type="button" class="btn btn-default pull-left" ng-click="closeModal()">Cancel</button>
+</div>

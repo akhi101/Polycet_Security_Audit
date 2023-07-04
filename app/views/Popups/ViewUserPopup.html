@@ -1,0 +1,77 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">View Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <div class="row">
+
+                <div class="col-sm-6 col-md-9">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+
+                            <strong class="course-label">UserType Name:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.Role}}
+                            </span>
+                            <hr>
+                            <strong class="course-label">UserName:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.UserName}}
+                            </span>
+                            <hr>
+                            <strong class="course-label">New UserName:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.FirstName}}
+                            </span>
+                            <hr> <strong class="course-label">Mobile Number:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.UserMobile}}
+                            </span>
+                            <hr> <strong class="course-label">UserType Name:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.Role}}
+                            </span>
+                            <hr> <strong class="course-label">UserType Name:</strong>
+                            <span class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.Role}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label">Active Status:</strong>
+                            <p class="text-muted fl-right" ng-repeat="ViewData in ViewData">
+
+                                <button class="btn btn-success btn-xs" ng-show="ViewData.Active == true">Yes</button>
+                                <button class="btn btn-danger btn-xs" ng-show="ViewData.Active == false">No</button>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="closeModal()">Close</button>
+    </div>
+</div>
+

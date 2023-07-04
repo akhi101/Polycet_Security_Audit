@@ -1,0 +1,301 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+    .selectBox {
+        position: relative;
+    }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    thead > tr > th {
+        position: sticky;
+        top: 0px;
+    }
+
+
+
+
+    .txt_decorate {
+        text-transform: uppercase;
+    }
+
+    #checkboxesdistrict {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+        #checkboxesdistrict label {
+            display: block;
+        }
+
+            #checkboxesdistrict label:hover {
+                background-color: #1e90ff;
+            }
+
+    #checkboxesmandal label {
+        display: block;
+    }
+
+        #checkboxesmandal label:hover {
+            background-color: #1e90ff;
+        }
+
+    #checkboxesmandal {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+
+
+    .contain {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        /* margin-bottom: 12px; */
+        /* padding-top: 5px; */
+        cursor: pointer;
+        margin: 5px !important;
+        font-size: 15px !important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .contain input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #eee;
+        border: 1px solid #cac6c6;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .contain:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .contain input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .contain input:checked ~ .checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .contain .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .contain {
+        font-size: 13px !important;
+    }
+
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    a.ExportToExcel1 {
+        color: #1f497d;
+        text-decoration: none;
+        font-size: 18px;
+        padding-right: 10px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+</style>
+<div ng-controller="PrinterNRDownloadController">
+
+
+
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>Printer NR Download</h5>
+
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <div class="container">
+        <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <form name="dataForm">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>
+                                Polycet Year:
+                            </label>
+                            <select class="form-control" id="State" ng-model="PolycetYearID" ng-change="GetRegistrationDates(PolycetYearID)"
+                                    ng-options="data.PolycetYearID as data.PolycetYear for data in CurrentPolycetYearData">
+                                <option value="" selected>Select Polycet Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="gr-btn">
+                            <button type="button" style="margin-top:27px" class="btn btn-sm1 btn-primary gr-button  pull-left" ng-click="downloadPrinterNr()">Printer NR Download<span class="fa fa-arrow-down heading_icon btn_icons"></span></button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="gr-btn">
+                            <button type="button" style="margin-top:27px" class="btn btn-sm1 btn-primary gr-button  pull-left" ng-click="PrinterNrDownloadExcelReport()">Printer NR Excel<span class="fa fa-arrow-down heading_icon btn_icons"></span></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <!--<div class="sm-spacer"></div>-->
+        <div class="col-md-12" style="padding:0px!important">
+            <div class="pull-right">
+                <a class="ExportToExcel1 pointer"
+                   id="ExportToExcel1" ng-click="DownloadtoExcel('#tblParent')">
+                    <i class="fa fa-file-excel"></i>
+                    Report
+                </a>
+            </div>
+            <div class="cl-details" ng-if="CoordinatorsDataNew.length>0">
+                <h5 class="head_css">Coordinating Centres</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" ng-if="loading">
+                <div class="sm-spacer"></div>
+                <div style="width:100%;text-align:center;">
+                    <img src="../../../contents/img/loader1.gif" ng-if="loading" width="100" />
+                </div>
+            </div>
+
+            <div class="card" ng-show="nodata">
+                <div class="col-md-12 no-results" style="width:100%;text-align:center;">
+                    <img src="../../contents/img/Folder-Icon.svg" />
+                    <h2>No Data</h2>
+                </div>
+            </div>
+            <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="CoordinatorsDataNew.length>0">
+                <table class="table table-bordered  table-striped table-rounded">
+                    <thead>
+                        <tr class="cb-1">
+                            <th class="text-center" style="width: 2%;">S.No</th>
+                            <th class="text-center">Centre Code</th>
+                            <th class="text-center">Centre Name</th>
+                            <th class="text-center">Coordinator Name</th>
+                            <th class="text-center">Coordinator Mobile</th>
+                            <th class="text-center">Active</th>
+                            <th class="text-center" style="width: 10%">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in CoordinatorsDataNew">
+
+                            <td class="text-center">{{$index + 1}}</td>
+                            <td class="text-center">{{data.CentreCode}}</td>
+                            <td class="text-center">{{data.CentreName}}</td>
+                            <td class="text-center">{{data.CoordinatorName}}</td>
+                            <td class="text-center">{{data.CoordinatorMobile}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-xs" ng-disabled="ActiveButton" ng-show="data.Active == true">Yes</button>
+                                <button class="btn btn-danger btn-xs" ng-disabled="ActiveButton" ng-show="data.Active == false">No</button>
+                            </td>
+                            <td class="text-center">
+                                <a href="" class="btn btn-info btn-xs" ng-click="Edit(data.CoordinatingCentreID)">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="" class="btn btn-primary btn-xs" ng-click="View(data.CoordinatingCentreID)">
+                                    <i class="fa fa-eye" style="font-size:14px"></i>
+                                </a>
+                                <a href="" class="btn btn-danger btn-xs" ng-click="Deletion(data.CoordinatingCentreID)">
+                                    <i class="fa fa-trash-o" style="font-size:14px"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div style="width:100%;text-align:center;">
+                <!--<div class="loadingImg">
+                   <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+    <div class="sm-spacer"></div>
+    <div class="spacer"></div>
+
+    <div class="sm-spacer"></div>
+    <div class="spacer"></div>
+</div>

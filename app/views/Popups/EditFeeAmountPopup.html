@@ -1,0 +1,52 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Fee Amount</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">PolycetYear:</label>
+                <input type="text" class="form-control" id="recipient-name"  disabled ng-model="EditData.PolycetYear">
+            </div>
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">SC/ST Amount:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.SCSTFee">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Others Amount:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.OthersFee">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Late Fee Amount:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.LateFee">
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData.Active" />
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="Update(EditData)">Yes</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">No</button>
+    </div>
+</div>
+

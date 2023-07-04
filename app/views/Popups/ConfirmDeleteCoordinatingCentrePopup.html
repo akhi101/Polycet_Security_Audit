@@ -1,0 +1,54 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Delete Confirmation</h2>
+        <button type="button" class="close" ng-click="closeModal2()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <strong class="course-label">District Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="DeleteData in DeleteData">
+                {{DeleteData.DistrictName}},
+            </span>
+            <hr>
+            <strong class="course-label">Mandal Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="DeleteData1 in DeleteData1">
+                {{DeleteData1.MandalName}},
+            </span>
+            <hr>
+
+            <strong class="course-label"> Centre Code:</strong>
+            <span class="text-muted word-break fl-right">
+                {{DeleteData2[0].CentreCode}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Centre Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{DeleteData2[0].CentreName}}
+            </span>
+            <hr>
+
+            <a title="Amount Amount" class="lost-pass-link">Are you sure to Delete Coordinating Centre?</a>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="Delete(DeleteData2)">Yes</button>
+        <button type="button" class="btn btn-primary" ng-click="closeModal2()">No</button>
+    </div>
+</div>
+

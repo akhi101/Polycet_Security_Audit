@@ -1,0 +1,181 @@
+﻿<style>
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<style>
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+
+    .login-Sidepanel {
+        /*color: #fff;*/
+        background: linear-gradient(90deg, rgba(237,245,255,1) 0%, rgba(204,223,247,1) 100%);
+        /* background: linear-gradient(to bottom right, rgba(237,245,255,1), rgba(204,223,247,1));*/
+        padding: 30px;
+        padding-bottom: 265px;
+    }
+
+    form.white-popup-block .link-bottom {
+        display: block;
+        float: left;
+        margin-bottom: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .clr_blue {
+        color: #1F497D;
+    }
+
+    h4.fee_class {
+        color: #1F497D;
+    }
+
+    form.white-popup-block .lost-pass-link {
+        float: right;
+        margin-top: 20px;
+    }
+
+    button.btn.btn-success.btn-xs {
+        border-radius: 3px;
+        margin-bottom: 15px;
+    }
+
+   
+</style>
+<div ng-controller="ForgotPageController">
+    <div class="spacer"></div>
+  <!--  <div class="spacer"></div>-->
+    <!-- Start Login
+       ============================================= -->
+    <div class="login-area default-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-md-offset-2">
+                    <form class="white-popup-block">
+                        <div class="col-md-4 login-Sidepanel" ng-repeat="data in CurrentPolycetYearData">
+                            <h4>Polycet - {{data.PolycetYear}}</h4>
+                            <img src="/assets/img/sbtet-logo.png" class="img-login-logo" />
+                            <br />
+                            <!--<h4 class="fee_class">Application Fee</h4>
+                               <div class="clr_blue"> For SC/ST : Rs. 250</div>
+                               <div class="clr_blue"> For Others : Rs. 450</div>-->
+                        </div>
+                        <div class="col-md-8 login-custom">
+                            <h4 class="text-center">Forgot Password</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="form-group required">
+                                            <label>User Name</label>
+                                            <input class="form-control" ng-model="UserName" maxlength="50" placeholder="User Name" type="text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <div class="form-group">
+                                            <label>Mobile Number</label>
+                                            <input class="form-control" ng-model="MobileNumber" ng-disabled="mobilenum" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Mobile Number" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--<div class="col-md-12">
+        <div class="" ng-if="sendotp">
+            <button ng-click="SendSms(MobileNumber,UserName)" style=" margin: 11px 0px 11px;" ng-disabled="otpbutton" class="btn btn-success btn-xs">
+                Verify OTP
+            </button>
+        </div>
+        <div class="form-group" ng-show="enterotp&&!phonenoupdated">
+            <label>Enter OTP</label>
+            <input class="form-control" placeholder="Enter OTP" type="text" ng-model="mobileotp">
+        </div>
+
+    </div>
+    <div class="col-md-12" ng-show="enterotp || OtpVerified">
+        <div class="">
+            <a ng-click="ResendOtp()" class="link-bottom" ng-show="ResendLink&&!phonenoupdated">Resend OTP </a>
+            <button ng-click="VerifyMobileOtp(MobileNumber, UserName,mobileotp)" ng-show="verifyotp&&!phonenoupdated" class="btn btn-success btn-xs">
+                Verify
+            </button>
+
+            <div class="cls_verified" style="color: #5cb85c; font-weight: bold;" ng-show="OtpVerified&&phonenoupdated"><i class="fa fa-check" style="display: inline-block; font-size: inherit; font: normal normal normal 14px/1 FontAwesome;" aria-hidden="true"></i> Verified</div>
+        </div>
+    </div>-->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <label>Captcha</label>
+                                            <input class="form-control" placeholder="Captcha" type="text" ng-model="CaptchaText">
+                                        </div>
+                                        <div class="col-md-4" style="padding:0px;">
+                                            <label></label>
+                                            <img class="refresh_captcha" data-ng-src="data:image/png;base64,{{CaptchaImage}}" width="150" height="33" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a class="pull-right" title="Click to Refresh Captcha" ng-click="GetCaptchaData()"><img class="refresh_img" src="/assets/img/reload.png" /> </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" ng-disabled="Smsbtndisable" ng-click="ValidateCaptcha()" class="btn btn-success">
+                                        <span ng-show="!loader">Submit</span>
+                                        <span ng-show="loader"><div class="loader"> </div></span>
+                                    </button>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="text-center" ng-if="loading">
+                                        <img class="" src="../../../contents/img/loading2.gif">
+                                    </div>
+                                </div>
+                                <!--<p class="link-bottom">Not a member yet? <a ui-sref="index.registration">Register</a></p>-->
+                                <div class="col-md-12">
+                                    <p class="lost-pass-link">Already Registered? <a ui-sref="index.Login">Login</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Login Area -->
+</div>

@@ -1,0 +1,367 @@
+﻿<style>
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .cls_red {
+        color: red;
+        font-weight: bold;
+    }
+
+    td.text-center.ng-binding.clr-green {
+        color: forestgreen !important;
+        font-weight: bold;
+    }
+
+    td.ng-binding.clr-green {
+        color: forestgreen !important;
+        font-weight: bold;
+    }
+
+    .clr-green {
+        color: forestgreen !important;
+        font-weight: bold;
+    }
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+    .selectBox {
+        position: relative;
+    }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    thead > tr > th {
+        position: sticky;
+        top: 0px;
+    }
+
+
+
+
+    .txt_decorate {
+        text-transform: uppercase;
+    }
+
+    #checkboxesdistrict {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+        #checkboxesdistrict label {
+            display: block;
+        }
+
+            #checkboxesdistrict label:hover {
+                background-color: #1e90ff;
+            }
+
+    #checkboxesmandal label {
+        display: block;
+    }
+
+        #checkboxesmandal label:hover {
+            background-color: #1e90ff;
+        }
+
+    #checkboxesmandal {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+
+
+    .contain {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        /* margin-bottom: 12px; */
+        /* padding-top: 5px; */
+        cursor: pointer;
+        margin: 5px !important;
+        font-size: 15px !important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .contain input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #eee;
+        border: 1px solid #cac6c6;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .contain:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .contain input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .contain input:checked ~ .checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .contain .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .contain {
+        font-size: 13px !important;
+    }
+
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    a.ExportToExcel1 {
+        color: #1f497d;
+        text-decoration: none;
+        font-size: 18px;
+        padding-right: 10px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+</style>
+<div ng-controller="DCWiseExamCentresAttendanceController">
+    <header id="home">
+
+        <!--  Start Navigation-->
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+            <div class="container">
+                <!-- Start Header Navigation-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                    </a>
+                    <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                </div>
+                <!--End Header Navigation
+                Collect the nav links, forms, and other content for toggling-->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                        <li><a><i class="fa fa-user" aria-hidden="true"></i> {{UserName}}</a></li>
+                        <li ng-click="ChangePassword()"><a><i class="user-login" aria-hidden="true"></i>Change Password</a></li>
+                        <li ng-click="logOut()"><a><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+
+        </nav>
+        <!-- End Navigation -->
+
+    </header>
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>DC wise Exam Centres Attendance</h5>
+
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12" style="padding:0px!important">
+            <div class="col-md-12">
+                <div class="notifylabel pull-right" for="sel1" style="color: red;font-size:20px">
+                    Double Click on Table Row to Mark Attendance
+                </div>
+            </div>
+            <div class="col-md-12" ng-if="loading">
+                <div class="sm-spacer"></div>
+                <div style="width:100%;text-align:center;">
+                    <img src="../../../contents/img/loader1.gif" ng-if="loading" width="100" />
+                </div>
+            </div>
+
+            <div class="card" ng-show="nodata">
+                <div class="col-md-12 no-results" style="width:100%;text-align:center;">
+                    <img src="../../contents/img/Folder-Icon.svg" />
+                    <h2>No Data</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="ExamCentresNRData.length>0">
+                    <table class="table table-bordered  table-striped table-rounded">
+                        <thead>
+                            <tr class="cb-1">
+                                <th class="text-center" style="width: 2%;">S.No</th>
+                                <th class="text-center">Examination Centre Code</th>
+                                <th class="text-center">Examination Centre Name</th>
+                                <th class="text-center">Total Capacity</th>
+                                <th class="text-center">Alloted</th>
+                                <th class="text-center">Superintendent Name</th>
+                                <th class="text-center">Superintendent Mobile</th>
+                                <th class="text-center">Updated On</th>
+                                <th class="text-center">Updated By</th>
+                                <th class="text-center">Release Attendance</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in ExamCentresNRData" ng-dblclick="ShowAttendanceList(data.CentreCode,data.ExaminationCentreID)">
+
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{$index + 1}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.CentreCode}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.CentreName}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.TotalCapacity}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.Alloted}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.CheifSuperitendentName}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.CheifSuperitendentMobile}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.UpdatedOn== null ? '-' : data.UpdatedOn}}</td>
+                                <td class="text-center" ng-class="{'clr-green': data.IsUpdated==1}">{{data.UpdatedBy == null ? '-' : data.UpdatedBy }}</td>
+                                <td class="">
+                                    <button type="submit" class="btn btn-primary" ng-click="releaseAttendance(data.ExaminationCentreID)">
+                                        <span ng-show="!btnLoading">Release</span>
+                                        <span ng-show="btnLoading"><div class="loader"> </div></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="sm-spacer"></div>
+        <div class="sm-spacer"></div>
+        <footer class="bg-dark text-light ng-scope">
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                            </div>
+                            <div class="col-md-3 text-right link">
+                                <span class="float-right">Total Site Views: </span>
+                                <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+

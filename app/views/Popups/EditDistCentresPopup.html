@@ -1,0 +1,74 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Edit Details</h2>
+                <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+                    <!--<div class="form-group">
+        <label for="recipient-name" class="col-form-label">State Name:</label>
+        <select class="form-control" id="State" ng-model="EditData.StateID" ng-change="GetDistrictsData(EditData.StateID)"
+                ng-options="EditData.StateID as EditData.StateName for EditData in StatesData">
+            <option value="" selected>Select State</option>
+        </select>
+    </div>-->
+                    <!--<div class="form-group">
+        <label for="recipient-name" class="col-form-label">District Name:</label>
+        <select class="form-control" id="District" ng-model="EditData.DistrictID"
+                ng-options="data.DistrictID as data.DistrictName for data in DistrictsData">
+            <option value="" selected>Select District</option>
+        </select>
+    </div>-->
+                    <strong class="course-label">State Name:</strong>
+                    <span class="text-muted fl-right">
+                        {{EditData.StateName}}
+                    </span>
+                    <hr>
+
+                    <strong class="course-label">District Name:</strong>
+                    <span class="text-muted word-break fl-right">
+                        {{EditData.DistrictName}}
+                    </span>
+                    <hr>
+
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Centre Code:</label>
+                        <input type="text"  maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="recipient-name" ng-model="EditData.CentreCode">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Centre Name:</label>
+                        <input type="text" class="form-control" id="recipient-name" ng-model="EditData.CentreName">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Centre Address:</label>
+                        <textarea class="form-control" rows="2" id="recipient-name" ng-model="EditData.CentreAddress"></textarea>
+                        <!--<textarea class="form-control" id="message-text" ng-model="CentreAddress"></textarea>-->
+                    </div>
+
+                    <div >
+                        <label for="checkbox" class="col-form-label">Active:</label>
+                        <input type="checkbox" ng-model="EditData.Active" />
+                    </div>
+                    <!--</div>-->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData)">Update</button>
+                <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+            </div>
+        </div>
+  

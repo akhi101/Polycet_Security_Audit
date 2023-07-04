@@ -1,0 +1,168 @@
+﻿<!--<style>
+    .OmrImage {
+        height: 1500px;
+        width: 100%;
+    }
+
+    .nodata {
+        height: 150px;
+        width: 150px;
+    }
+
+    .card {
+        margin-top: -4px;
+        padding: 10px;
+    }
+</style>-->
+<ui-view>
+    <div ng-controller="ViewOMRController">
+        <!--<header id="home">-->
+        <!-- Start Navigation -->
+        <!--<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+        <div class="container">-->
+        <!-- Start Header Navigation -->
+        <!--<div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+            <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+        </a>
+        <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+    </div>-->
+        <!-- End Header Navigation -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--<div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+            <li class="dropdown">
+                <a href="#" class="head_btn_css1" style="margin-right: 10px"><i class="fa fa-user" aria-hidden="true"></i> {{RegistrationNumber}}</a>
+
+            </li>-->
+        <!--<li ng-click="ChangePassword()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Change Password</a></li>-->
+        <!--<li ng-click="logOut()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Log Out</a></li>
+
+        </ul>
+    </div>-->
+        <!-- /.navbar-collapse -->
+        <!--</div>
+
+        </nav>
+    </header>-->
+        <div class="sm-spacer"></div>
+        <div class="container">
+            <button class="btn btn-primary back_button" style="margin-top:0px" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+            <!--<button class="btn  btn-primary back_button1" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>-->
+            <!--<h3><center>Comming Soon.........</center></h3>-->
+            <div class="">
+                <!--  <div class="sm-spacer"></div>-->
+                <!-- Start Login
+        ============================================= -->
+                <div class="login-area default-padding">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2">
+
+                            </div>
+                            <div class="col-md-8">
+
+                                <img ng-src="{{Barcode}}" id="omr" class="OmrImage" />
+                            </div>
+                            <div class="col-md-2">
+
+                            </div>
+                            <div style="width:100%;text-align:center;">
+                                <div>
+                                    <img src="/asset/images/loadingnew.gif" class="loadingimg" ng-show="Loading" />
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="" style="text-align: center">
+                                    <img src="/asset/images/nodata.png" ng-show="nodata" class="nodata" width="64" />
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Login Area -->
+            </div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+        </div>
+    </div>
+
+</ui-view>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+
+
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary').addClass('active')
+                if ($item.addClass('btn-primary').addClass('active')) {
+                    ($item.addClass('active').addClass('active_btn'))
+                    allNextBtn = $('.nextBtn');
+                }
+                $item.addClass('active');
+                //$("p").addClass("cls_active");
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            //validation = true;
+            //$target.show();
+
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+            $(this).removeClass('active')
+            $("p").addClass("cls_active");
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+
+</script>

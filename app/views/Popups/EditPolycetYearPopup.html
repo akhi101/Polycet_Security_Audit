@@ -1,0 +1,72 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<script type="text/javascript">
+    // When the document is ready
+    $(document).ready(function () {
+
+        $('#example1').datepicker({
+            minViewMode: 'years',
+            autoclose: true,
+            format: 'yyyy'
+        });
+        $('#example2').datepicker({
+            minViewMode: 1,
+            autoclose: true,
+            format: 'mm-yyyy'
+        });
+        $('.tabledate').datepicker({
+            //minViewMode: 1,
+            autoclose: true,
+            format: 'dd-mm-yyyy'
+        });
+        //$('#example4').datepicker({
+        //    //minViewMode: 1,
+        //    autoclose: true,
+        //    //format: 'dd-mm-yyyy'
+        //});
+    });
+</script>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+
+            <div class="form-group">
+                <label class="font-weight-bold"> Start of Polycet Year :</label> <input autocomplete="off" class="form-control" type="text" ng-model="EditData.PolycetYear" id="example1">
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Current Polycet Year:</label>
+                <input type="checkbox" ng-model="EditData.CurrentPolycetYear" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData.Active" />
+            </div>
+            <!--</div>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData)">Update</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

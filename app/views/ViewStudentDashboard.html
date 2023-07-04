@@ -1,0 +1,2111 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+
+
+    .btn_margin {
+        margin-top: 23px;
+    }
+
+    .padding-0 {
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<style>
+    legend {
+        display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: inherit;
+        color: #333;
+        border: 0 !important;
+        /* border-bottom: 1px solid #e5e5e5; */
+    }
+
+    element.style {
+    }
+
+    fieldset {
+        /* min-width: 0; */
+        /* padding: 0; */
+        /* margin: 0; */
+        /* border: 0; */
+    }
+
+    fieldset {
+        /* padding: 0.35em 0.625em 0.75em; */
+        /* margin: 0 2px; */
+        /* border: 1px solid silver; */
+    }
+
+    * {
+        /* padding: 0; */
+        /* margin: 0; */
+    }
+
+    * {
+        /* -webkit-box-sizing: border-box; */
+        -moz-box-sizing: border-box;
+        /* box-sizing: border-box; */
+    }
+
+    fieldset {
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: rgb(192, 192, 192);
+        border-image: initial;
+        border-radius: 10px;
+        margin: 20px 0px;
+    }
+
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+
+    .sub_btn {
+        margin-top: 35px !important;
+    }
+
+    .pre-text {
+        padding: 5px 10px 5px 10px
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .breadcrumb-header {
+            margin-top: 95px;
+        }
+
+        nav.navbar.bootsnav .navbar-collapse.collapse.in {
+            margin-bottom: 0px;
+        }
+
+        nav.navbar.bootsnav ul.nav > li > a {
+            margin: 20px 10px;
+            cursor: pointer;
+            border: 2px solid #fff !important;
+            padding: 10px 10px !important;
+        }
+
+
+        fieldset {
+            min-inline-size: auto;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a, .with-nav-tabs.panel-primary .nav-tabs > li > a:hover, .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            /* color: #fff; */
+
+            width: 100% !important;
+            border-radius: 5px;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -1px;
+            width: 100%;
+            margin: 5px 0px;
+        }
+
+        .panel-primary {
+            border-color: #337ab7;
+            margin-top: 20px;
+        }
+    }
+    /********************************************************************/
+    /*** PANEL PRIMARY ***/
+    .with-nav-tabs.panel-primary .nav-tabs > li > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        /*color: #fff;*/
+        color: #fff;
+        background-color: #337ab7;
+        /*min-height: 62px;*/
+        font-size: 13px;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+            background-color: #3071a9;
+            border-color: transparent;
+        }
+
+
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #428bca;
+        border-color: #3071a9;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+                background-color: #3071a9;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+            background-color: #4a9fe9;
+        }
+
+    /********************************************************************/
+    .panel.with-nav-tabs .panel-heading {
+        padding: 5px 5px 0 5px;
+        background-color: #fff;
+    }
+
+    .panel.with-nav-tabs .nav-tabs {
+        border-bottom: none;
+    }
+
+    .panel.with-nav-tabs .nav-justified {
+        margin-bottom: -1px;
+    }
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+    .test {
+        background-color: #5cb85c !important;
+        color: #fff !important;
+    }
+
+    .clr_danger {
+        background-color: #d9534f !important;
+        color: #fff !important;
+    }
+
+
+    a {
+        cursor: pointer;
+    }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+        color: #fff !important;
+        background-color: #428bca !important;
+        border-color: #428bca;
+        border-bottom-color: transparent;
+        /*min-height: 62px;*/
+        font-weight: 600;
+        border: 1px solid #ddd;
+        /*padding-top: 5px;*/
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #fff !important;
+            background-color: #428bca !important;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+            /*min-height: 62px;*/
+            font-weight: 600;
+            border: 1px solid #ddd;
+            /*padding-top: 5px;*/
+        }
+
+    .label_preview {
+        margin: 5px 0px 5px 0px;
+        font-weight: 600;
+    }
+
+    .photo_preview {
+        height: 160px;
+        width: 140px;
+        display: block;
+    }
+
+    .sign_preview {
+        height: 40px;
+        width: 130px;
+    }
+
+    .preview_header {
+        display: none;
+    }
+
+    .textBold {
+        padding: 0px !important;
+    }
+
+    @media print {
+        .photo_preview {
+            height: 150px;
+            width: 130px;
+            display: block;
+        }
+
+        .sign_preview {
+            height: 40px;
+            width: 130px;
+        }
+
+        .preview_header {
+            display: none;
+        }
+
+        .preview_header {
+            display: block;
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .logoImg {
+            height: 65px;
+            width: 65px;
+        }
+
+        .hall_head {
+            margin-top: 20px;
+        }
+
+        .hall_head1 {
+            margin-top: 5px;
+        }
+
+        .panel-heading {
+            display: none;
+        }
+
+        .sm-spacer {
+            height: 0px;
+        }
+
+        label {
+            margin: 0px !important;
+        }
+
+        #table-print {
+            display: block !important;
+        }
+
+        fieldset {
+            margin: 0px;
+            border-radius: 0px;
+            border: 0px;
+            border-top: 2px solid #000;
+        }
+
+        legend {
+            margin: 0px;
+            display: none;
+        }
+
+        .btn_submitt {
+            display: none;
+        }
+
+        .label_preview {
+            margin: 0px !important;
+            font-size: 10px !important;
+            font-weight: 600;
+        }
+
+        .pre-text {
+            padding: 0px;
+            font-size: 10px !important;
+        }
+
+        .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 1px !important;
+            margin: 0px !important;
+        }
+        /* fieldset{
+            display:none;
+        }
+        legend {
+            display: none;
+        }*/
+    }
+
+    /*
+    #Preview {
+        display: block !important;
+    }*/
+
+</style>
+
+<link href="../../../assets/css/studentdashboardstyle.css" rel="stylesheet" />
+<style>
+    .head_section {
+        margin: 20px;
+    }
+
+    #helpDesk {
+        display: none;
+    }
+
+    #idtoDivPrint {
+        /*display: flex;*/
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #000;
+    }
+
+    .submit-btn button:focus {
+        outline: none !important;
+    }
+
+    .sign {
+        position: absolute;
+        top: -39px;
+        left: 382px;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+    }
+
+
+    .photo-img {
+        height: 126px !important;
+        width: 126px !important;
+    }
+
+    .logoImg {
+        height: 70px !important;
+        width: 70px !important;
+    }
+
+    .photo-img {
+        height: 136px !important;
+        width: 126px !important;
+        margin-top: 10px;
+    }
+
+    @media print {
+        .main {
+            display: none !important;
+        }
+
+        .header_area {
+            display: none !important;
+        }
+
+        .header {
+            display: none !important;
+        }
+
+        .photo-img {
+            height: 110px !important;
+            width: 95px !important;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: left;
+        }
+
+        .col-md-12 {
+            width: 100%;
+        }
+
+        .col-md-11 {
+            width: 91.66666666666666%;
+        }
+
+        .col-md-10 {
+            width: 83.333333%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-8 {
+            width: 66.66666666666666%;
+        }
+
+        .col-md-7 {
+            width: 58.333333333333336%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-5 {
+            width: 41.66666666666667%;
+        }
+
+        .col-md-4 {
+            width: 33.33333333333333%;
+        }
+
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-2 {
+            width: 16.666666666666664%;
+        }
+
+        .col-md-1 {
+            width: 8.333333333333332%;
+        }
+
+        .o-info {
+            display: none;
+        }
+
+        .top_row {
+            display: none;
+        }
+        /*.logo-image{
+              display:none;
+          }*/
+        .time {
+            display: none;
+        }
+
+        .top_logo {
+            width: 100%;
+            text-align: center;
+        }
+        /*.mtp-50{
+              display:none;
+          }*/
+        .empty-space {
+            display: none;
+        }
+
+        .main {
+            display: none;
+        }
+
+        .inputs {
+            border: none;
+            border-bottom: 0px solid #000;
+            width: 75%;
+        }
+
+        .pree-text {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .photo-img {
+            margin-top: 3px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border-bottom: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .college-details {
+            display: none;
+        }
+
+        .header-top-section {
+            display: none;
+        }
+
+        .breadcrumb-header {
+            display: none;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+            border-top: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead2 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead3 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody1 {
+            /*// border: 0px solid #000 !important;*/
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+            border-bottom: 0px solid #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border-right: 0px !important;
+        }
+
+        .mySpacer {
+            height: 65px;
+        }
+
+
+
+        .print_btn {
+            display: none;
+        }
+
+        .bck_btn {
+            display: none;
+        }
+
+        .logoImg {
+            height: 60px !important;
+            width: 60px !important;
+        }
+
+        .scroll-top-wrapper.show {
+            display: none;
+            visibility: hidden !important;
+        }
+
+        .footer_section {
+            display: none;
+        }
+
+        /* .tbl {
+            border: 0px solid #000 !important;
+        }*/
+
+        /*.top_table {
+            width: 60%;
+        }*/
+
+        .top-tables {
+            border-bottom: 0px !important;
+            border-left: 0px !important;
+        }
+
+        .logo-image h2 {
+            margin: -12px 0px 16px 85px !important;
+            font-size: 17px !important;
+        }
+
+        .head2 {
+            font-size: 16px !important;
+        }
+
+        .terms_card {
+            margin: 5px !important;
+            font-size: 10px;
+        }
+
+        .sign_layout {
+            float: right;
+            width: auto;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border: 0px !important;
+        }
+
+        .textIndent {
+            padding-left: 15px;
+            text-indent: -15px;
+        }
+
+        .sign {
+            float: right;
+            position: absolute;
+            top: -40px;
+            left: 133px;
+        }
+
+        .downloadForm {
+            display: none;
+        }
+
+        .content {
+            padding-top: 0px;
+        }
+
+        .hall_head {
+            margin-top: 0px;
+            font-size: 16px !important;
+        }
+
+        /*  .col-md-2.logo {
+            width: 11.666667%;
+            padding: 0px;
+        }*/
+
+        .col-md-10.title {
+            width: 88.3333%;
+            padding: 0px;
+        }
+
+        h4.text-center.hall_head {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            /*border: 1px solid #ddd !important;
+        color: #788598;*/
+            font-size: 11px !important;
+            padding: 4px !important;
+        }
+
+        .mySpacer.bottom {
+            display: none !important;
+        }
+
+        .resultsHeader {
+            display: none !important;
+        }
+
+        #mainfooter {
+            display: none !important;
+        }
+
+        .fd-form {
+            display: none !important;
+        }
+
+        #idtoDivPrint {
+            border: 1px solid #000;
+            padding: 0px;
+        }
+
+        .photo-img {
+            height: 136px !important;
+            width: 126px !important;
+            margin-top: 5px;
+        }
+
+        .table-bordered {
+            border: 0px solid #000;
+        }
+
+        .table {
+            margin-bottom: 0px;
+        }
+
+        hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 0;
+            border-top: 1px solid #000;
+        }
+
+        .photo_preview {
+            height: 145px;
+            width: 130px;
+            display: inline;
+        }
+
+        .panel-primary {
+            border: 0px;
+        }
+    }
+
+    .panel-primary {
+        border-color: #337ab7;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 0px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+        background-color: #fff;
+    }
+
+    .photo_preview {
+        height: 145px;
+        width: 130px;
+        display: inline;
+    }
+
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #000;
+    }
+
+    .myeads {
+        border-right: 0px !important;
+    }
+
+    .spacer {
+        height: 30px;
+    }
+
+    .footer {
+        display: none;
+    }
+    /*.table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+      border: 0px solid #000 !important;
+      border-left:0px!important;
+    }*/
+    .pree-text {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .top-box {
+        border: 0px solid #000;
+    }
+
+    .terms_card {
+        margin: 5px !important;
+        font-size: 10px;
+    }
+
+    .sign_layout {
+        float: right;
+        width: auto;
+    }
+
+    .lg-spacer {
+        height: 70px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .terms_card {
+        /*width: 100% !important;*/
+        text-align: left !important;
+        height: auto !important;
+        border-top: 1px solid #000;
+    }
+
+    .mySpacer {
+        height: 48px;
+    }
+
+    .textIndent {
+        padding-left: 15px;
+        text-indent: -15px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+        border: 0px;
+    }
+
+    .table-bordered {
+        border: 0px solid #ddd;
+    }
+
+    #idtoDivPrint {
+        padding: 0px;
+        border: 1px solid #000;
+        width: 100%;
+    }
+
+    @media print {
+        #idtoDivPrint {
+            padding: 0px;
+            border: 1px solid #000;
+            width: auto;
+        }
+
+        .default-padding {
+            padding: 0px;
+        }
+    }
+</style>
+<ui-view>
+    <div ng-controller="ViewStudentDashboard">
+        <header id="home">
+
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+                <div class="container">
+
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                        </a>
+                        <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                    </div>
+                    <!-- End Header Navigation -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                            <li class="dropdown">
+                                <a href="#" class="head_btn_css1" style="margin-right: 10px"><i class="fa fa-user" aria-hidden="true"></i> {{StudentData.RegistrationNumber}}</a>
+
+                            </li>
+                            <!--<li ng-click="ChangePassword()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Change Password</a></li>-->
+
+
+                            <li ng-click="logOut()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Log Out</a></li>
+
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+
+            </nav>
+        </header>
+        <div class="sm-spacer"></div>
+        <div class="sm-spacer"></div>
+
+
+        <div class="container">
+
+
+
+            <!--<h3><center>Comming Soon.........</center></h3>-->
+            <div class="">
+                <!--  <div class="sm-spacer"></div>-->
+                <!-- Start Login
+            ============================================= -->
+                <div class="login-area default-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel with-nav-tabs panel-primary">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="Fee {{class0}}"><a ng-class="{'test': FeePaymentStatus == '1','clr_danger': FeePaymentStatus == '0'}" ng-click="BackTab(0)">Fee Payment</a></li>
+                                            <li class="personal {{class1}}" ng-hide="personaltab"><a ng-class="{'test': PersonalStatus == '1','clr_danger': PersonalStatus == '0'}" ng-click="BackTab(1)">Personal Details</a></li>
+                                            <li class="Communication {{class2}}" ng-hide="communicationtab"><a ng-class="{'test': CommunicationStatus == '1','clr_danger': CommunicationStatus == '0'}" ng-click="BackTab(2)">Communication Details</a></li>
+                                            <li class="Category {{class3}}" ng-hide="categorytab"><a ng-class="{'test': CategoryStatus == '1','clr_danger': CategoryStatus == '0'}" ng-click="BackTab(3)">Category </a></li>
+                                            <li class="Special {{class4}}" ng-hide="specialcategorytab"><a ng-class="{'test': SpecialCategoryStatus == '1','clr_danger': SpecialCategoryStatus == '0'}" ng-click="BackTab(4)">Special Category </a></li>
+                                            <li class="Study {{class6}}" ng-hide="studydetailstab"><a ng-class="{'test': StudyStatus == '1','clr_danger': StudyStatus == '0'}" ng-click="BackTab(6)">Study Details</a></li>
+                                            <li class="Photo {{class7}}" ng-hide="photosigntab"><a ng-class="{'test': PhotoStatus == '1','clr_danger': PhotoStatus == '0'}" ng-click="BackTab(7)">Photo & Sign</a></li>
+                                            <li class="Preview {{class8}}"><a ng-class="{'test': PreviewStatus == '1','clr_danger': PreviewStatus == '0'}" ng-click="BackTab(8)">Preview</a></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade in {{class0}}" id="Fee">
+                                                <fieldset>
+                                                    <legend>Fee Payment</legend>
+
+                                                    <h5 class="Rec_dis">Payment Reciept</h5>
+                                                    <div class="col-md-6  col-md-offset-3" id="table-print" style="padding-top:10px">
+                                                        <table class="table table-bordered  table-striped table-rounded">
+
+                                                            <tr ng-show="StudentData.RegistrationNumber">
+                                                                <td width="50%">Registration Number</td>
+                                                                <td width="50%">{{StudentData.RegistrationNumber}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.StudentName">
+                                                                <td width="50%">Student Name</td>
+                                                                <td width="50%">{{StudentData.StudentName}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.Aadhaar">
+                                                                <td width="50%">Aadhar Number</td>
+                                                                <td width="50%">{{StudentData.Aadhaar}}</td>
+                                                            </tr>
+
+                                                            <tr ng-show="StudentData.CasteCategoryName">
+                                                                <td width="50%">Category</td>
+                                                                <td width="50%">{{StudentData.CasteCategoryName}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.RegistrationMobile">
+                                                                <td width="50%">Registration Mobile</td>
+                                                                <td width="50%">{{StudentData.RegistrationMobile}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.ApplicationFee">
+                                                                <td width="50%">Application Fee</td>
+                                                                <td width="50%"> RS. {{StudentData.ApplicationFee}}</td>
+                                                            </tr>
+                                                            <tr ng-show="CasteCategoryID  == 7 || CasteCategoryID==8">
+                                                                <td width="50%">Caste Verified</td>
+                                                                <td width="50%"> {{StudentData.CasteVerified ?  "Yes":"No"}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <tr ng-show="StudentData.RegistrationEmail">
+                                                                <td width="50%">Registration Email</td>
+                                                                <td width="50%">{{StudentData.RegistrationEmail}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.ChallanNumber">
+                                                                <td width="50%">Challan Number</td>
+                                                                <td width="50%">{{StudentData.ChallanNumber}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.bankrefno">
+                                                                <td width="50%">Bank Reference Number</td>
+                                                                <td width="50%">{{StudentData.bankrefno}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.errordesc">
+                                                                <td width="50%">Transaction Status</td>
+                                                                <td width="50%">{{StudentData.errordesc}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.txnamt">
+                                                                <td width="50%">Transaction Amount</td>
+                                                                <td width="50%">{{StudentData.txnamt}}</td>
+                                                            </tr>
+                                                            <tr ng-show="StudentData.txndate">
+                                                                <td width="50%">Transaction Date</td>
+                                                                <td width="50%">{{StudentData.txndate}}</td>
+                                                            </tr>
+
+                                                        </table>
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-success pull-right" ng-show="FeePaymentStatus==1" ng-click="printReceipt()">Print</button>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </fieldset>
+                                                <div class="col-md-12 ">
+                                                    <!--    <button class="btn btn-primary " ng-click="BackTab(1)">Back</button>-->
+                                                    <button class="btn btn-success pull-right" ng-hide="nextbutton" ng-click="NextTab(0)">Next</button>
+                                                </div>
+
+                                            </div>
+                                            <div class="tab-pane fade in {{class1}}" id="SSC">
+                                                <fieldset>
+                                                    <legend>Qualified Exam Details</legend>
+
+                                                    <div class="col-md-3">
+                                                        <label>
+                                                            Qualified Exam
+                                                        </label>
+                                                        <select class="form-control" id="QualifiedExam" ng-model="qualifiedExamID" ng-change="getQualifiedExam(data.qualifiedExamID)"
+                                                                disabled ng-options="data.QualifiedExamID as data.QualifiedExamName for data in QualifiedExamsData">
+                                                            <option value="" selected>Select  Qualified Exam</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label> Tenth Hallticket Number </label>
+                                                                <input class="form-control" disabled ng-model="sscHallticket" placeholder="Tenth Hallticket Number" type="text" maxlength="20" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label>
+                                                            Tenth Passed / Appearing Year
+                                                        </label>
+                                                        <select class="form-control " ng-model="passedoutYear" name="" disabled>
+                                                            <option value="" selected="selected">Select Tenth Passed</option>
+                                                            <option value="{{data.TenthYear}}" ng-repeat="data in TenthYearData" class="">
+                                                                {{data.TenthYear}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label for="exampasstype">Examination Stream </label>
+                                                                <select class="form-control" disabled ng-model="sscType">
+                                                                    <option value="">Select Examination Stream</option>
+                                                                    <option value="R">Regular</option>
+                                                                    <option value="S">Supplmentary</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </fieldset>
+                                                <div class="col-md-12" ng-show="loading">
+                                                    <div class="sm-spacer"></div>
+                                                    <div style="width:100%;text-align:center;">
+                                                        <img src="../../../contents/img/loader1.gif" ng-show="loading" width="100" />
+                                                    </div>
+                                                </div>
+                                                <fieldset ng-show="SSCBUTTONCLICK">
+                                                    <legend>Personal Details</legend>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Student Name </label>
+                                                                <input class="form-control" ng-model="CNAME" disabled onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' maxlength="50" placeholder="Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Father Name </label>
+                                                                <input class="form-control" ng-model="FNAME" disabled maxlength="50" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Father Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Mother Name </label>
+                                                                <input class="form-control" ng-model="MNAME" disabled maxlength="50" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Mother Name" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label for="date-picker-example">Date Of Birth(dd/mm/yyyy)</label>
+                                                                <p class="input-group" style="margin-top: unset; margin-bottom: unset;margin-left: 0 ;margin-right: 0;padding-left: 0px;">
+                                                                    <input type="text" show-weeks="false" class="form-control" disabled id="datetimepicker" placeholder="DD/MM/YYYY" autocomplete="off" name="DateOfBirth" datetime-picker="dd/MM/yyyy" ng-model="DOB_DATE" ng-blur="ChangeDob()" is-open="showFlag1" required />
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" disabled class="btn btn-primary btn_cal" ng-click="showFlag1 = true"><i class="fa fa-calendar"></i></button>
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Gender</label>
+                                                                <select class="form-control" name="applicationForm.Gender" ng-model="Gender" disabled required>
+                                                                    <option value="">Select Gender</option>
+                                                                    <option value="M">Male</option>
+                                                                    <option value="F">Female</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4" ng-if="PersonalDetails.DateofBirth!=PersonalDetails.DateofBirthText">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>SSC DOB TEXT(SSC WEB SERVICE DOB) </label>
+                                                                <input class="form-control" ng-model="DOB_TEXT" disabled   type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </fieldset>
+
+
+                                            </div>
+
+                                            <div class="tab-pane fade in {{class2}}" id="Communication">
+                                                <fieldset>
+                                                    <legend>Communication Details</legend>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Registered Mobile Number </label>
+                                                                <input class="form-control" ng-model="MobileNumber" disabled maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Registered Mobile Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Alternate Mobile Number(Optional) </label>
+                                                                <input class="form-control" ng-model="AltMobileNumber" disabled maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Alternate Mobile Number" type="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Email (Optional) </label>
+                                                                <input class="form-control" ng-model="Email" disabled maxlength="100" placeholder="Email" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            House Number / Building Name
+                                                        </label>
+                                                        <input class="form-control" type="text" maxlength="50" disabled placeholder="House Number / Building Name" ng-model="HouseNo">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            Street Number / Name
+                                                        </label>
+                                                        <input class="form-control" type="text" maxlength="50" disabled placeholder="Enter Street Number / Name" ng-model="StreetNo">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            Locality (Optional)
+                                                        </label>
+                                                        <input class="form-control" type="text" maxlength="50" disabled placeholder="Enter Locality" ng-model="Locality">
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            Landmark (Optional)
+                                                        </label>
+                                                        <input class="form-control" type="text" maxlength="50" disabled placeholder="Enter Landmark" ng-model="Landmark">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            Village / Town / City
+                                                        </label>
+                                                        <input class="form-control" type="text" maxlength="50" disabled placeholder="Enter Village / Town / City" ng-model="Village">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Pincode (Optional) </label>
+                                                                <input class="form-control" ng-model="Pincode" disabled maxlength="6" minlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter Pincode" type="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4">
+                                                        <label>
+                                                            State
+                                                        </label>
+                                                        <select class="form-control" id="State" disabled ng-model="State" ng-change="getAddressDistricts()"
+                                                                ng-options="data.StateID as data.StateName for data in StatesData">
+                                                            <option value="" selected>Select State</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-4" ng-hide="State!='1'">
+                                                        <label>
+                                                            District
+                                                        </label>
+                                                        <select class="form-control" id="District" disabled ng-model="District" ng-change="getAddressMandals(District)"
+                                                                ng-options="data.DistrictID as data.DistrictName for data in DistrictsData">
+                                                            <option value="" selected>Select District</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-md-4" ng-hide="State!='1'">
+                                                        <label>
+                                                            Mandal
+                                                        </label>
+                                                        <select class="form-control" id="Mandal" ng-model="Mandal" disabled
+                                                                ng-options="data.MandalID as data.MandalName for data in MandalsData">
+                                                            <option value="" selected>Select Mandal</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="form-group col-md-4" ng-show="State !=1">
+                                                        <label>
+                                                            District
+                                                        </label>
+                                                        <input class="form-control" disabled id="District1" type="text" maxlength="100" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Enter District Name" ng-model="DistrictName">
+                                                    </div>
+
+                                                    <div class="form-group col-md-4" ng-show="State !=1">
+                                                        <label>
+                                                            Mandal
+                                                        </label>
+                                                        <input class="form-control" disabled id="Mandal1" type="text" maxlength="100" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' placeholder="Enter Mandal Name" ng-model="MandalName">
+                                                    </div>
+                                                </fieldset>
+                                                <div class="col-md-12 ">
+                                                    <button class="btn btn-primary " ng-click="BackTab(1)">Back</button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in {{class3}}" id="Category">
+                                                <fieldset>
+                                                    <legend>Category Details</legend>
+                                                    <div class="col-md-2">
+
+                                                        <div class="form-group">
+                                                            <label>Category</label>
+                                                            <select class="form-control" ng-model="CasteCategory" disabled ng-change="ChangeCaste(CasteCategory)"
+                                                                    ng-options="data.CasteCategoryID as data.CasteCategoryName for data in GetCasteData">
+                                                                <option value="" selected>Select Category</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Aadhar Number </label>
+                                                                <input class="form-control" disabled ng-model="Aadhaar" maxlength="12" minlength="12" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter Aadhar Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3" ng-show="(CasteCategory==2 || CasteCategory==3 || CasteCategory==4 || CasteCategory ==5 || CasteCategory==6 || CasteCategory==7 || CasteCategory==8)">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>Caste Certificate Number</label>
+                                                                <input class="form-control" ng-model="CasteCertificateNumber" disabled placeholder="Caste Certificate Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-2 form-group" ng-show="CasteCategory==1">
+                                                        <label class="font-weight-bold"> EWS Category</label>
+
+                                                        <select class="form-control" ng-model="EwsCertificate" disabled ng-change="ChangeEwsCategory(EwsCertificate)"
+                                                                ng-options="data.value as data.Id for data in EWSCertificateValues">
+                                                            <option value="" selected>Select EWS</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3" ng-show="EWSCERTNUMBER">
+                                                        <div class="">
+                                                            <div class="form-group">
+                                                                <label>EWS Number</label>
+                                                                <input class="form-control" ng-model="EWSNumber" disabled placeholder="Enter EWS Number" type="text">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="cls_verified verify_margin" style="color: #5cb85c; margin-top: 35px; font-weight: bold;" ng-show="CasteVerified"><i class="fa fa-check" style="display: inline-block; font-size: inherit; font: normal normal normal 14px/1 FontAwesome;" aria-hidden="true"></i> Verified</div>
+
+                                                    <div class="cls_verified1 verify_margin1" style="color: #5cb85c; margin-top: 35px; font-weight: bold;" ng-show="EWSVerified"><i class="fa fa-check" style="display: inline-block; font-size: inherit; font: normal normal normal 14px/1 FontAwesome;" aria-hidden="true"></i> Verified</div>
+                                                    <div class="cls_notverified2 notverify_margin2" style="color: #FF0000; margin-top: 35px; font-weight: bold;" ng-show="EWSNotVerified"><i class="fa fa-close" style="display: inline-block; font-size: inherit; font: normal normal normal 14px/1 FontAwesome;" aria-hidden="true"></i> Not Verified</div>
+                                                    <div class="cls_verified verify_margin" style="color: #FF0000; margin-top: 35px; font-weight: bold;" ng-show="CasteNotVerified"><i class="fa fa-close" style="display: inline-block; font-size: inherit; font: normal normal normal 14px/1 FontAwesome;" aria-hidden="true"></i> Not Verified</div>
+
+                                                </fieldset>
+                                                <div class="col-md-12 ">
+                                                    <button class="btn btn-primary " ng-click="BackTab(2)">Back</button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in {{class4}}" id="Special">
+                                                <fieldset>
+                                                    <legend>Special Category Details</legend>
+                                                    <div class="col-md-12" ng-show="Assistance_Urdu== 'true'">
+                                                        <div class="notifylabel pull-right" for="sel1" style="color: red;margin-bottom:10px;">
+                                                            Assistance in Urdu will be available in
+                                                            MASAB TANK, HYDERABAD only.
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>Region</label>
+                                                            <select class="form-control" ng-model="RegionID" disabled ng-change="getRegionName(data.Region)"
+                                                                    ng-options="data.RegionID as data.RegionName for data in GetRegionsData">
+                                                                <option value="" selected>Select Region</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold"> Minority/Community</label>
+                                                        <select class="form-control" ng-model="MinorityID" disabled ng-change="getMinorityName(data.Minority)"
+                                                                ng-options="data.MinorityID as data.MinorityName for data in GetMinoritiesData">
+                                                            <option value="" selected>Select Minority/Community</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold"> Assistance in Urdu</label>
+                                                        <select class="form-control" disabled ng-model="Assistance_Urdu" name="Type" required ng-change="getAsstinUrdu(Assistance_Urdu)">
+                                                            <option value="">Select Assistance in Urdu</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">Physically Handicapped</label>
+                                                        <select class="form-control" disabled ng-model="Handicaped" name="Type" required>
+                                                            <option value="">Select Physically Handicapped</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">NCC</label>
+                                                        <select class="form-control" disabled ng-model="NCC" name="Type" required>
+                                                            <option value="">Select NCC</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">Sports & Games</label>
+                                                        <select class="form-control" disabled ng-model="Sports" name="Type" required>
+                                                            <option value="">Select Sports & Games</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">CAP</label>
+                                                        <select class="form-control" disabled ng-model="CAP" name="Type" required>
+                                                            <option value="">Select CAP</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">PM Cares (Lost both parents in COVID pandamic)</label>
+                                                        <select class="form-control" disabled ng-model="PMCares" name="Type" required>
+                                                            <option value="">Select PM Cares</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4 form-group">
+                                                        <label class="font-weight-bold">Appear for Biology (Agriculture Polytechnic)</label>
+                                                        <select class="form-control" disabled ng-model="AppearforBiology" name="Type" required>
+                                                            <option value="">Select Appear for Biology</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false" selected>No</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                </fieldset>
+                                                <div class="col-md-12 ">
+                                                    <button class="btn btn-primary " ng-click="BackTab(3)">Back</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade in {{class6}}" id="Study">
+                                                <fieldset>
+                                                    <legend>Study Details</legend>
+                                                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12">
+                                                        <table class="table table-bordered table-hover table-rounded">
+                                                            <!--<div class="col-md-12">
+                                                        <table class="table table-bordered table-striped">-->
+                                                            <tr>
+                                                                <th>S.No</th>
+                                                                <th style="width:10%">Class Studied  </th>
+                                                                <th style="width:15%">Year Passed/Appearing</th>
+                                                                <th>State</th>
+                                                                <th>District Studied</th>
+                                                                <th>Place Studied</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td><input placeholder="Class 1" ng-disabled="Class" ng-model="Class1" class="form-control" /></td>
+                                                                <td><input class="form-control" ng-model="YEAR1" disabled placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" id="State" ng-model="State1" disabled ng-change="getClass1Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+
+                                                                <td>
+                                                                    <select class="form-control" id="District" ng-model="District1" disabled
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData1">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" ng-model="PLACE1" disabled placeholder="Enter Place Studied" /></td>
+
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td><input placeholder="Class 2" ng-disabled="Class" ng-model="Class2" value="Class 2" class="form-control" /></td>
+                                                                <td><input class="form-control" ng-model="YEAR2" disabled placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" id="State" disabled ng-model="State2" ng-change="getClass2Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" id="District" disabled ng-model="District2"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData2">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled placeholder="Enter Place Studied" ng-model="PLACE2" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td><input placeholder="Class 3" ng-disabled="Class" ng-model="Class3" value="Class 3" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR3" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State3" ng-change="getClass3Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District3"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData3">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE3" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td><input placeholder="Class 4" ng-disabled="Class" ng-model="Class4" value="Class 4" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR4" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State4" ng-change="getClass4Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District4"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData4">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE4" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td><input placeholder="Class 5" ng-disabled="Class" ng-model="Class5" value="Class 5" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR5" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State5" ng-change="getClass5Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District5"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData5">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE5" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>6</td>
+                                                                <td><input placeholder="Class 6" ng-disabled="Class" ng-model="Class6" value="Class 6" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR6" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State6" ng-change="getClass6Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District6"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData6">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE6" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>7</td>
+                                                                <td><input placeholder="Class 7" ng-disabled="Class" ng-model="Class7" value="Class 7" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR7" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State7" ng-change="getClass7Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District7"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData7">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE7" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>8</td>
+                                                                <td><input placeholder="Class 8" ng-disabled="Class" ng-model="Class8" value="Class 8" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR8" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State8" ng-change="getClass8Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District8"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData8">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE8" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>9</td>
+                                                                <td><input placeholder="Class 9" ng-disabled="Class" ng-model="Class9" value="Class 9" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR9" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State9" ng-change="getClass9Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District9"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData9">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE9" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>10</td>
+                                                                <td><input placeholder="Class 10" ng-disabled="Class" ng-model="Class10" value="Class 10" class="form-control" /></td>
+                                                                <td><input class="form-control" disabled ng-model="YEAR10" placeholder="YYYY eg.(2005)" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /></td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="State" ng-model="State10" ng-change="getClass10Districts()"
+                                                                            ng-options="data.StateID as data.StateName for data in StatesData">
+                                                                        <option value="" selected>Select State</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>
+                                                                    <select class="form-control" disabled id="District" ng-model="District10"
+                                                                            ng-options="data.DistrictID as data.DistrictName for data in DistrictsData10">
+                                                                        <option value="" selected>Select District</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td><input class="form-control" disabled ng-model="PLACE10" placeholder="Enter Place Studied" /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+
+
+                                                </fieldset>
+                                                <div class="col-md-12 ">
+                                                    <button class="btn btn-primary " ng-click="BackTab(5)">Back</button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade in {{class7}}" id="Photo">
+                                                <fieldset>
+                                                    <legend>Photo & Signature</legend>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group required custom-img">
+                                                            <label class="font-weight-bold">Upload Photo(size should be greater than 5KB and less than 50KB) :</label>
+                                                            <img ng-src="{{StudentPhoto}}" class="img img-responsive" id="stdPhotoImg" style="width:150px;height:150px" />
+                                                            <input type="file" disabled id="stdPhotoFile" accept="image/png, image/gif, image/jpeg" onchange="angular.element(this).scope().uploadStudentPhoto()" class="upld-file" required style="padding-top:10px">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group required custom-img">
+                                                            <label class="font-weight-bold">Upload Signature(size less than 30KB) :</label>
+                                                            <img ng-src="{{StudentSign}}" style="width:250px;height:100px" class="img img-responsive" id="stdSignImg" />
+                                                            <input type="file" disabled id="stdSignFile" accept="image/png, image/gif, image/jpeg" onchange="angular.element(this).scope().uploadStudentSign()" class="upld-file" required style="padding-top:10px">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </fieldset>
+
+
+                                            </div>
+                                            <div class="tab-pane fade in {{class8}}" id="Preview">
+                                                <div class="preview_header">
+                                                    <div class="col-md-2 logo">
+                                                        <div class="logo-image" style="padding:6px!important;">
+                                                            <img src="../../contents/img/Sbtet-Logo.png" class="img-responsive logoImg" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 title">
+                                                        <h4 class="text-center hall_head" style="font-size: 13px!important;"><b>STATE BOARD OF TECHNICAL EDUCATION & TRAINING, TELANGANA</b></h4>
+                                                        <h4 class="text-center hall_head1" style="font-size: 12px!important;"><b>FILLED APPLICATION FOR POLYCET - 2023 </b></h4>
+                                                    </div>
+                                                    <div class="col-md-2 logo">
+                                                        <div class="logo-image pull-right" style="padding:6px!important;">
+                                                            <img src="../../contents/img/telangana-logo-png.png" class="img-responsive logoImg" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <fieldset>
+                                                    <legend>Preview</legend>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Registration Number</div></div>
+
+                                                        <div class="col-md-6   pre-text">: {{RegistrationNumber}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Qualified Exam</div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{qualifiedExamName}}</div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Tenth Hall Ticket No. </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{sscHallticket}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Tenth Year  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{passedoutYear}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Qualified Exam Stream  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="sscType=='R'">Regular</span><span ng-show="sscType=='S'">Supplementary</span></div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="qualifiedExamName == 'SSC-TS'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">SSC Verified </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="SSCVerified == true">Yes</span><span ng-show="SSCVerified == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Student Name  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{CNAME}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Father Name  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{FNAME}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Mother Name  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{MNAME}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Date of Birth  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{DOB_DATE | date:'dd/MM/yyyy'}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Gender </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Gender}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Mobile Number  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{MobileNumber}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Alternate Mobile Number  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{AltMobileNumber}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Email  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Email}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview"> House Number / Building Name  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{HouseNo}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Street Name / Number  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{StreetNo}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Locality  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Locality}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Landmark </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Landmark}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Village / Town / City  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Village}}</div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Pincode </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Pincode}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">State  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{StateName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-hide="StateId==3">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">District  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{PrevData.DistrictName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-hide="StateId==2 || StateId==3">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Mandal  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{PrevData.MandalName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="StateId==3">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">District  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{district}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="StateId==2 || StateId==3">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Mandal  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{mandal}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Category </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{CasteCategoryName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Aadhar Number  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{Aadhaar}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="CasteCategoryName != 'OC'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Caste Certificate Number </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{CasteCertificateNumber}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="CasteCategoryName != 'OC'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Caste Verified  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="CasteVerified == true">Yes</span><span ng-show="CasteVerified == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="CasteCategoryName == 'OC'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">EWS Category </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="EwsCertificate == true">Yes</span><span ng-show="EwsCertificate == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="CasteCategoryName == 'OC'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">EWS Number  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{EWSNumber}}</div>
+                                                    </div>
+                                                    <div class="col-md-6" ng-show="CasteCategoryName == 'OC'">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">EWS Verified  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="EWSVerified == true">Yes</span><span ng-show="EWSVerified == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Region  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{RegionName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Minority / Community  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: {{MinorityName}}</div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Assistance in Urdu  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewAssistance_Urdu == true">Yes</span><span ng-show="PreviewAssistance_Urdu == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Physically Handicapped  </div></div>
+
+                                                        <div class="col-md-6  pre-text">:  <span ng-show="PreviewHandicaped == true">Yes</span><span ng-show="PreviewHandicaped == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">NCC  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewNCC == true">Yes</span><span ng-show="PreviewNCC == false">No</span></div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Sports & Games  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewSports == true">Yes</span><span ng-show="PreviewSports == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">CAP  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewCAP == true">Yes</span><span ng-show="PreviewCAP == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">PM Cares  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewPMCares == true">Yes</span><span ng-show="PreviewPMCares == false">No</span></div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="col-md-6 textBold"><div class="label_preview">Appear for Biology  </div></div>
+
+                                                        <div class="col-md-6  pre-text">: <span ng-show="PreviewAppearforBiology == true">Yes</span><span ng-show="PreviewAppearforBiology == false">No</span></div>
+                                                    </div>
+
+
+                                                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="array.length>0">
+                                                        <table class="table table-bordered  table-striped table-rounded">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>S.No</th>
+                                                                    <th>Class</th>
+                                                                    <th> Year</th>
+                                                                    <th>District</th>
+                                                                    <th>Place</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="data in array">
+                                                                    <td>
+                                                                        {{$index+1}}
+                                                                    </td>
+                                                                    <td> {{data.Class}} </td>
+                                                                    <td>{{data.Year}}</td>
+
+                                                                    <td>{{GetDistrictName($index+1)}}</td>
+
+
+                                                                    <td>{{data.Place}}</td>
+
+
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+
+                                                        <!--<div class="col-md-3"><label class="label_preview">Photo  </label></div>-->
+
+                                                        <img ng-src="{{StudentPhoto}}" style="border: 2px solid #ddd;" class="photo_preview" accept="image/jpeg,image/jpg" />
+                                                        <img ng-src="{{StudentSign}}" style="border: 2px solid #ddd;" class="sign_preview" accept="image/jpeg,image/jpg" />
+                                                    </div>
+
+
+                                                    <div class="col-md-12 pull-right">
+                                                        {{DateNow}}
+                                                    </div>
+                                                </fieldset>
+                                                <div class="col-md-12">
+
+
+                                                    <div class="">
+                                                        <label></label>
+                                                        <button type="submit" class="btn sub_btn  btn-success pull-right" ng-show="printbutton" style="margin: 20px !important;" ng-click="printPreview()">
+                                                            Print
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- End Login Area -->
+        </div>
+        <footer class="bg-dark text-light ng-scope">
+
+            <!-- Start Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                            </div>
+                            <div class="col-md-3 text-right link">
+                                <span class="float-right">Total Site Views: </span>
+                                <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Footer Bottom -->
+        </footer>
+    </div>
+  
+
+</ui-view>
+
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+
+
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary').addClass('active')
+                if ($item.addClass('btn-primary').addClass('active')) {
+                    ($item.addClass('active').addClass('active_btn'))
+                    allNextBtn = $('.nextBtn');
+                }
+                $item.addClass('active');
+                //$("p").addClass("cls_active");
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            //validation = true;
+            //$target.show();
+
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+            $(this).removeClass('active')
+            $("p").addClass("cls_active");
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+
+</script>

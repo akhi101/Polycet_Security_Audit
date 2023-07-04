@@ -1,0 +1,438 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+    a {
+        color: #337ab7;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .input-group .form-control, .input-group-addon, .input-group-btn {
+        display: table-cell;
+    }
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    .selectBox {
+        position: relative;
+    }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    thead > tr > th {
+        position: sticky;
+        top: 0px;
+    }
+
+
+
+
+    .txt_decorate {
+        text-transform: uppercase;
+    }
+
+    #checkboxesdistrict {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+        #checkboxesdistrict label {
+            display: block;
+        }
+
+            #checkboxesdistrict label:hover {
+                background-color: #1e90ff;
+            }
+
+    #checkboxesmandal label {
+        display: block;
+    }
+
+        #checkboxesmandal label:hover {
+            background-color: #1e90ff;
+        }
+
+    #checkboxesmandal {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+
+
+    .contain {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        /* margin-bottom: 12px; */
+        /* padding-top: 5px; */
+        cursor: pointer;
+        margin: 5px !important;
+        font-size: 15px !important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .contain input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #eee;
+        border: 1px solid #cac6c6;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .contain:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .contain input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .contain input:checked ~ .checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .contain .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .contain {
+        font-size: 13px !important;
+    }
+
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+
+<div ng-controller="FeePaymentStatusController">
+    
+    
+    <div class="container">
+        <div class="sm-spacer"></div>
+        <div class="sm-spacer"></div>
+
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#1" data-toggle="tab" ng-click="tab1()">Fee Reciept by Reg No. / Mobile No.</a>
+            </li>
+            <li>
+                <a href="#2" data-toggle="tab" ng-click="tab2()">Fee Reciept by Challan Number</a>
+            </li>
+
+
+        </ul>
+        <div class="tab-content">
+            
+            <div class="tab-pane active" id="1">
+                <div class="card">
+                    <form name="dataForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Registration Number / Mobile Number</label>
+                                    <input class="form-control" placeholder="Registration Number / Mobile No." ng-model="MobileNumber" maxlength="10" minlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text">
+                                </div>
+                            </div>
+                                <div class="col-md-2">
+                                    <label>Captcha</label>
+                                    <input class="form-control" maxlength="5" placeholder="Enter Captcha" ng-keypress="keyLogin($event)" type="text" ng-model="CaptchaText">
+                                </div>
+                                <div class="col-md-2" style="padding:0px;">
+                                    <label></label>
+                                    <img class="refresh_captcha" data-ng-src="data:image/png;base64,{{CaptchaImage}}" width="150" height="33" />
+                                </div>
+                                <div class="col-md-2">
+                                    <a class="pull-left" title="Click to Refresh Captcha" ng-click="GetCaptchaData()"><img class="refresh_img" src="/assets/img/reload.png" /> </a>
+                                </div>
+
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <button type="submit" class="btn  btn-primary btn_top_margin  pull-right" ng-disabled="getbutton" ng-click="ValidateCaptcha(MobileNumber)">Get Details<span class="fa  heading_icon btn_icons"></span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <!--<div class="sm-spacer"></div>-->
+
+                <div class="col-md-12" ng-if="PaymentData.length>0">
+                    <div class="notifylabel pull-right" for="sel1" style="color: red;font-size:16px">
+                        Double Click on Table Row to Get Payment Reciept
+                    </div>
+                </div>
+                <div class="col-md-12" style="padding:0px!important">
+                    <div class="cl-details" ng-if="PaymentData.length>0">
+                        <h5 class="head_css">Fee Payment List</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12 scrollbox" ng-if="PaymentData.length>0">
+                        <table class="table table-bordered  table-rounded scrollbox-content">
+                            <thead>
+                                <tr class="cb-1">
+                                    <th class="text-center" style="width: 2%;">S.No</th>
+                                    <th class="text-center">Registration Number</th>
+                                    <th class="text-center">Challan Number</th>
+                                    <th class="text-center">Registration Amount</th>
+                                    <th class="text-center">Request LogDate</th>
+                                    <th class="text-center">Txn RefNo</th>
+                                    <th class="text-center">Txn Amount</th>
+                                    <th class="text-center">Security Pass</th>
+                                    <th class="text-center">Txn Date</th>
+                                    <th class="text-center">Auth Status</th>
+                                    <th class="text-center">Settlement Type</th>
+                                    <th class="text-center">Error Desc</th>
+                                    <th class="text-center">Response LogDate</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in PaymentData" ng-dblclick="getPaymentReciept(data.ChallanNumber)">
+
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">{{data.RegistrationNumber}}</td>
+                                    <td class="text-center">{{data.ChallanNumber}}</td>
+                                    <td class="text-center">{{data.RegistrationAmount}}</td>
+                                    <td class="text-center">{{data.RequestLogDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                    <td class="text-center">{{data.txnrefno}}</td>
+                                    <td class="text-center">{{data.txnamt}}</td>
+                                    <td class="text-center">{{data.securitypass}}</td>
+                                    <td class="text-center">{{data.txndate}}</td>
+                                    <td class="text-center">{{data.authstatus}}</td>
+                                    <td class="text-center">{{data.settlementtype}}</td>
+                                    <td class="text-center">{{data.errordesc}}</td>
+                                    <td class="text-center">{{data.ResponseLogDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:100%;text-align:center;">
+                        <!--<div class="loadingImg">
+               <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+            </div>-->
+
+                    </div>
+                </div>
+
+                <!--<div class="spacer"></div>
+                <div class="sm-spacer"></div>
+                <div class="sm-spacer"></div>-->
+            </div>
+
+            <div class="tab-pane" id="2">
+                <div class="card">
+                    <form name="dataForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Challan Number</label>
+                                    <input class="form-control" placeholder="Enter Challan Number" ng-model="ChallanNumber" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label>Captcha</label>
+                                <input class="form-control" maxlength="5" placeholder="Enter Captcha" ng-keypress="keyLogin($event)" type="text" ng-model="CaptchaText">
+                            </div>
+                            <div class="col-md-2" style="padding:0px;">
+                                <label></label>
+                                <img class="refresh_captcha" data-ng-src="data:image/png;base64,{{CaptchaImage}}" width="150" height="33" />
+                            </div>
+                            <div class="col-md-2">
+                                <a class="pull-left" title="Click to Refresh Captcha" ng-click="GetCaptchaData()"><img class="refresh_img" src="/assets/img/reload.png" /> </a>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <button type="submit" class="btn  btn-primary btn_top_margin  pull-right" ng-click="ValidateCaptcha1(ChallanNumber)">Get Details<span class="fa  heading_icon btn_icons"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12" ng-if="PaymentDatanew.length>0">
+                    <div class="notifylabel pull-right" for="sel1" style="color: red;font-size:16px">
+                        Double Click on Table Row to Get Payment Reciept
+                    </div>
+                </div>
+                <!--<div class="sm-spacer"></div>-->
+                <div class="col-md-12" style="padding:0px!important">
+                    <div class="cl-details" ng-if="PaymentDatanew.length>0">
+                        <h5 class="head_css">Fee Payment List</h5>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12 scrollbox" ng-if="PaymentDatanew.length>0">
+                        <table class="table table-bordered  table-rounded scrollbox-content">
+                            <thead>
+                                <tr class="cb-1">
+                                    <th class="text-center" style="width: 2%;">S.No</th>
+                                    <th class="text-center">Registration Number</th>
+                                    <th class="text-center">Challan Number</th>
+                                    <th class="text-center">Registration Amount</th>
+                                    <th class="text-center">Request LogDate</th>
+                                    <th class="text-center">Txn RefNo</th>
+                                    <th class="text-center">Txn Amount</th>
+                                    <th class="text-center">Security Pass</th>
+                                    <th class="text-center">Txn Date</th>
+                                    <th class="text-center">Auth Status</th>
+                                    <th class="text-center">Settlement Type</th>
+                                    <th class="text-center">Error Desc</th>
+                                    <th class="text-center">Response LogDate</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in PaymentDatanew" ng-dblclick="getPaymentReciept(data.ChallanNumber)">
+
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">{{data.RegistrationNumber}}</td>
+                                    <td class="text-center">{{data.ChallanNumber}}</td>
+                                    <td class="text-center">{{data.RegistrationAmount}}</td>
+                                    <td class="text-center">{{data.RequestLogDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                    <td class="text-center">{{data.txnrefno}}</td>
+                                    <td class="text-center">{{data.txnamt}}</td>
+                                    <td class="text-center">{{data.securitypass}}</td>
+                                    <td class="text-center">{{data.txndate}}</td>
+                                    <td class="text-center">{{data.authstatus}}</td>
+                                    <td class="text-center">{{data.settlementtype}}</td>
+                                    <td class="text-center">{{data.errordesc}}</td>
+                                    <td class="text-center">{{data.ResponseLogDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:100%;text-align:center;">
+                        <!--<div class="loadingImg">
+               <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+            </div>-->
+
+                    </div>
+                </div>
+
+           
+            </div>
+
+        </div>
+    </div>
+    <div class="sm-spacer"></div>
+    <div class="sm-spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+   
+</div>

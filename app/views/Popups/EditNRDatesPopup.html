@@ -1,0 +1,100 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+<style>
+    .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+        z-index: 2;
+        margin-left: -1px;
+        padding: 9px 12px;
+    }
+</style>
+<!--<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" />-->
+<script type="text/javascript">
+        // When the document is ready
+        $(document).ready(function () {
+
+            $('#example1').datepicker({
+                minViewMode: 'years',
+                autoclose: true,
+                format: 'yyyy'
+            });
+            $('#example2').datepicker({
+                minViewMode: 1,
+                autoclose: true,
+                format: 'mm-yyyy'
+            });
+            $('.tabledate').datepicker({
+                //minViewMode: 1,
+                autoclose: true,
+                format: 'dd-mm-yyyy'
+            });
+            //$('#example4').datepicker({
+            //    //minViewMode: 1,
+            //    autoclose: true,
+            //    //format: 'dd-mm-yyyy'
+            //});
+        });
+</script>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit NR Download Dates</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+
+            <div class="form-group ">
+                <label>
+                    Polycet Year:
+                </label>
+                <select disabled class="form-control" id="State" ng-model="EditData.PolycetYearID"
+                        ng-options="data.PolycetYearID as data.PolycetYear for data in CurrentPolycetYearData">
+                    <option value="" selected>Select Polycet Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date-picker-example"> Start Date(dd/mm/yyyy):</label>
+                <p class="input-group">
+                    <input type="text" disabled show-weeks="false" class="form-control" id="datetimepicker3" placeholder="Select Start Date" autocomplete="off" name="StartDate" pattern="^(\d{1,2})\/(\d{1,2})\/(\d{4})$" datetime-picker="dd/MM/yyyy" ng-model="EditData.StartDate" is-open="showFlag3" required style=" margin-left: 0px; border-left-width: 0px; margin-top: 28px; margin-right: 0px; padding-right: 12px; padding-left: 12px; right: 152px;width:278px ">
+                    <span class="input-group-btn" style=" right: 240px; top: 14px;">
+                        <button type="button" class="btn btn-primary" ng-click="showFlag3 = true"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+
+
+            <div class="form-group">
+                <label for="date-picker-example"> End Date(dd/mm/yyyy):</label>
+                <p class="input-group">
+                    <input type="text" disabled show-weeks="false" class="form-control" id="datetimepicker4" placeholder="Select End Date" autocomplete="off" name="StartDate" pattern="^(\d{1,2})\/(\d{1,2})\/(\d{4})$" datetime-picker="dd/MM/yyyy" ng-model="EditData.EndDate" is-open="showFlag4" required style=" margin-left: 0px; border-left-width: 0px; margin-top: 28px; margin-right: 0px; padding-right: 12px; padding-left: 12px; right: 148px;width:280px ">
+                    <span class="input-group-btn" style=" right: 240px; top: 14px;">
+                        <button type="button" class="btn btn-primary" ng-click="showFlag4 = true"><i class="fa fa-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData.Active" />
+            </div>
+            <!--</div>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateNRDatesDetails(EditData)">Update</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

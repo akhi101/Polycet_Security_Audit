@@ -1,0 +1,1294 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+
+
+    .btn_margin {
+        margin-top: 23px;
+    }
+
+    .padding-0 {
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<style>
+    legend {
+        display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: inherit;
+        color: #333;
+        border: 0 !important;
+        /* border-bottom: 1px solid #e5e5e5; */
+    }
+
+    element.style {
+    }
+
+    fieldset {
+        /* min-width: 0; */
+        /* padding: 0; */
+        /* margin: 0; */
+        /* border: 0; */
+    }
+
+    fieldset {
+        /* padding: 0.35em 0.625em 0.75em; */
+        /* margin: 0 2px; */
+        /* border: 1px solid silver; */
+    }
+
+    * {
+        /* padding: 0; */
+        /* margin: 0; */
+    }
+
+    * {
+        /* -webkit-box-sizing: border-box; */
+        -moz-box-sizing: border-box;
+        /* box-sizing: border-box; */
+    }
+
+    fieldset {
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: rgb(192, 192, 192);
+        border-image: initial;
+        border-radius: 10px;
+        margin: 20px 0px;
+    }
+
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+
+    .sub_btn {
+        margin-top: 35px !important;
+    }
+
+    .pre-text {
+        padding: 5px 10px 5px 10px
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .breadcrumb-header {
+            margin-top: 95px;
+        }
+
+        nav.navbar.bootsnav .navbar-collapse.collapse.in {
+            margin-bottom: 0px;
+        }
+
+        nav.navbar.bootsnav ul.nav > li > a {
+            margin: 20px 10px;
+            cursor: pointer;
+            border: 2px solid #fff !important;
+            padding: 10px 10px !important;
+        }
+
+
+        fieldset {
+            min-inline-size: auto;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a, .with-nav-tabs.panel-primary .nav-tabs > li > a:hover, .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            /* color: #fff; */
+
+            width: 100% !important;
+            border-radius: 5px;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -1px;
+            width: 100%;
+            margin: 5px 0px;
+        }
+
+        .panel-primary {
+            border-color: #337ab7;
+            margin-top: 20px;
+        }
+    }
+    /********************************************************************/
+    /*** PANEL PRIMARY ***/
+    .with-nav-tabs.panel-primary .nav-tabs > li > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        /*color: #fff;*/
+        color: #fff;
+        background-color: #337ab7;
+        /*min-height: 62px;*/
+        font-size: 13px;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+            background-color: #3071a9;
+            border-color: transparent;
+        }
+
+
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #428bca;
+        border-color: #3071a9;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+                background-color: #3071a9;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+            background-color: #4a9fe9;
+        }
+
+    /********************************************************************/
+    .panel.with-nav-tabs .panel-heading {
+        padding: 5px 5px 0 5px;
+        background-color: #fff;
+    }
+
+    .panel.with-nav-tabs .nav-tabs {
+        border-bottom: none;
+    }
+
+    .panel.with-nav-tabs .nav-justified {
+        margin-bottom: -1px;
+    }
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+    .test {
+        background-color: #5cb85c !important;
+        color: #fff !important;
+    }
+
+    .clr_danger {
+        background-color: #d9534f !important;
+        color: #fff !important;
+    }
+
+
+    a {
+        cursor: pointer;
+    }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+        color: #fff !important;
+        background-color: #428bca !important;
+        border-color: #428bca;
+        border-bottom-color: transparent;
+        /*min-height: 62px;*/
+        font-weight: 600;
+        border: 1px solid #ddd;
+        /*padding-top: 5px;*/
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #fff !important;
+            background-color: #428bca !important;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+            /*min-height: 62px;*/
+            font-weight: 600;
+            border: 1px solid #ddd;
+            /*padding-top: 5px;*/
+        }
+
+    .label_preview {
+        margin: 5px 0px 5px 0px;
+        font-weight: 600;
+    }
+
+    .photo_preview {
+        height: 160px;
+        width: 140px;
+        display: block;
+    }
+
+    .sign_preview {
+        height: 40px;
+        width: 130px;
+    }
+
+    .preview_header {
+        display: none;
+    }
+
+    .textBold {
+        padding: 0px !important;
+    }
+
+    @media print {
+        .photo_preview {
+            height: 150px;
+            width: 130px;
+            display: block;
+        }
+
+        .sign_preview {
+            height: 40px;
+            width: 130px;
+        }
+
+        .preview_header {
+            display: none;
+        }
+
+        .preview_header {
+            display: block;
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .logoImg {
+            height: 65px;
+            width: 65px;
+        }
+
+        .hall_head {
+            margin-top: 20px;
+        }
+
+        .hall_head1 {
+            margin-top: 5px;
+        }
+
+        .panel-heading {
+            display: none;
+        }
+
+        .sm-spacer {
+            height: 0px;
+        }
+
+        label {
+            margin: 0px !important;
+        }
+
+        #table-print {
+            display: block !important;
+        }
+
+        fieldset {
+            margin: 0px;
+            border-radius: 0px;
+            border: 0px;
+            border-top: 2px solid #000;
+        }
+
+        legend {
+            margin: 0px;
+            display: none;
+        }
+
+        .btn_submitt {
+            display: none;
+        }
+
+        .label_preview {
+            margin: 0px !important;
+            font-size: 10px !important;
+            font-weight: 600;
+        }
+
+        .pre-text {
+            padding: 0px;
+            font-size: 10px !important;
+        }
+
+        .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 1px !important;
+            margin: 0px !important;
+        }
+        /* fieldset{
+            display:none;
+        }
+        legend {
+            display: none;
+        }*/
+    }
+
+    /*
+    #Preview {
+        display: block !important;
+    }*/
+
+</style>
+
+<link href="../../../assets/css/studentdashboardstyle.css" rel="stylesheet" />
+<style>
+    .head_section {
+        margin: 20px;
+    }
+
+    #helpDesk {
+        display: none;
+    }
+
+    #idtoDivPrint {
+        /*display: flex;*/
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #000;
+    }
+
+    .submit-btn button:focus {
+        outline: none !important;
+    }
+
+    .sign {
+        position: absolute;
+        top: -39px;
+        left: 382px;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+    }
+
+
+    .photo-img {
+        height: 126px !important;
+        width: 126px !important;
+    }
+
+    .logoImg {
+        height: 70px !important;
+        width: 70px !important;
+    }
+
+    .photo-img {
+        height: 136px !important;
+        width: 126px !important;
+        margin-top: 10px;
+    }
+
+    @media print {
+        .main {
+            display: none !important;
+        }
+
+        .header_area {
+            display: none !important;
+        }
+
+        .header {
+            display: none !important;
+        }
+
+        .photo-img {
+            height: 110px !important;
+            width: 95px !important;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: left;
+        }
+
+        .col-md-12 {
+            width: 100%;
+        }
+
+        .col-md-11 {
+            width: 91.66666666666666%;
+        }
+
+        .col-md-10 {
+            width: 83.333333%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-8 {
+            width: 66.66666666666666%;
+        }
+
+        .col-md-7 {
+            width: 58.333333333333336%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-5 {
+            width: 41.66666666666667%;
+        }
+
+        .col-md-4 {
+            width: 33.33333333333333%;
+        }
+
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-2 {
+            width: 16.666666666666664%;
+        }
+
+        .col-md-1 {
+            width: 8.333333333333332%;
+        }
+
+        .o-info {
+            display: none;
+        }
+
+        .top_row {
+            display: none;
+        }
+        /*.logo-image{
+              display:none;
+          }*/
+        .time {
+            display: none;
+        }
+
+        .top_logo {
+            width: 100%;
+            text-align: center;
+        }
+        /*.mtp-50{
+              display:none;
+          }*/
+        .empty-space {
+            display: none;
+        }
+
+        .main {
+            display: none;
+        }
+
+        .inputs {
+            border: none;
+            border-bottom: 0px solid #000;
+            width: 75%;
+        }
+
+        .pree-text {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .photo-img {
+            margin-top: 3px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border-bottom: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .college-details {
+            display: none;
+        }
+
+        .header-top-section {
+            display: none;
+        }
+
+        .breadcrumb-header {
+            display: none;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+            border-top: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead2 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead3 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody1 {
+            /*// border: 0px solid #000 !important;*/
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+            border-bottom: 0px solid #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border-right: 0px !important;
+        }
+
+        .mySpacer {
+            height: 65px;
+        }
+
+
+
+        .print_btn {
+            display: none;
+        }
+
+        .bck_btn {
+            display: none;
+        }
+
+        .logoImg {
+            height: 60px !important;
+            width: 60px !important;
+        }
+
+        .scroll-top-wrapper.show {
+            display: none;
+            visibility: hidden !important;
+        }
+
+        .footer_section {
+            display: none;
+        }
+
+        /* .tbl {
+            border: 0px solid #000 !important;
+        }*/
+
+        /*.top_table {
+            width: 60%;
+        }*/
+
+        .top-tables {
+            border-bottom: 0px !important;
+            border-left: 0px !important;
+        }
+
+        .logo-image h2 {
+            margin: -12px 0px 16px 85px !important;
+            font-size: 17px !important;
+        }
+
+        .head2 {
+            font-size: 16px !important;
+        }
+
+        .terms_card {
+            margin: 5px !important;
+            font-size: 10px;
+        }
+
+        .sign_layout {
+            float: right;
+            width: auto;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border: 0px !important;
+        }
+
+        .textIndent {
+            padding-left: 15px;
+            text-indent: -15px;
+        }
+
+        .sign {
+            float: right;
+            position: absolute;
+            top: -40px;
+            left: 133px;
+        }
+
+        .downloadForm {
+            display: none;
+        }
+
+        .content {
+            padding-top: 0px;
+        }
+
+        .hall_head {
+            margin-top: 0px;
+            font-size: 16px !important;
+        }
+
+        /*  .col-md-2.logo {
+            width: 11.666667%;
+            padding: 0px;
+        }*/
+
+        .col-md-10.title {
+            width: 88.3333%;
+            padding: 0px;
+        }
+
+        h4.text-center.hall_head {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            /*border: 1px solid #ddd !important;
+        color: #788598;*/
+            font-size: 11px !important;
+            padding: 4px !important;
+        }
+
+        .mySpacer.bottom {
+            display: none !important;
+        }
+
+        .resultsHeader {
+            display: none !important;
+        }
+
+        #mainfooter {
+            display: none !important;
+        }
+
+        .fd-form {
+            display: none !important;
+        }
+
+        #idtoDivPrint {
+            border: 1px solid #000;
+            padding: 0px;
+        }
+
+        .photo-img {
+            height: 136px !important;
+            width: 126px !important;
+            margin-top: 5px;
+        }
+
+        .table-bordered {
+            border: 0px solid #000;
+        }
+
+        .table {
+            margin-bottom: 0px;
+        }
+
+        hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 0;
+            border-top: 1px solid #000;
+        }
+
+        .photo_preview {
+            height: 145px;
+            width: 130px;
+            display: inline;
+        }
+
+        .panel-primary {
+            border: 0px;
+        }
+    }
+
+    .panel-primary {
+        border-color: #337ab7;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 0px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+        background-color: #fff;
+    }
+
+    .photo_preview {
+        height: 145px;
+        width: 130px;
+        display: inline;
+    }
+
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #000;
+    }
+
+    .myeads {
+        border-right: 0px !important;
+    }
+
+    .spacer {
+        height: 30px;
+    }
+
+    .footer {
+        display: none;
+    }
+    /*.table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+      border: 0px solid #000 !important;
+      border-left:0px!important;
+    }*/
+    .pree-text {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .top-box {
+        border: 0px solid #000;
+    }
+
+    .terms_card {
+        margin: 5px !important;
+        font-size: 10px;
+    }
+
+    .sign_layout {
+        float: right;
+        width: auto;
+    }
+
+    .lg-spacer {
+        height: 70px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .terms_card {
+        /*width: 100% !important;*/
+        text-align: left !important;
+        height: auto !important;
+        border-top: 1px solid #000;
+    }
+
+    .mySpacer {
+        height: 48px;
+    }
+
+    .textIndent {
+        padding-left: 15px;
+        text-indent: -15px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+        border: 0px;
+    }
+
+    .table-bordered {
+        border: 0px solid #ddd;
+    }
+
+    #idtoDivPrint {
+        padding: 0px;
+        border: 1px solid #000;
+        width: 100%;
+    }
+
+    @media print {
+        #idtoDivPrint {
+            padding: 0px;
+            border: 1px solid #000;
+            width: auto;
+        }
+
+        .default-padding {
+            padding: 0px;
+        }
+    }
+</style>
+<ui-view>
+    <div ng-controller="HTDownloadController">
+        <!--<header id="home">-->
+
+            <!-- Start Navigation -->
+            <!--<nav class="navbar navbar-default navbar-sticky bootsnav">
+
+                <div class="container">-->
+
+                    <!-- Start Header Navigation -->
+                    <!--<div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                        </a>
+                        <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                    </div>-->
+                    <!-- End Header Navigation -->
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <!--<div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                            <li class="dropdown">
+                                <a href="#" class="head_btn_css1" style="margin-right: 10px"><i class="fa fa-user" aria-hidden="true"></i> {{RegistrationNumber}}</a>
+
+                            </li>-->
+                            <!--<li ng-click="ChangePassword()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Change Password</a></li>-->
+
+
+                            <!--<li ng-click="logOut()"><a class="head_btn_css"><i class="user-login" aria-hidden="true"></i> Log Out</a></li>
+
+                        </ul>
+                    </div>--><!-- /.navbar-collapse -->
+                <!--</div>
+
+            </nav>
+        </header>-->
+        <div class="sm-spacer"></div>
+
+        <div class="container">
+            <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+        <div class="container">
+
+
+
+            <!--<h3><center>Comming Soon.........</center></h3>-->
+            <div class="">
+                <!--  <div class="sm-spacer"></div>-->
+                <!-- Start Login
+                ============================================= -->
+                <div class="login-area default-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel with-nav-tabs panel-primary">
+                                    <!--<div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="Hallticket {{class0}}"><a ng-class="{'test': HtStatus == '1','clr_danger': HtStatus == '0'}">Hallticket </a></li>
+                                        </ul>
+                                    </div>-->
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                            <div class="" id="Hallticket">
+
+                                                <div class="container" id="idtoDivPrint">
+                                                    <div class="col-md-2 logo">
+                                                        <div class="logo-image" style="padding:6px!important;">
+                                                            <img src="../../contents/img/Sbtet-Logo.png" class="img-responsive logoImg" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8 title">
+                                                        <h4 class="text-center hall_head" style="font-size: 16px!important;"><b>STATE BOARD OF TECHNICAL EDUCATION AND TRAINING TELANGANA</b></h4>
+                                                        <h4 class="text-center hall_head" style="font-size: 15px!important;"><b>HALL TICKET :: POLYCET - {{HallticketPolycetYear}} </b></h4>
+                                                    </div>
+                                                    <div class="col-md-2 logo">
+                                                        <div class="logo-image pull-right" style="padding:6px!important;">
+                                                            <img src="../../contents/img/telangana-logo-png.png" class="img-responsive logoImg" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="">
+
+                                                        <div class="col-md-12 tbl" style="padding:0px; ">
+                                                            <hr />
+                                                            <div class="col-md-10 pree-text top_tables">
+
+                                                                <div class="table-responsive table-custom-tables-tb">
+                                                                    <table class="table table-bordered  table-striped top-tables table-rounded" style="margin-bottom: 0px !important; border-left:0px!important;border-bottom:0px!important;">
+                                                                        <thead>
+                                                                            <tr class="cb-2">
+                                                                                <th width="23%" id="tbl_head1 " class="myead2"><b> Hallticket Number</b></th>
+                                                                                <th id="tbl_head2" class="myead2">: {{HallticketHallticketNumber}}</th>
+                                                                                <th width="20%" id="tbl_head1 " class="myead2"><b> </b></th>
+                                                                                <th width="26%" id="tbl_head2" class="myead2" style="font-weight:normal"></th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody class="">
+                                                                            <tr>
+                                                                                <td><b>Exam Date & Time</b></td>
+                                                                                <td colspan="3" style="font-weight:600">: {{HallticketExamDate}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Examination Centre </b></td>
+                                                                                <td colspan="3" style="font-weight:600">
+                                                                                    :  (Code: {{HallticketCentreCode}}) {{HallticketCentreName}}
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Student Name </b></td>
+                                                                                <td colspan="3">: {{HallticketStudentName}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Father's Name</b></td>
+                                                                                <td colspan="3">: {{HallticketFatherName}}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Category</b></td>
+                                                                                <td colspan="3">: {{HallticketCasteCategoryName}}</td>
+
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><b>Aadhaar Number</b></td>
+                                                                                <td>: {{HallticketmaskedAadhaar}}</td>
+                                                                                <td width="25%"><b>Registration Number</b></td>
+                                                                                <td>: {{HallticketRegistrationNumber}}</td>
+                                                                            </tr>
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 text-center" style="padding:0px;border-top:0px solid #000;">
+                                                                <img src="{{HallticketStudentPhoto}}" style="border: 2px solid #ddd;" class="photo_preview" accept="image/jpeg,image/jpg" />
+                                                                <img src="{{HallticketStudentSignature}}" style="border: 2px solid #ddd;" class="sign_preview" accept="image/jpeg,image/jpg" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 tbl" style="padding:0px;border:0px solid #000">
+                                                            <div class="table-responsive table-custom-tables-tb">
+                                                                <table class="table table-bordered  table-striped table-rounded">
+                                                                    <thead>
+                                                                        <tr>
+
+                                                                            <th colspan="1" rowspan="2" width="19%" id="tbl_head1"><b>Address</b></th>
+                                                                            <th colspan="5" rowspan="2" id="tbl_head1" style="font-weight: normal;">: {{HallticketStudentAddress}}</th>
+
+                                                                        </tr>
+
+                                                                    </thead>
+
+                                                                    <tbody class="">
+                                                                        <tr>
+                                                                            <td><b>Fee Ref No</b></td>
+                                                                            <td>: {{HallticketChallanNumber}}</td>
+                                                                            <td><b>Amount</b></td>
+                                                                            <td>: {{HallticketRegistrationAmount}}</td>
+                                                                            <td><b>Transaction Date</b></td>
+                                                                            <td>: {{Halltickettxndate}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><b>SSC Hallticket Number</b></td>
+                                                                            <td colspan="5">: {{HallticketTenthHallticketNumber}}</td>
+
+                                                                        </tr>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                            <hr />
+                                                            <div class="col-md-8" style="font-size:12px">
+
+                                                                <div style="font-size:12px">
+                                                                    Note :Candidate will not be allowed with incorrect data and photo on the
+                                                                    hall ticket to appear for the examination and is liable to be booked
+                                                                    under malpractice case of impersonation which attracts criminal case also.
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 pull-right"></div>
+                                                            <br />
+                                                            <br />
+                                                            <div class="col-md-8" style="font-size:12px">
+                                                            </div>
+                                                            <div class="col-md-4 text-center">
+                                                                <!--    <h6 style="float:right!important"><b>For Sectretary SBTET</b></h6>-->
+                                                                <!--<div class="mySpacer"></div>-->
+
+                                                                <img src="/contents/img/cesign.png" class="sign_preview" accept="image/jpeg,image/jpg" />
+                                                                <div style="font-size:12px;">Controller of Examinations</div>
+                                                            </div>
+
+                                                            <div class="col-md-12" style="padding-left:5px;">
+                                                                <div class="card terms_card">
+                                                                    <div style="font-size:12px!important;"><b> INSTRUCTIONS TO THE CANDIDATE :</b></div>
+                                                                    <div>
+                                                                        <b>1.	Hall Ticket issued to you is an important document. Please preserve it carefully till the admissions.</b><br />
+                                                                        <div class="textIndent">
+                                                                            <b>
+                                                                                2. 	Candidate shall arrive at the examination hall at least 1 hour before commencement of the examination (10 AM). This will enable the candidate to familiarize himself / herself with OMR response sheet.
+                                                                            </b>
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            3.	Candidates will not be allowed to enter the examination hall after 11:00 AM, once the examination has commenced.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            <b>
+                                                                                4.	Candidates are directed to carry the following to the examination hall (a). Good ball point pen (black), (b). Writing pad, (c). HB Pencils, (d). an Eraser, (e). Sharpener, (f). Aadhar Photo copy.
+                                                                            </b>
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            5.	Candidate should not bring log books, tables, calculators, tabs, cell phones, communicable / programmable electronic gadgets etc. into examination hall.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            6.	Candidates must remain seated in their allotted seats till the completion of examination. In no case they will be allowed to leave the examination hall till 1:30 PM. Before leaving, the candidates must return OMR response sheet to the invigilator.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            7.	Candidates are advised to go through the instructions given for marking answers and other entries on the OMR response sheet thoroughly.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            8.	POLYCET- Entrance Test is conducted for candidates who desires to take up admissions into (a) Diploma level programmes offered by SBTET in Government, Government-Aided, Private Un-Aided Polytechnics in Telangana State. (b)Diploma Courses offered by Professor Jayashankar  Telangana State Agricultural University (PJTSAU) both University and affiliated polytechnics in the Telangana State. (c) Diploma Course offered by PVNRTVU, Hyderabad. (d) Diploma courses offered by Sri. Konda Lakshman Telangana State Horticulture University (SKLTSHU).
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            9.	Two separate Ranks will be allotted for the candidate who appeared for POLYCET: (a) MPC Rank: will be issued to students who desires to take admission in to Diploma Courses in Polytechnics affiliated to SBTET and based on marks obtained in Maths, Physics and Chemistry. (b) MBiPC Rank: will be issued to the students who desires to take admission into courses offered by PJTSAU, SKLTSHU and PVNRTVU Diploma Courses based on marks obtained in Maths, Physics, Chemistry and Biology.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            10.	Candidates can opt to take admission into either SBTET Diploma Courses offered in Polytechnics (or) Courses offered by  PJTSAU / PVNRTVU / SKLTSHU.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            11.	No separate application form for admission is prescribed for the candidate desirous of seeking admission into Engineering (or) Non Engineering Diploma courses offered by SBTET in Polytechnics, the filled-in application for POLYCET itself will be treated as application for admission into courses offered in Polytechnics.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            12.	Separate admission notification will be issued for admission into various Diploma Courses offered by PJTSAU on the University web site http://www.pjtsau.edu.in & PVNRTVU on its website www.tsvu.nic.in and SKLTSHU on its website http://skltshu.ac.in.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            13.	The OMR response sheet should be handled carefully and the candidates are advised not to fold or wrinkle or tear the OMR sheet under any circumstances. Candidates are advised not to scribe or make any marks on the response sheet except marking answers other relevant data at appropriate places. Candidates shall note that they will not be given under any circumstances a second OMR sheet.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            14.	Candidate shall mark the correct answer in the OMR response sheet by shading in dark the appropriate circle with HB pencil. They should not use ball pen for this purpose under any circumstances.
+                                                                        </div>
+                                                                        <div class="textIndent">
+                                                                            15.	Candidates should not suffer from any of the following defects: a) Mentally retarded b) Blindness c) Deaf and Dumb d) Chronic Heart, Lung,  Kidney, Liver diseases e) Muscular dystrophy and if found the candidate forfeit chance to appear examination.
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button class="btn sub_btn  btn-success pull-right" ng-show="printbutton" style="margin: 20px !important;" ng-click="PrintHallticket()">
+                                                                Print
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Login Area -->
+            </div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+        </div>
+        <!--<footer class="bg-dark text-light ng-scope">-->
+
+            <!-- Start Footer Bottom -->
+            <!--<div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-9">
+                                <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                            </div>
+                            <div class="col-md-3 text-right link">
+                                <span class="float-right">Total Site Views: </span>
+                                <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+            <!-- End Footer Bottom -->
+        <!--</footer>-->
+    </div>
+    </div>
+
+</ui-view>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+
+
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary').addClass('active')
+                if ($item.addClass('btn-primary').addClass('active')) {
+                    ($item.addClass('active').addClass('active_btn'))
+                    allNextBtn = $('.nextBtn');
+                }
+                $item.addClass('active');
+                //$("p").addClass("cls_active");
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            //validation = true;
+            //$target.show();
+
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+            $(this).removeClass('active')
+            $("p").addClass("cls_active");
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+
+</script>
