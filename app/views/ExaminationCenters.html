@@ -1,0 +1,604 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+    .selectBox {
+        position: relative;
+    }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    thead > tr > th {
+        position: sticky;
+        top: 0px;
+    }
+
+
+
+
+    .txt_decorate {
+        text-transform: uppercase;
+    }
+
+    #checkboxesdistrict {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+        #checkboxesdistrict label {
+            display: block;
+        }
+
+            #checkboxesdistrict label:hover {
+                background-color: #1e90ff;
+            }
+
+    #checkboxesmandal label {
+        display: block;
+    }
+
+        #checkboxesmandal label:hover {
+            background-color: #1e90ff;
+        }
+
+    #checkboxesmandal {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+
+
+    .contain {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        /* margin-bottom: 12px; */
+        /* padding-top: 5px; */
+        cursor: pointer;
+        margin: 5px !important;
+        font-size: 15px !important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .contain input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #eee;
+        border: 1px solid #cac6c6;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .contain:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .contain input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .contain input:checked ~ .checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .contain .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .contain {
+        font-size: 13px !important;
+    }
+
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    a.ExportToExcel1 {
+        color: #1f497d;
+        text-decoration: none;
+        font-size: 18px;
+        padding-right: 10px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+</style>
+<div ng-controller="ExaminationCentersController">
+    <header id="home">
+
+        <!--  Start Navigation-->
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+            <div class="container">
+                <!-- Start Header Navigation-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                    </a>
+                    <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                </div>
+                <!--End Header Navigation
+                Collect the nav links, forms, and other content for toggling-->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                        <li><a><i class="fa fa-user" aria-hidden="true"></i> {{UserName}}</a></li>
+                        <li ng-click="ChangePassword()"><a><i class="user-login" aria-hidden="true"></i>Change Password</a></li>
+                        <li ng-click="logOut()"><a><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+
+        </nav>
+        <!-- End Navigation -->
+
+    </header>
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>Add or Update Examination Centres</h5>
+
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <div class="container">
+        <div class="col-md-12" ng-show="dcbackbutton">
+            <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+        <div class="col-md-12" ng-show="adminbackbutton">
+            <button class="btn  btn-primary back_button" ng-click="GoBack1()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card"  ng-hide="Card">
+            <form name="dataForm" novalidate>
+                <!--<div class="row">
+
+                    <div class="col-md-3 form-group">
+                        <label for="sel1">
+                            District:
+                        </label>
+                        <div class="multiselect">
+                            <div class="selectBox" ng-click="showdistrictCheckboxes()">
+                                <select class="form-control ">
+                                    <option ng-blur="closedistrictCheckbox()">Select District</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="checkboxesdistrict" style="max-height: 12em; overflow-y: scroll;">-->
+                <!--<label class="contain">
+                    <input type="checkbox" ng-click="toggleAlldistrict()" ng-disabled="districtdisable" ng-model="isAllSelecteddistricts" /><span class="checkmark"></span>Select All
+                </label>-->
+                <!--<label class="contain" ng-repeat="data in ExamDistrictsData">
+                                    <input type="checkbox" ng-model="data.selected" ng-disabled="districtdisable" ng-change="optionToggleddistrict(data.selected,data.DistrictID)"><span class="checkmark"></span>{{data.DistrictName}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4 form-group">
+                        <label for="sel2">
+                            Mandal:
+                        </label>
+                        <div class="multiselect">
+                            <div class="selectBox" ng-click="showmandalCheckboxes()">
+                                <select class="form-control ">
+                                    <option ng-blur="closemandalCheckbox()">Select Mandal</option>
+                                </select>
+                                <div class="overSelect"></div>
+                            </div>
+                            <div id="checkboxesmandal" style="max-height: 12em; overflow-y: scroll;">
+                                <label class="contain">
+                                    <input type="checkbox" ng-click="toggleAllmandal()" ng-model="isAllSelectedmandals" /><span class="checkmark"></span>Select All
+                                </label>
+                                <label class="contain" ng-repeat="data in MandalsData">
+                                    <input type="checkbox" ng-model="data.selected" ng-change="optionToggledmandal(data.selected,data.MandalID)"><span class="checkmark"></span>{{data.MandalName}}
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>-->
+
+
+                <div class="row">
+                    <div class="form-group col-md-9">
+                        <label>
+                            Examination Centre Name:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Centre Name" ng-model="ExaminationCentreName" required />
+
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>
+                            Centre Type:
+                        </label>
+                        <select class="form-control" id="State" ng-model="ExaminationCentreType"
+                                ng-options="data.ExaminationCentreTypeID as data.ExaminationCentreTypeName for data in ExamCentreTypeData">
+                            <option value="" selected>Select Centre Type</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>
+                            House Number / Building Name (Optional):
+                        </label>
+                        <input class="form-control" type="text" maxlength="100" placeholder="Enter House Number / Building Name" ng-model="HouseNo">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>
+                            Street Number / Name (Optional):
+                        </label>
+                        <input class="form-control" type="text" maxlength="100" placeholder="Enter Street Number / Name" ng-model="StreetNo">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>
+                            Locality (Optional):
+                        </label>
+                        <input class="form-control" type="text" maxlength="100" placeholder="Enter Locality" ng-model="Locality">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>
+                            Landmark:
+                        </label>
+                        <input class="form-control" type="text" maxlength="100" placeholder="Enter Landmark" ng-model="Landmark">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>
+                            Village / Town / City:
+                        </label>
+                        <input class="form-control" type="text" maxlength="100" placeholder="Enter Village / Town / City" ng-model="Village">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>
+                            District:
+                        </label>
+                        <select class="form-control" id="District" ng-model="DistrictID" ng-change="gEtMandals(DistrictID)"
+                                ng-options="data.DistrictID as data.DistrictName for data in ExamDistrictsData">
+                            <option value="" selected>Select District</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="form-group col-md-4" ng-if="UserTypeID==1">
+                        <label>
+                            District:
+                        </label>
+                        <select class="form-control" id="District" ng-model="DistrictID" ng-change="gEtAdmMandals(DistrictID)"
+                                ng-options="data.DistrictID as data.DistrictName for data in AdmExamDistrictsData">
+                            <option value="" selected>Select District</option>
+                        </select>
+                    </div>-->
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label>
+                            Mandal:
+                        </label>
+                        <select class="form-control" id="Mandal" ng-model="Mandal"
+                                ng-options="data.MandalID as data.MandalName for data in NewMandalsData">
+                            <option value="" selected>Select Mandal</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="form-group col-md-4" ng-if="UserTypeID==1"ng-change="Submit(Mandal)">
+                        <label>
+                            Mandal:
+                        </label>
+                        <select class="form-control" id="Mandal" ng-model="Mandal"
+                                ng-options="data.MandalID as data.MandalName for data in AdmNewMandalsData">
+                            <option value="" selected>Select Mandal</option>
+                        </select>
+                    </div>-->
+
+                    <div class="form-group col-md-4">
+                        <label>
+                            Postal Pincode:
+                        </label>
+                        <input class="form-control" type="text" maxlength="6" minlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" placeholder="Enter Pincode" ng-model="PinCode">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label>
+                            Centre Category:
+                        </label>
+                        <select class="form-control" id="Category" ng-model="ExaminationCentreCategoryID"
+                                ng-options="data.ExaminationCentreCategoryID as data.ExaminationCentreCategoryName for data in CentresCategoryData">
+                            <option value="" selected>Select Centre Category</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="font-weight-bold"> Urdu Medium:</label>
+                        <select class="form-control " ng-model="UrduMedium" name="Type" required>
+                            <option value="">Select Urdu Medium</option>
+                            <option value="true">Yes</option>
+                            <option value="false" selected>No</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label class="font-weight-bold"> Students per Bench:</label>
+                        <select class="form-control" ng-model="StudentsperBench"
+                                ng-options="data.Id as data.Id for data in Values">
+                            <option value="" selected>Select Students per Bench</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>
+                            Total Capacity:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Total Capacity" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="TotalCapacity" required />
+                    </div>
+                    <!--<div class="form-group col-md-3">
+                        <label>
+                            Centre Capacity One per Bench:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Capacity One per Bench" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="CentreCapacityOneperBench" required />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>
+                            Centre Capacity Two per Bench:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Capacity Two per Bench" maxlength="3" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="CentreCapacityTwoperBench" required />
+                    </div>-->
+                    <!--<div class="form-group col-md-2">
+                        <label>
+                            Priority Order:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Priority Order" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="PriorityOrder" required />
+                    </div>-->
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label>
+                            Cheif Superitendent Name:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Cheif Superitendent Name" ng-model="SuperitendentName" required />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>
+                            Mobile Number:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Mobile No." maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="SuperitendentMobile" required />
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label>
+                            Email:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Email" ng-model="SuperitendentEmail" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label>
+                            Assistant Cheif Superitendent Name:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Asst. Cheif Superitendent Name" ng-model="AsstSuperitendentName" required />
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label>
+                            Mobile Number:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Mobile No." maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="AsstMobile" required />
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label>
+                            Email:
+                        </label>
+                        <input class="form-control" type="text" placeholder="Enter Email" ng-model="AsstEmail" required />
+                    </div>
+                </div>
+                <div class="col-md-11">
+                    <div class="">
+                        <button type="submit" class="btn  btn-primary btn_top_margin  pull-right" ng-click="Submit()">Add <span class="fa fa-arrow-up heading_icon btn_icons"></span></button>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="">
+                        <button type="submit" class="btn  btn-danger btn_top_margin  pull-right" ng-click="Cancel()">Cancel<span class="fa  heading_icon btn_icons"></span></button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!--<div class="sm-spacer"></div>-->
+
+        <div class="col-md-12" style="padding:0px!important">
+            <div class="pull-right">
+                <a class="ExportToExcel1 pointer"
+                   id="ExportToExcel1" ng-click="DownloadtoExcel('#tblParent')">
+                    <i class="fa fa-file-excel-o"></i>
+                    Report
+                </a>
+            </div>
+            <div class="cl-details" ng-if="ExamCentresDataNew.length>0">
+                <h5 class="head_css">Examination Centres List</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12" ng-if="loading">
+                <div class="sm-spacer"></div>
+                <div style="width:100%;text-align:center;">
+                    <img src="../../../contents/img/loader1.gif" ng-if="loading" width="100" />
+                </div>
+            </div>
+
+            <div class="card" ng-show="nodata">
+                <div class="col-md-12 no-results" style="width:100%;text-align:center;">
+                    <img src="../../contents/img/Folder-Icon.svg" />
+                    <h2>No Data</h2>
+                </div>
+            </div>
+
+            <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="ExamCentresDataNew.length>0">
+                <table class="table table-bordered  table-striped table-rounded">
+                    <thead>
+                        <tr class="cb-1">
+                            <th class="text-center" style="width: 2%;">S.No</th>
+                            <th class="text-center">Centre Code</th>
+                            <th class="text-center">Centre Name</th>
+                            <th class="text-center">Students per Bench</th>
+                            <th class="text-center">Total Capacity</th>
+                            <th class="text-center">Superintendent Name</th>
+                            <th class="text-center">Superintendent Mobile</th>
+                            <th class="text-center">Priority Order</th>
+                            <th class="text-center">Active</th>
+                            <th class="text-center" style="width: 10%;">Action</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in ExamCentresDataNew" ng-click="openDetails(x)">
+
+                            <td class="text-center">{{$index + 1}}</td>
+                            <td class="text-center">{{data.CentreCode}}</td>
+                            <td class="text-center">{{data.CentreName}}</td>
+                            <td class="text-center">{{data.StudentsperBench}}</td>
+                            <td class="text-center">{{data.TotalCapacity}}</td>
+                            <td class="text-center">{{data.CheifSuperitendentName}}</td>
+                            <td class="text-center">{{data.CheifSuperitendentMobile}}</td>
+                            <td class="text-center">{{data.PriorityOrder}}</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-xs" disabled ng-show="data.Active == true">Yes</button>
+                                <button class="btn btn-danger btn-xs" disabled ng-show="data.Active == false">No</button>
+                            </td>
+                            <td class="text-center">
+                                <!--<a href="" class="btn btn-info btn-xs" ng-click="Edit(data.ExaminationCentreID)">-->
+                                <a href="" class="btn btn-info btn-xs" disabled ng-show="HideEdit">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="" class="btn btn-info btn-xs" ng-click="Edit(data.ExaminationCentreID)" ng-show="ShowEdit">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <a href="" class="btn btn-primary btn-xs" ng-click="View(data.ExaminationCentreID)">
+                                    <i class="fa fa-eye" style="font-size:14px"></i>
+                                </a>
+                                <a href="" class="btn btn-danger btn-xs" ng-click="Deletion(data.ExaminationCentreID)">
+                                    <i class="fa fa-trash-o" style="font-size:14px"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="width:100%;text-align:center;">
+                <!--<div class="loadingImg">
+                   <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+    <div class="sm-spacer"></div>
+    <div class="spacer"></div>
+
+    <footer class="bg-dark text-light ng-scope">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-9">
+                            <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                        </div>
+                        <div class="col-md-3 text-right link">
+                            <span class="float-right">Total Site Views: </span>
+                            <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

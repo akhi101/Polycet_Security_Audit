@@ -1,0 +1,345 @@
+﻿<style>
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    .table-custom-tables-tb .table-bordered .table-hover > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #337ab7;
+        font-size: 14px !important;
+        cursor: default !important;
+        font-family: 'Open Sans';
+    }
+
+    .tableinpt {
+        width: 100%;
+        box-shadow: none;
+        border: 0;
+        pointer-events: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        text-indent: 1px;
+        text-overflow: '';
+    }
+
+    .table-custom-tables-tb .table-bordered .table-hover > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #337ab7;
+        font-size: 14px !important;
+        cursor: default !important;
+        font-family: 'Open Sans';
+    }
+</style>
+
+<div ng-controller="UsersController">
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>Users Setting</h5>
+
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#1" data-toggle="tab" ng-click="tab1()">Add UserTypes</a>
+            </li>
+            <li>
+                <a href="#2" data-toggle="tab" ng-click="tab2()">Add Users</a>
+            </li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <div class="card">
+                    <form name="dataForm">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> UserType Name :</label>
+                                    <input type="text" placeholder="Enter User Type Name" maxlength="50" class="form-control" ng-model="UserTypeName" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-primary gr-button btn_top pull-left" ng-disabled="usertypeName" style="margin-top: 23px!important;" ng-click="addUserTypes(UserTypeName)">
+                                        Save
+                                        <span class="fa fa-arrow-down heading_icon btn_icons"></span>
+
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="sm-spacer"></div>
+                <div class="col-md-12" style="padding:0px!important">
+                    <div class="cl-details" ng-if="UserTypesDataTable.length>0">
+                        <h5 class="head_css">UserType List</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" ng-if="loading">
+                        <div class="sm-spacer"></div>
+                        <div style="width:100%;text-align:center;">
+                            <img src="../../../contents/img/loader1.gif" ng-if="loading" width="100" />
+                        </div>
+                    </div>
+
+                    <div class="card" ng-show="nodata">
+                        <div class="col-md-12 no-results" style="width:100%;text-align:center;">
+                            <img src="../../contents/img/Folder-Icon.svg" />
+                            <h2>No Data</h2>
+                        </div>
+                    </div>
+                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="UserTypesDataTable.length>0">
+                        <table class="table table-bordered  table-striped table-rounded">
+                            <thead>
+                                <tr class="cb-1">
+                                    <th class="" style="width: 2%;">S.No</th>
+                                    <th class="text-center" style="width: 40%;">UserType Name</th>
+                                    <th class="text-center" style="width: 30%;">Active Status</th>
+                                    <th class="text-center" style="width: 30%;">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in UserTypesDataTable">
+
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">
+                                        {{data.Role}}
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-success btn-xs" ng-show="data.Active == true">Yes</button>
+                                        <button class="btn btn-danger btn-xs" ng-show="data.Active == false">No</button>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-info btn-xs" ng-click="Edit(data.UserTypeID)">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a href="" class="btn btn-primary btn-xs" ng-click="View(data.UserTypeID)">
+                                            <i class="fa fa-eye" style="font-size:14px"></i>
+                                        </a>
+                                        <!--<a href="#" class="btn btn-danger btn-lg">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:100%;text-align:center;">
+                        <!--<div class="loadingImg">
+                           <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+                        </div>-->
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="2">
+                <div class="card">
+                    <form name="dataForm">
+                        <div class="row">
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> User Type :</label>
+                                    <select class="form-control " ng-model="UserType" name="UserType" ng-change="getUsers(UserType)" required>
+                                        <option value="" selected="selected">Select UserType</option>
+                                        <option value="{{data.UserTypeID}}" ng-repeat="data in UserTypesActiveData" class="">
+                                            {{data.Role}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">User Name :</label>
+                                    <input type="text" placeholder="Enter User Name" maxlength="50" class="form-control" ng-model="NewUserName" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Create Password :</label>
+                                    <input type="password" placeholder="Enter Password" class="form-control" maxlength="8" ng-model="CreatePass" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Confirm Password :</label>
+                                    <input type="password" placeholder="Enter Confirm Password" class="form-control" maxlength="8" ng-blur="CheckPassword()" ng-model="ConfirmPass" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Name of the User:</label>
+                                    <input type="text" placeholder="Enter Name of the User" maxlength="100" class="form-control" ng-model="NameofUser" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Mobile Number :</label>
+                                    <input type="text" placeholder="Enter Mobile Number " maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" ng-model="MobileNumber" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="font-weight-bold"> Email :</label>
+                                    <input type="text" placeholder="Enter Email" maxlength="100" class="form-control" ng-model="Email" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button class="btn btn-sm btn-primary gr-button btn_top pull-left" style="margin-top: 23px!important;" ng-click="addUser()">
+                                        Save
+                                        <span class="fa fa-arrow-down heading_icon btn_icons"></span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="sm-spacer"></div>
+                <div class="col-md-12" style="padding:0px!important">
+                    <div class="cl-details" ng-if="UserData.length>0">
+                        <h5 class="head_css">User Modules</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" ng-if="loading">
+                        <div class="sm-spacer"></div>
+                        <div style="width:100%;text-align:center;">
+                            <img src="../../../contents/img/loader1.gif" ng-if="loading" width="100" />
+                        </div>
+                    </div>
+
+                    <div class="card" ng-show="nodata">
+                        <div class="col-md-12 no-results" style="width:100%;text-align:center;">
+                            <img src="../../contents/img/Folder-Icon.svg" />
+                            <h2>No Data</h2>
+                        </div>
+                    </div>
+                    <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12" ng-if="UserData.length>0">
+                        <table class="table table-bordered  table-striped table-rounded">
+                            <thead>
+                                <tr class="cb-1">
+                                    <th class="" style="width: 2%;">S.No</th>
+                                    <th class="text-center">Role</th>
+                                    <th class="text-center">User Name</th>
+                                    <th class="text-center">Name of the User</th>
+                                    <th class="text-center">Mobile Number</th>
+                                    <th class="text-center">Active</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr style="background-color:#fff!important;cursor:pointer" ng-repeat="data in UserData">
+
+                                    <td class="text-center">{{$index + 1}}</td>
+                                    <td class="text-center">
+                                        {{data.Role}}
+                                    </td>
+                                    <td class="text-center">{{data.UserName}}</td>
+                                    <td class="text-center">{{data.FirstName}}</td>
+                                    <td class="text-center">{{data.UserMobile}}</td>
+                                    <td class="text-center">
+                                        <button class="btn btn-success btn-xs" ng-show="data.Active == true">Yes</button>
+                                        <button class="btn btn-danger btn-xs" ng-show="data.Active == false">No</button>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-info btn-xs" ng-click="editUserDetails(data.UserID)">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <a href="" class="btn btn-primary btn-xs" ng-click="viewUser(data.UserID)">
+                                            <i class="fa fa-eye" style="font-size:14px"></i>
+                                        </a>
+                                        <!--<a href="#" class="btn btn-danger btn-lg">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>-->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="width:100%;text-align:center;">
+                        <!--<div class="loadingImg">
+                           <img src="../../contents/img/loading2.gif" ng-show="loading" width="64" />
+                        </div>-->
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="sm-spacer"></div>
+    <div class="spacer"></div>
+
+    <footer class="bg-dark text-light ng-scope">
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-9">
+                            <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                        </div>
+                        <div class="col-md-3 text-right link">
+                            <span class="float-right">Total Site Views: </span>
+                            <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>

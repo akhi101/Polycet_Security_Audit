@@ -1,0 +1,181 @@
+﻿<!--<style>
+
+    element.style {
+    }
+
+    .modal-title {
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .modal-content {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 0.3rem;
+        outline: 0;
+        ;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    user agent stylesheet
+    div {
+        display: block;
+    }
+
+    /*  .modal-dialog {
+        position: relative;
+        width: auto;
+        margin: 0.5rem;
+        pointer-events: none;
+    }*/
+
+    body {
+        margin: 0;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+    }
+
+    .modal-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+    }
+
+    .modal-title {
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .close:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    .modal-header .close {
+        padding: 1rem;
+        margin: -1rem -1rem -1rem auto;
+    }
+
+    button.close {
+        padding: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+
+    .close {
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+    }
+
+    .modal-footer {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-secondary {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    form.white-popup-block .lost-pass-link {
+        float: left;
+        margin-top: 20px;
+    }
+</style>-->
+<!--<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" />-->
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Delete Confirmation</h2>
+        <button type="button" class="close" ng-click="closeModal2()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<strong class="course-label">District Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="DeleteData in DeleteData">
+                {{DeleteData.DistrictName}}
+            </span>
+            <hr>
+            <strong class="course-label">Mandal Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="DeleteData1 in DeleteData1">
+                {{DeleteData1.MandalName}}
+            </span>
+            <hr>-->
+
+            <strong class="course-label"> Centre Code:</strong>
+            <span class="text-muted word-break fl-right">
+                {{DeleteData[0].CentreCode}}
+            </span>
+            <hr>
+
+            <strong class="course-label"> Centre Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{DeleteData[0].CentreName}}
+            </span>
+            <hr>
+
+            <a title="Amount Amount" class="lost-pass-link">Are you sure to Delete Examination Centre?</a>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" ng-click="Delete(DeleteData)">Yes</button>
+        <button type="button" class="btn btn-primary" ng-click="closeModal2()">No</button>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">View Transfer Centre Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <div class="row">
+
+                <div class="col-sm-6 col-md-9">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+
+                            <strong class="course-label"> Hall Ticket Number:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{HallTicketNumber}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Student Name:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{StudentName}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> From Centre (Alloted):</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{FromCentre}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> To Centre (Transfer):</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ToCentre}}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="sm-spacer"></div>
+            <a title="Amount Amount" class="lost-pass-link" style="font-size:18px">Are you sure to Transfer Student Examination Centre?</a>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="ConfirmTransfer(ViewData)">Update</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

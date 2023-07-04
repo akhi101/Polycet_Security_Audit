@@ -1,0 +1,139 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">View Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <div class="row">
+
+                <div class="col-sm-6 col-md-9">
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <!--<strong class="course-label">State Name:</strong>
+                            <span class="text-muted word-break fl-right" ng-repeat="ViewData2[0] in ViewData2[0]">
+                                {{ViewData2[0].StateName}}
+                            </span>
+                            <hr>-->
+                            <strong class="course-label">District Name:</strong>
+                            <span class="text-muted word-break fl-right" ng-repeat="ViewData in ViewData">
+                                {{ViewData.DistrictName}},
+                            </span>
+                            <hr>
+                            <strong class="course-label">Mandal Name:</strong>
+                            <span class="text-muted word-break fl-right" ng-repeat="ViewData1 in ViewData1">
+                                {{ViewData1.MandalName}},
+                            </span>
+                            <hr>
+
+                            <strong class="course-label"> Centre Code:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].CentreCode}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label"> Centre Name:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].CentreName}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> House Number / Building Name:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].HouseNumber}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Street Number / Name:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].StreetName}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Locality:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].Locality}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Landmark:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].Landmark}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Village:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].Village}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label"> District:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].DistrictName}}
+                            </span>
+                            <hr>
+                            <strong class="course-label"> Mandal:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].MandalName}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label"> Postal pin code:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].Pincode}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label">Coordinator Name:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].CoordinatorName}}
+                            </span>
+                            <hr>
+
+
+                            <strong class="course-label">Coordinator Mobile Number:</strong>
+                            <span class="text-muted word-break fl-right">
+                                {{ViewData2[0].CoordinatorMobile}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label">Coordinator Email:</strong>
+                            <span class="text-muted fl-right">
+                                {{ViewData2[0].CoordinatorEmail}}
+                            </span>
+                            <hr>
+
+                            <strong class="course-label">Active Status:</strong>
+                            <p class="text-muted fl-right">
+
+                                <button class="btn btn-success btn-xs" ng-show="ViewData2[0].Active == true">Yes</button>
+                                <button class="btn btn-danger btn-xs" ng-show="ViewData2[0].Active == false">No</button>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <!--<button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData)">Update</button>-->
+        <button type="button" class="btn btn-primary" ng-click="closeModal()">Close</button>
+    </div>
+</div>
+

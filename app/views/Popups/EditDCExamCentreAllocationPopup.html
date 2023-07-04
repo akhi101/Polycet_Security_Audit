@@ -1,0 +1,76 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height:20px;
+    }
+</style>
+
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Allotment Status</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+
+            <strong class="course-label">Centre Code:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].CentreCode}}
+            </span>
+            <hr>
+            <strong class="course-label">Centre Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].CentreName}}
+            </span>
+            <hr>
+            <strong class="course-label">Mandal Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].StudentsperBench}}
+            </span>
+            <hr>
+            <strong class="course-label">Total Capacity:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].TotalCapacity}}
+            </span>
+            <hr>
+            <strong class="course-label">Cheif Superitendent Name:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].CheifSuperitendentName}}
+            </span>
+            <hr>
+            <strong class="course-label">Cheif Superitendent Mobile:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].CheifSuperitendentMobile}}
+            </span>
+            <hr>
+
+            <strong class="course-label">Priority Order:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].PriorityOrder}}
+            </span>
+            <hr>
+            <strong class="course-label">Alloted:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].Alloted}}
+            </span>
+            <hr>
+
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Allotment Status:</label>
+                <input type="checkbox" ng-model="EditData[0].OpenForAllotment" />
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData)">Update</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

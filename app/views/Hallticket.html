@@ -1,0 +1,628 @@
+﻿
+<div ng-controller="HallticketController">
+
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>Download Hall Ticket </h5>
+                <!--<ol class="breadcrumb">
+                    <li><a href="#/Dashboard"><i class="fa fa-dashboard"> Dashboard</i> </a></li>
+                    <li><a href="#/Dashboard/Diploma">Diploma Exam</a></li>
+                    <li><a href="#/Dashboard/Diploma/Hallticket">Download Hall Ticket</a></li>
+                </ol>-->
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <section class="content">
+        <div class="">
+            <!--<div class="col-md-12">
+                <button class="btn bck_btn"><a href="#/Dashboard/Diploma" class="backA"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</a></button>
+            </div>-->
+            <!--<div style="width:100%;text-align:center;">
+                <img src="../../../contents/img/student_img.jpg"  width="100" />
+            </div>-->
+          
+            <div style="width:100%;text-align:center;">
+                <img src="../../../contents/img/loading.gif" ng-if="loading" width="100" />
+            </div>
+            <div class="print_btn" ng-if="result">
+                <div class="col-md-12">
+                    <button class="btn pull-right btn-info" style="margin: 30px 0px 50px 0px;" ng-click="printMarksEntered()"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
+                </div>
+            </div>
+            <!-- this for regular-->
+            <div class="container" id="idtoDivPrint">
+                <div class="col-md-2 logo">
+                    <div class="logo-image" style="padding:6px!important;">
+                        <img src="../../contents/img/Sbtet-Logo.png" class="img-responsive logoImg" />
+                    </div>
+                </div>
+                <div class="col-md-8 title">
+                    <h4 class="text-center hall_head" style="font-size: 16px!important;"><b>STATE BOARD OF TECHNICAL EDUCATION AND TRAINING TELANGANA</b></h4>
+                    <h4 class="text-center hall_head" style="font-size: 15px!important;"><b>HALL TICKET :: POLYCET - 2022 </b></h4>
+                </div>
+                <div class="col-md-2 logo">
+                    <div class="logo-image pull-right" style="padding:6px!important;">
+                        <img src="../../contents/img/telangana-logo-png.png" class="img-responsive logoImg" />
+                    </div>
+                </div>
+                <!--<h4 class="text-center hall_head" style="font-size: 16px!important;"><b></b></h4>-->
+                <!--<div class="col-md-12" style="padding:0px;border:1px solid #ddd">
+        <div class="cl-details">
+            <h2>Payment Summary</h2>
+
+        </div>
+    </div>-->
+                <div class="">
+                  
+                    <div class="col-md-12 tbl" style="padding:0px; ">
+                        <hr />
+                        <div class="col-md-10 pree-text top_tables">
+
+                            <div class="table-responsive table-custom-tables-tb">
+                                <table class="table table-bordered  table-striped top-tables table-rounded" style="margin-bottom: 0px !important; border-left:0px!important;border-bottom:0px!important;">
+                                    <thead>
+                                        <tr class="cb-2">
+                                            <th width="23%" id="tbl_head1 " class="myead2"><b>Polycet Hallticket Number</b></th>
+                                            <th id="tbl_head2" class="myead2">: {{HallticketNumber}}</th>
+                                            <th width="20%" id="tbl_head1 " class="myead2"><b> </b></th>
+                                            <th width="26%" id="tbl_head2" class="myead2" style="font-weight:normal"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+                                        <tr>
+                                            <td><b>Exam Date & Time</b></td>
+                                            <td colspan="3" style="font-weight:600">: {{ExamDate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Examination Centre </b></td>
+                                            <td colspan="3" style="font-weight:600">
+                                                :  (Code: {{CentreCode}}){{CentreName}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Student Name </b></td>
+                                            <td colspan="3">: {{StudentName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Father's Name</b></td>
+                                            <td colspan="3">: {{FatherName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Category</b></td>
+                                            <td colspan="3">: {{CasteCategoryName}}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><b>Aadhaar Number</b></td>
+                                            <td>: {{AadharNumber}}</td>
+                                            <td><b>Registration Number</b></td>
+                                            <td>: {{RegistrationNumber}}</td>
+                                        </tr>
+
+
+                                        <!--<tr>
+                        <td><b>Registration Number</b></td>
+                        <td colspan="3">232000004</td>
+                    </tr>-->
+                                        <!--<tr class="cb-2">
+                        <td width="25%" id="tbl_head1 " class="myead2"><b>Total Fee Paid</b></td>
+                        <td width="25%" class="myead2">{{totalFeePaid}} ({{ReferenceNumber}})</td>
+                        <td width="25%" id="tbl_head1 " class="myead2"><b>Actual Attendance %</b></td>
+                        <td width="25%" id="tbl_head2" class="myead2">{{actualAttendance}}</td>
+                    </tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center" style="padding:0px;border-top:0px solid #000;">
+                            <img src="{{StudentPhoto}}" style="border: 2px solid #ddd;" class="photo_preview" accept="image/jpeg,image/jpg" />
+                            <img src="{{StudentSignature}}" style="border: 2px solid #ddd;" class="sign_preview" accept="image/jpeg,image/jpg" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 tbl" style="padding:0px;border:0px solid #000">
+                        <div class="table-responsive table-custom-tables-tb">
+                            <table class="table table-bordered  table-striped table-rounded">
+                                <thead>
+                                    <tr>
+
+                                        <th colspan="1" rowspan="2" width="19%" id="tbl_head1"><b>Address</b></th>
+                                        <th colspan="5" rowspan="2" id="tbl_head1" style="font-weight: normal; color: #000 !important;">: {{StudentAddress}}</th>
+
+                                    </tr>
+                                    <!--<tr>
+                    <th colspan="1" id="tbl_head1"><b>Scheme</b></th>
+                    <th colspan="1" id="tbl_head1"><b> Subject Code</b></th>
+                    <th colspan="1" id="tbl_head1"><b> Subject Name</b></th>
+                    <th colspan="1" id="tbl_head1"><b>Exam Date</b></th>
+                    <th colspan="1" id="tbl_head1"><b>Exam Time</b></th>
+                </tr>-->
+                                    <!--<tr class="cb-2">
+                    <th width="5%" id="tbl_head1" class="text-center"><b>S No</b></th>
+                    <th colspan="1" id="tbl_head1"><b>Scheme</b></th>
+                    <th id="tbl_head2" class="myead2 text-center" width="6%"><b>Year/Sem</b></th>
+                    <th class="text-center"><b>Subject Code</b></th>
+                    <th id="tbl_head2" class="text-center myead2"><b>Name of the Subject</b></th>
+                    <th width="11% !important;" id="tbl_head1" class="text-center"><b>Exam Date </b></th>
+                    <th width="20%" id="tbl_head1" class="text-center"><b>Exam Time</b></th>
+
+                </tr>-->
+                                </thead>
+
+                                <tbody class="">
+                                    <tr>
+                                        <td><b>Fee Ref No</b></td>
+                                        <td>: {{ChallanNumber}}</td>
+                                        <td><b>Amount</b></td>
+                                        <td>: {{RegistrationAmount}}</td>
+                                        <td><b>Transaction Date</b></td>
+                                        <td>: {{txndate}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>SSC Hallticket Number</b></td>
+                                        <td colspan="5">: {{TenthHallticketNumber}}</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--<div class="col-md-12" style="padding-left:5px;font-size: 13px;">
+        Certified that Sri/Kum/Smt <b>{{studentName}}</b> S/o D/o <b>{{studentFatherName}}</b> is candidate for the above mentioned examination.  Marks of Identification: (As per SSC)<br />
+        1)<br />
+        2)<br />
+
+        <br />
+    </div>-->
+                        <hr />
+                        <div class="col-md-8" style="font-size:12px">
+
+                            <div style="font-size:12px">
+                                Note :Candidate will not be allowed with incorrect data and photo on the
+                                hall ticket to appear for the examination and is liable to be booked
+                                under malpractice case of impersonation which attracts criminal case also.
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 pull-right"></div>
+                        <br />
+                        <br />
+                        <div class="col-md-8" style="font-size:12px">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <!--    <h6 style="float:right!important"><b>For Sectretary SBTET</b></h6>-->
+                            <!--<div class="mySpacer"></div>-->
+
+                            <div style="font-size:12px;">Controller of Examinations</div>
+                        </div>
+                    
+                        <div class="col-md-12" style="padding-left:5px;">
+                            <div class="card terms_card">
+                                <div style="font-size:12px!important;"><b> INSTRUCTIONS TO THE CANDIDATE :</b></div>
+                                <div>
+                                    <b>1. Hall Ticket issued to you is an important document. Please preserve it carefully till the admissions.</b><br />
+                                    <div class="textIndent">
+                                        <b>
+                                            2. Candidate shall arrive at the examination hall at least 1 hour before commencement of the examination. This will enable the candidate to
+                                            familiarize himself/herself with OMR response sheet.
+                                        </b>
+                                    </div>
+                                    <div class="textIndent">
+                                        3. Candidates will not be allowed to enter the examination hall after 11:00 AM, once the examination has commenced.
+                                    </div>
+                                    <div class="textIndent">
+                                        <b>
+                                            4. Candidates are directed to carry the following to the examination hall (a). Good ball point pen (black), (b). Writing pad (c). HB Pencils (d).
+                                            an Eraser (e). Sharpener.
+                                        </b>
+                                    </div>
+                                    <div class="textIndent">
+                                        5. Candidate should not bring log books, tables, calculators, tabs, cell phones, communicable/ programmable electronic gadgets etc. into
+                                        examination hall.
+                                    </div>
+                                    <div class="textIndent">
+                                        6. Candidates must remain seated in their allotted seats till the completion of examination. In no case they will be allowed to leave the
+                                        examination hall till 1:30 PM. Before leaving, the candidates must return OMR response sheet to the invigilator.
+                                    </div>
+                                    <div class="textIndent">
+                                        7. Candidates are advised to go through the instructions given for marking answers and other entries on the OMR response sheet
+                                        thoroughly.
+                                    </div>
+                                    <div class="textIndent">
+                                        8. POLYCET- Entrance Test is conducted for candidates who desires to take up admissions into (a) Diploma level programmes offered by
+                                        SBTET in Government, Government-Aided, Private Un-Aided Polytechnics in Telangana State. (b) Diploma Courses offered by Professor
+                                        Jayashankar Telangana State Agricultural University (PJTSAU) both University and affiliated polytechnics in the Telangana State. (c)
+                                        Diploma Course offered by PVNRTVU, Hyderabad. (d) Tentatively the 6 Years integrated (2+4) undergraduate courses offered by Rajiv
+                                        Gandhi University of Knowledge Technologies, Basara (RGUKT) (e) Diploma courses offered by Sri. Konda Lakshman Telangana State
+                                        Horticulture University (SKLTSHU)
+                                    </div>
+                                    <div class="textIndent">
+                                        9. Two separate Ranks will be allotted for the candidate who appeared for POLYCET: (a) MPC Rank: will be issued to students who desires
+                                        to take admission in to Diploma Courses in Polytechnics affiliated to SBTET and 6 Years integrated under graduate courses offered by
+                                        RGUKT based on marks obtained in Maths, Physics and Chemistry. (b) MBiPC Rank: will be issued to the students who desires to take
+                                        admission in to courses offered by PJTSAU, SKLTSHU and PVNRTVU Diploma Courses based on marks obtained in Maths, Physics,
+                                        Chemistry and Biology.
+                                    </div>
+                                    <div class="textIndent">
+                                        10. Candidates can opt to take admission in to either SBTET Diploma Courses offered in Polytechnics (or) Courses offered by PJTSAU/
+                                        PVNRTVU/ SKLTSHU /6 Years integrated (2+4) undergraduate courses offered by RGUKT (Tentatively).
+                                    </div>
+                                    <div class="textIndent">
+                                        11. No separate application form for admission is prescribed for the candidate desirous of seeking admission in to Engineering (or) NonEngineering Diploma courses offered by SBTET in Polytechnics, the filled-in application for POLYCET itself will be treated as application
+                                        for admission in to courses offered in Polytechnics.
+                                    </div>
+                                    <div class="textIndent">
+                                        12. Separate admission notification will be issued for admission into various Diploma Courses offered by PJTSAU on the University website
+                                        http://www.pjtsau.edu.in & PVNRTVU on its website www.tsvu.nic.in & RGUKT on its website https://www.rgukt.ac.in and SKLTSHU on its
+                                        website http://skltshu.ac.in.
+                                    </div>
+                                    <div class="textIndent">
+                                        13. The OMR response sheet should be handled carefully and the candidates are advised not to fold or wrinkle or tear the OMR sheet under
+                                        any circumstances. Candidates are advised not to scribe or make any marks on the response sheet except marking answers other
+                                        relevant data at appropriate places. Candidates shall note that they will not be given under any circumstances a second OMR sheet.
+                                    </div>
+                                    <div class="textIndent">
+                                        14. Candidate shall mark the correct answer in the OMR response sheet by shading in dark the appropriate circle with HB pencil. They should
+                                        not use ball pen for this purpose under any circumstances.
+                                    </div>
+                                    <div class="textIndent">
+                                        15. Candidates should not suffer from any of the following defects: a) Mentally retarded b) Blindness c) Deaf and Dumb d) Chronic Heart,
+                                        Lung, Kidney, Liver diseases e) Muscular dystrophy and if found the candidate forfeit chance to appear examination
+                                    </div>
+                                    <!--<div class="textIndent">
+                    15.
+                </div>-->
+                                    <!--<div class="textIndent" style="text-transform: uppercase;">
+                    <b>15.Candidates Are Requested to crosscheck the Examination Dates with time-table Dates and attend Examination as per the time-table.</b>
+                </div>-->
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--<div class="col-md-12" style="padding-left:5px;">
+    <div class="card terms_card">
+        <div style="font-size:12px!important;"><b> Instructions :</b></div>
+        <div class="textIndent">
+            <b>1. SBTET has rationalized subjects of C-09, C-14, C-16 and C-16S Schemes in to C18 Scheme Subjects. Students has to appear the examination in the newly mapped subjects in C18 Scheme duly downloading the syllabus of the newly mapped subjects from <a>sbtet.telangana.gov.in</a></b><br />
+        </div>
+        <div class="textIndent">
+            <b>2. The student and Head of Section should cross check the mapped subjects as per the SBTET notification.</b>
+        </div>
+        <div class="textIndent">
+            <b>3.  Hall-ticket issued to you is an important document preserve carefully upto declaration of the final result.</b>
+        </div>
+        <div class="textIndent">
+            4. No candidate will be allowed to enter the examination hall without proper hall-ticket
+        </div>
+        <div class="textIndent">
+            5.  Candidate shall arrive at the examination center at least 30 minutes before the commencement of the examination. While entering the
+            examination hall every student shall deposit all books, personal belongings etc at counter provided.
+        </div>
+        <div class="textIndent">
+            6.  No printed / written material, in any form, shall be taken inside the exam hall, other than hall ticket.
+        </div>
+        <div class="textIndent">
+            7.  Every student shall cooperate while pockets are being checked or frisked.
+        </div>
+        <div class="textIndent">
+            8.  Candidates will not be allowed to enter the examination hall, after half-an-hour of the commencement of examination.
+        </div>
+        <div class="textIndent">
+            9.  Candidates will not be allowed to leave the examination hall before one hour from the commencement of examination. After one hour,
+            if any candidate wishes to leave or wants to attend any emergency needs, the candidate must return his / her answer
+            script along with question paper to the Invigilator.
+        </div>
+        <div class="textIndent">
+            10.  Candidates are advised to go through the instructions given on Answer Booklet or OMR Bar Code Sheet before starting answering.
+        </div>
+        <div class="textIndent">
+            11.  Candidates should not write any matter inside the Answer Booklet which may lead to the identification of the Candidate or institution.
+            If he /she do so, he / she will be booked under malpractice. No color sketch pens are to be used unless specified question.
+        </div>
+        <div class="textIndent">
+            12.Candidates should carry their own Scientific Calculators, Pens, Pencils and required drawing instruments.
+        </div>
+        <div class="textIndent">
+            13.Candidates will not be allowed with Cell Phones, Organizers, PDA’s and palmtops or any other Electronic
+            Gadgets, etc.
+        </div>
+        <div class="textIndent">
+            14.Every student shall follow the regulations during examinations, failing which he / she will be booked under malpractice case.
+        </div>
+        <div class="textIndent">
+            <b>15.Candidates are advised to check all the pages in the ’<b>16/24</b>-page Answer Booklet’ supplied to him / her. All answers are to be written within the given booklet only.</b>
+        </div>
+        <div class="textIndent">
+            <b>16.No additional sheets will be supplied under any circumstances.Do Not write any matter on the Question Paper, to avoid malpractice.</b>
+        </div>-->
+                        <!--<div class="textIndent">
+        15.
+    </div>-->
+                        <!--<div class="textIndent" style="text-transform: uppercase;">
+                <b>17.Candidates Are Requested to crosscheck the Examination Dates with time-table Dates and attend Examination as per the time-table.</b>
+            </div>
+        </div>
+    </div>-->
+                    </div>
+                    </div>
+            </div>
+            <!-- this for backlog-->
+            <div class="container" id="idtoDivPrint" ng-if="result && Student.id == 2">
+                <div class="col-md-2 logo">
+                    <div class="logo-image" style="padding:6px!important;">
+                        <img src="../../contents/img/big-logo.png" class="img-responsive logoImg" />
+                    </div>
+                </div>
+                <div class="col-md-10 title">
+                    <h4 class="text-center hall_head" style="font-size: 16px!important;"><b>STATE BOARD OF TECHNICAL EDUCATION AND TRAINING - TELANGANA</b></h4>
+                    <h4 class="text-center hall_head" style="text-transform: uppercase;font-size: 15px!important;"><b>HALL TICKET - DIPLOMA EXAMINATIONS - {{bacexamMonthYear}}</b></h4>
+                </div>
+
+                <!--<h4 class="text-center hall_head" style="font-size: 16px!important;"><b></b></h4>-->
+                <!--<div class="col-md-12" style="padding:0px;border:1px solid #ddd">
+                    <div class="cl-details">
+                        <h2>Payment Summary</h2>
+
+                    </div>
+                </div>-->
+                <div class="">
+
+                    <div class="col-md-12 tbl" style="padding:0px;border:1px solid #ddd">
+
+                        <div class="col-md-10 pree-text top_tables">
+
+                            <div class="table-responsive table-custom-tables-tb">
+                                <table class="table table-bordered  table-striped top-tables table-rounded" style="margin-bottom: 0px !important; border-left:0px!important;border-bottom:0px!important;">
+                                    <thead>
+                                        <tr class="cb-2">
+                                            <th width="23%" id="tbl_head1 " class="myead2"><b>PIN</b></th>
+                                            <th id="tbl_head2" class="myead2">{{studPin}}</th>
+                                            <!--<th width="10%" id="tbl_head1 " class="myead2"><b>Scheme</b></th>
+                                            <th width="26%" id="tbl_head2" class="myead2">{{studentScheme}}</th>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody class="">
+
+                                        <tr>
+                                            <td><b>Name</b></td>
+                                            <td colspan="3">{{studentName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Father Name</b></td>
+                                            <td colspan="3">{{studentFatherName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Branch</b></td>
+                                            <td colspan="3">{{studentBranch}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Examination Center</b></td>
+                                            <td colspan="3">{{studentExamCenterName}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Downloaded Date</b></td>
+                                            <td colspan="3">{{DownloadTime}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-2 text-center" style="padding:0px;">
+                            <img ng-src="{{Photo}}" class="photo-img" style="border: 2px solid #ddd;" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 tbl" style="padding:0px;border:1px solid #ddd">
+                        <div class="table-responsive table-custom-tables-tb">
+                            <table class="table table-bordered  table-striped table-rounded">
+                                <thead>
+                                    <tr>
+                                        <th colspan="1" rowspan="2" style="width: 1%;" ng-show="isBackLog"><input type="checkbox" ng-model="allItemsSelected" ng-checked="allItemsSelectedthing" ng-change="selectAll()" ng-show="Student.id == 2"></th>
+                                        <th colspan="1" rowspan="2" width="5%" id="tbl_head1"><b>S No</b></th>
+                                        <th colspan="1" rowspan="2" id="tbl_head2" class="myead2"><b>Year/Sem</b></th>
+                                        <th colspan="1" rowspan="2" id="tbl_head1"><b> Scheme</b></th>
+                                        <th colspan="1" rowspan="2" id="tbl_head1"><b>Backlog Subject</b></th>
+                                        <th colspan="5" style="text-align: center;" id="tbl_head1"><b>To appear in</b></th>
+                                        <th colspan="1" width="10%" rowspan="2" id="tbl_head1" class="text-center"><b>Invigilator Sign</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1" id="tbl_head1"><b>Scheme</b></th>
+                                        <th colspan="1" id="tbl_head1"><b> Subject Code</b></th>
+                                        <th colspan="1" id="tbl_head1"><b> Subject Name</b></th>
+                                        <th colspan="1" id="tbl_head1"><b>Exam Date</b></th>
+                                        <th colspan="1" id="tbl_head1"><b>Exam Time</b></th>
+                                    </tr>
+                                    <!--<tr class="cb-2">
+                                        <th width="5%" id="tbl_head1" class="text-center"><b>S No</b></th>
+                                        <th colspan="1" id="tbl_head1"><b>Scheme</b></th>
+                                        <th id="tbl_head2" class="myead2 text-center" width="6%"><b>Year/Sem</b></th>
+                                        <th class="text-center"><b>Subject Code</b></th>
+                                        <th id="tbl_head2" class="text-center myead2"><b>Name of the Subject</b></th>
+                                        <th width="11% !important;" id="tbl_head1" class="text-center"><b>Exam Date </b></th>
+                                        <th width="20%" id="tbl_head1" class="text-center"><b>Exam Time</b></th>
+
+                                    </tr>-->
+                                </thead>
+
+                                <tbody class="">
+
+                                    <tr ng-repeat-start="(key, val) in studentSubData">
+                                        <td rowspan="{{val.Subjects.length+1}}" style="text-align: center" ng-show="isBackLog"><input type="checkbox" ng-model="x.isChecked" ng-checked="x.isChecked" ng-change="selectEntity(x)" ng-show="Student.id == 2"></td>
+                                        <td class="bott_border" rowspan="{{val.Subjects.length+1}}">{{$index+1}}</td>
+                                        <td class="bott_border" rowspan="{{val.Subjects.length+1}}">{{val.Semester}}</td>
+                                        <td class="bott_border" rowspan="{{val.Subjects.length+1}}">{{val.oldscheme}}</td>
+                                    </tr>
+                                    <tr ng-repeat-end ng-repeat="value in val.Subjects">
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.bacSubjectCode}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.scheme}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.SubjectCode}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.SubjectName}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.ExamDate}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" style="padding: 11.2px;">{{value.ExamTime}}</td>
+                                        <td colspan="1" rowspan="{{value.Subjects.length+1}}" class="bott_border"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12" style="padding-left:5px;font-size: 13px;">
+                            Certified that Sri/Kum/Smt <b>{{studentName}}</b> S/o D/o <b>{{studentFatherName}}</b> is candidate for the above mentioned examination.  Marks of Identification: (As per SSC)<br />
+                            1)<br />
+                            2)<br />
+
+                            <br />
+                        </div>
+                        <br />
+                        <div class="col-md-6" style="font-size:12px">
+
+                            <div style="font-size:12px">Signature of the Candidate</div>
+                        </div>
+                        <div class="col-md-6 pull-right">
+                            <!--    <h6 style="float:right!important"><b>For Sectretary SBTET</b></h6>-->
+                            <!--<div class="mySpacer"></div>-->
+
+                            <div style="font-size:12px;float:right!important">Signature of the Head Of Section</div>
+                        </div>
+                        <div class="col-md-12" style="padding-left:5px;">
+                            <div class="card terms_card">
+                                <div style="font-size:12px!important;"><b> Instructions :</b></div>
+                                <div>
+                                    <b>1. Hall-ticket issued to you is an important document preserve carefully up to declaration of the final result.  No candidate will be allowed to enter the examination hall without proper hall-ticket.</b><br />
+                                    <div class="textIndent"><b>2. CANDIDATES ARE REQUESTED TO CROSSCHECK THE EXAMINATION DATES WITH TIME-TABLE DATES AND ATTEND EXAMINATION AS PER THE TIME TABLE.</b></div>
+                                    <div class="textIndent">
+                                        3.	Candidate shall arrive at the examination center at least 30 minutes before the commencement of the examination.
+                                    </div>
+                                    <div class="textIndent">
+                                        <b>  4.  CANDIDATES WILL NOT BE ALLOWED IN EXMINATION HALL AFTER COMMENCEMET OF EXMINATION UNDER ANY CIRCUMSTANCES.  </b>
+                                    </div>
+                                    <div class="textIndent">
+                                        5.	No printed / written material, in any form, shall be taken inside the exam hall, other than hall ticket.
+                                    </div>
+                                    <div class="textIndent">
+                                        6.	Every student shall cooperate while pockets are being checked.
+                                    </div>
+                                    <div class="textIndent">
+                                        7.	Candidates will not be allowed to leave the examination hall till the examination is completed.
+                                    </div>
+                                    <div class="textIndent">
+                                        8.	Candidates are advised to go through the instructions given on Answer Booklet or OMR Bar Code Sheet before starting answering.
+                                    </div>
+                                    <div class="textIndent">
+                                        9.	Candidates should not write any matter inside the Answer Booklet which may lead to the identification of the Candidate or institution.
+                                        If he /she do so, he / she will be booked under malpractice. No color sketch pens are to be used unless specified question.
+                                    </div>
+                                    <div class="textIndent">
+                                        10.	Candidates should carry their own Scientific Calculators, Pens, Pencils and required drawing instruments.
+                                    </div>
+                                    <div class="textIndent">
+                                        11.	Candidates will not be allowed with Cell Phones, Organizers, PDA’s and palmtops or any other Electronic Gadgets, etc.
+                                    </div>
+                                    <div class="textIndent">
+                                        12.	Every student shall follow the regulations during examinations, failing which he / she will be booked under malpractice case.
+                                    </div>
+                                    <div class="textIndent">
+                                        13.	Candidates are advised to check all the pages in the ’/8/16/24-page Answer Booklet’ supplied to him / her. All answers are to be written within the given booklet only.
+                                    </div>
+                                    <div class="textIndent">
+                                        14.	No additional sheets will be supplied under any circumstances. Do Not write any matter on the Question Paper, to avoid malpractice.
+                                    </div>
+                                    <!--<div class="textIndent">
+                                        15.
+                                    </div>-->
+                                    <!--<div class="textIndent" style="text-transform: uppercase;">
+                                        <b>15.Candidates Are Requested to crosscheck the Examination Dates with time-table Dates and attend Examination as per the time-table.</b>
+                                    </div>-->
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--<div class="col-md-12" style="padding-left:5px;">
+                            <div class="card terms_card">
+                                <div style="font-size:12px!important;"><b> Instructions :</b></div>
+                                <div class="textIndent">
+                                    <b>1. SBTET has rationalized subjects of C-09, C-14, C-16 and C-16S Schemes in to C18 Scheme Subjects. Students has to appear the examination in the newly mapped subjects in C18 Scheme duly downloading the syllabus of the newly mapped subjects from <a>sbtet.telangana.gov.in</a></b><br />
+                                </div>
+                                <div class="textIndent">
+                                    <b>2. The student and Head of Section should cross check the mapped subjects as per the SBTET notification.</b>
+                                </div>
+                                <div class="textIndent">
+                                    <b>3.  Hall-ticket issued to you is an important document preserve carefully upto declaration of the final result.</b>
+                                </div>
+                                <div class="textIndent">
+                                    4. No candidate will be allowed to enter the examination hall without proper hall-ticket
+                                </div>
+                                <div class="textIndent">
+                                    5.  Candidate shall arrive at the examination center at least 30 minutes before the commencement of the examination. While entering the
+                                    examination hall every student shall deposit all books, personal belongings etc at counter provided.
+                                </div>
+                                <div class="textIndent">
+                                    6.  No printed / written material, in any form, shall be taken inside the exam hall, other than hall ticket.
+                                </div>
+                                <div class="textIndent">
+                                    7.  Every student shall cooperate while pockets are being checked or frisked.
+                                </div>
+                                <div class="textIndent">
+                                    8.  Candidates will not be allowed to enter the examination hall, after half-an-hour of the commencement of examination.
+                                </div>
+                                <div class="textIndent">
+                                    9.  Candidates will not be allowed to leave the examination hall before one hour from the commencement of examination. After one hour,
+                                    if any candidate wishes to leave or wants to attend any emergency needs, the candidate must return his / her answer
+                                    script along with question paper to the Invigilator.
+                                </div>
+                                <div class="textIndent">
+                                    10.  Candidates are advised to go through the instructions given on Answer Booklet or OMR Bar Code Sheet before starting answering.
+                                </div>
+                                <div class="textIndent">
+                                    11.  Candidates should not write any matter inside the Answer Booklet which may lead to the identification of the Candidate or institution.
+                                    If he /she do so, he / she will be booked under malpractice. No color sketch pens are to be used unless specified question.
+                                </div>
+                                <div class="textIndent">
+                                    12.Candidates should carry their own Scientific Calculators, Pens, Pencils and required drawing instruments.
+                                </div>
+                                <div class="textIndent">
+                                    13.Candidates will not be allowed with Cell Phones, Organizers, PDA’s and palmtops or any other Electronic
+                                    Gadgets, etc.
+                                </div>
+                                <div class="textIndent">
+                                    14.Every student shall follow the regulations during examinations, failing which he / she will be booked under malpractice case.
+                                </div>
+                                <div class="textIndent">
+                                    <b>15.Candidates are advised to check all the pages in the ’<b>16/24</b>-page Answer Booklet’ supplied to him / her. All answers are to be written within the given booklet only.</b>
+                                </div>
+                                <div class="textIndent">
+                                    <b>16.No additional sheets will be supplied under any circumstances.Do Not write any matter on the Question Paper, to avoid malpractice.</b>
+                                </div>-->
+                        <!--<div class="textIndent">
+                            15.
+                        </div>-->
+                        <!--<div class="textIndent" style="text-transform: uppercase;">
+                                    <b>17.Candidates Are Requested to crosscheck the Examination Dates with time-table Dates and attend Examination as per the time-table.</b>
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <!--<div class="col-md-12" style="padding-left:5px;">
+                <div class="terms_card">
+                    <div>
+                        <b>
+                            Important :
+                            The candidates are requested to carry Photo ID cards such as Aadhaar,
+                            Voter ID, Driving Licence, PAN card etc issued by Government.
+                            Without which they will not be allowed into the examination hall.
+                        </b>
+                    </div>
+                </div>
+            </div>-->
+            <div class="mySpacer bottom"></div>
+            <div class="print_btn" ng-if="result">
+                <div class="col-md-12">
+                    <button class="btn pull-right btn-info" style="margin: 30px 0px 50px 0px;" ng-click="printMarksEntered()"><i class="fa fa-print" aria-hidden="true"></i> Print</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>

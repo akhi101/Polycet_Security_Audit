@@ -1,0 +1,55 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">View Examination Dates</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+
+
+            <strong class="course-label">Polycet Year:</strong>
+            <span class="text-muted word-break fl-right">
+                {{ViewData.PolycetYear}}
+            </span>
+            <hr>
+            <strong class="course-label">Examination Date(dd/mm/yyyy):</strong>
+            <span class="text-muted word-break fl-right">
+                {{ViewData.ExaminationDate | date:"dd-MM-yyyy"}}
+            </span>
+            <hr>
+            <strong class="course-label">Examination Day:</strong>
+            <span class="text-muted word-break fl-right">
+                {{ViewData.ExaminationDay}}
+            </span>
+            <hr>
+            <strong class="course-label">Examination Time:</strong>
+            <span class="text-muted word-break fl-right">
+                {{ViewData.ExaminationTime}}
+            </span>
+            <hr> 
+
+            <strong class="course-label">Active:</strong>
+            <span class="text-muted word-break fl-right">
+                {{ViewData.Active ? "Yes" : "No"}}
+            </span>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿<div class="modal-header ">
+    <h4 class="modal-title text-center">
+        <b>Attendance List</b>
+        <!--<button type="button" class="btn btn-circle btn-close btn-modal-close" ng-click="closeModal()">&times;</button>-->
+    </h4>
+</div>
+<div class="modal-body">
+    <!--<b class="text-success">Present with SG List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='2'"> {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}</span>-->
+    
+    <br><b class="text-danger">Absent List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='3'"> {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}</span>
+    
+    <br><b class="text-danger">Malpractice List :</b>
+    <span ng-repeat="data in AbsentList" ng-show="data.Attendance=='4'">
+        {{data.HallticketNumber}} {{$last ? '' : ($index==data.length-1) ? ',' : ', '}}
+
+    </span>
+    <div class="sm-spacer"></div>
+    <a title="" class="lost-pass-link">Are you sure to Save Attendance?</a>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success pull-right" ng-click="SaveData()">
+        <span ng-show="!btnLoading1">Proceed</span>
+        <span ng-show="btnLoading1"><div class="loader"> </div></span>
+    </button>
+    <button type="button" class="btn btn-default pull-left" ng-click="closeModal()">Cancel</button>
+</div>

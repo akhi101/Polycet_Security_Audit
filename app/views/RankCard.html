@@ -1,0 +1,1285 @@
+﻿<style>
+    .carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+        display: block;
+        max-width: 100%;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+    .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border-bottom-width: 2px;
+        position: sticky;
+        top: 0px;
+        background-color: #1F497D;
+        padding: 0px 10px;
+        color: #fff;
+        font-size: 13px;
+    }
+    h5.text-center.subhead_text {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    </style >
+   <style >
+    .card1 {
+        background: #fff;
+        min-height: 50px;
+        box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+        position: relative;
+        margin-bottom: 20px;
+        transition: .5s;
+        border-radius: 0;
+        display: inline-block;
+        width: 100%;
+    }
+
+    .card1 {
+        border: 1px solid #ced4da;
+        width: 100%;
+        float: left;
+        padding: 20px;
+        margin: 10px 0px 10px 0px;
+    }
+
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+
+
+    .btn_margin {
+        margin-top: 23px;
+    }
+
+    .padding-0 {
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .btn-mobile {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<style>
+    legend {
+        display: block;
+        width: auto;
+        padding: 0;
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: inherit;
+        color: #333;
+        border: 0 !important;
+        /* border-bottom: 1px solid #e5e5e5; */
+    }
+
+    element.style {
+    }
+
+    fieldset {
+        /* min-width: 0; */
+        /* padding: 0; */
+        /* margin: 0; */
+        /* border: 0; */
+    }
+
+    fieldset {
+        /* padding: 0.35em 0.625em 0.75em; */
+        /* margin: 0 2px; */
+        /* border: 1px solid silver; */
+    }
+
+    * {
+        /* padding: 0; */
+        /* margin: 0; */
+    }
+
+    * {
+        /* -webkit-box-sizing: border-box; */
+        -moz-box-sizing: border-box;
+        /* box-sizing: border-box; */
+    }
+
+    fieldset {
+        display: block;
+        margin-inline-start: 2px;
+        margin-inline-end: 2px;
+        padding-block-start: 0.35em;
+        padding-inline-start: 0.75em;
+        padding-inline-end: 0.75em;
+        padding-block-end: 0.625em;
+        min-inline-size: min-content;
+        border-width: 2px;
+        border-style: groove;
+        border-color: rgb(192, 192, 192);
+        border-image: initial;
+        border-radius: 10px;
+        margin: 20px 0px;
+    }
+
+    form.white-popup-block label {
+        float: left;
+        color: #1F497D;
+        font-weight: bold;
+    }
+
+    .sub_btn {
+        margin-top: 35px !important;
+    }
+
+    .pre-text {
+        padding: 5px 10px 5px 10px
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .breadcrumb-header {
+            margin-top: 95px;
+        }
+
+        nav.navbar.bootsnav .navbar-collapse.collapse.in {
+            margin-bottom: 0px;
+        }
+
+      /*  nav.navbar.bootsnav ul.nav > li > a {
+            margin: 20px 10px;
+            cursor: pointer;
+            border: 2px solid #fff !important;
+            padding: 10px 10px !important;
+        }*/
+
+
+        fieldset {
+            min-inline-size: auto;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a, .with-nav-tabs.panel-primary .nav-tabs > li > a:hover, .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            /* color: #fff; */
+
+            width: 100% !important;
+            border-radius: 5px;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -1px;
+            width: 100%;
+            margin: 5px 0px;
+        }
+
+        .panel-primary {
+            border-color: #337ab7;
+            margin-top: 20px;
+        }
+    }
+    /********************************************************************/
+    /*** PANEL PRIMARY ***/
+    .with-nav-tabs.panel-primary .nav-tabs > li > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+        /*color: #fff;*/
+        color: #fff;
+        background-color: #337ab7;
+        /*min-height: 62px;*/
+        font-size: 13px;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+            background-color: #3071a9;
+            border-color: transparent;
+        }
+
+
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu {
+        background-color: #428bca;
+        border-color: #3071a9;
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > li > a:focus {
+                background-color: #3071a9;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.dropdown .dropdown-menu > .active > a:focus {
+            background-color: #4a9fe9;
+        }
+
+    /********************************************************************/
+    .panel.with-nav-tabs .panel-heading {
+        padding: 5px 5px 0 5px;
+        background-color: #fff;
+    }
+
+    .panel.with-nav-tabs .nav-tabs {
+        border-bottom: none;
+    }
+
+    .panel.with-nav-tabs .nav-justified {
+        margin-bottom: -1px;
+    }
+
+
+    .verify_margin {
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+
+    .test {
+        background-color: #5cb85c !important;
+        color: #fff !important;
+    }
+
+    .clr_danger {
+        background-color: #d9534f !important;
+        color: #fff !important;
+    }
+
+
+    a {
+        cursor: pointer;
+    }
+
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+    .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+        color: #fff !important;
+        background-color: #428bca !important;
+        border-color: #428bca;
+        border-bottom-color: transparent;
+        /*min-height: 62px;*/
+        font-weight: 600;
+        border: 1px solid #ddd;
+        /*padding-top: 5px;*/
+    }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #fff !important;
+            background-color: #428bca !important;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+            /*min-height: 62px;*/
+            font-weight: 600;
+            border: 1px solid #ddd;
+            /*padding-top: 5px;*/
+        }
+
+    .label_preview {
+        margin: 5px 0px 5px 0px;
+        font-weight: 600;
+    }
+
+    .photo_preview {
+        height: 160px;
+        width: 140px;
+        display: block;
+    }
+
+    .sign_preview {
+        height: 40px;
+        width: 130px;
+    }
+
+    .preview_header {
+        display: none;
+    }
+
+    .textBold {
+        padding: 0px !important;
+    }
+
+    @media print {
+        .photo_preview {
+            height: 150px;
+            width: 130px;
+            display: block;
+        }
+
+        .sign_preview {
+            height: 40px;
+            width: 130px;
+        }
+
+        .preview_header {
+            display: none;
+        }
+
+        .preview_header {
+            display: block;
+        }
+
+        .panel-body {
+            padding: 0px;
+        }
+
+        .logoImg {
+            height: 65px;
+            width: 65px;
+        }
+
+        .hall_head {
+            margin-top: 20px;
+            font-weight:600;
+        }
+
+        .hall_head1 {
+            margin-top: 5px;
+        }
+
+        .panel-heading {
+            display: none;
+        }
+
+        .sm-spacer {
+            height: 0px;
+        }
+
+        label {
+            margin: 0px !important;
+        }
+
+        #table-print {
+            display: block !important;
+        }
+
+        fieldset {
+            margin: 0px;
+            border-radius: 0px;
+            border: 0px;
+            border-top: 2px solid #000;
+        }
+
+        legend {
+            margin: 0px;
+            display: none;
+        }
+
+        .btn_submitt {
+            display: none;
+        }
+
+        .label_preview {
+            margin: 0px !important;
+            font-size: 10px !important;
+            font-weight: 600;
+        }
+
+        .pre-text {
+            padding: 0px;
+            font-size: 10px !important;
+        }
+
+        .table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 3px;
+            font-size: 9px;
+        }
+
+        .col-md-6 {
+            width: 50%;
+            padding: 1px !important;
+            margin: 0px !important;
+        }
+        /* fieldset{
+            display:none;
+        }
+        legend {
+            display: none;
+        }*/
+    }
+
+    /*
+    #Preview {
+        display: block !important;
+    }*/
+
+</style>
+
+<!--<link href="../../../assets/css/studentdashboardstyle.css" rel="stylesheet" />-->
+<style>
+    .head_section {
+        margin: 20px;
+    }
+
+    #helpDesk {
+        display: none;
+    }
+
+    #idtoDivPrint {
+        /*display: flex;*/
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #000;
+    }
+
+    .submit-btn button:focus {
+        outline: none !important;
+    }
+
+    .sign {
+        position: absolute;
+        top: -39px;
+        left: 382px;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 1px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+    }
+
+
+    .photo-img {
+        height: 126px !important;
+        width: 126px !important;
+    }
+
+    .logoImg {
+        height: 70px !important;
+        width: 70px !important;
+    }
+
+    .photo-img {
+        height: 136px !important;
+        width: 126px !important;
+        margin-top: 10px;
+    }
+
+    @media print {
+        .main {
+            display: none !important;
+        }
+        .top-bar-area {
+            display: none !important;
+        }
+        .header_area {
+            display: none !important;
+        }
+
+        .header {
+            display: none !important;
+        }
+
+        .photo-img {
+            height: 110px !important;
+            width: 95px !important;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+            float: left;
+        }
+
+        .col-md-12 {
+            width: 100%;
+        }
+
+        .col-md-11 {
+            width: 91.66666666666666%;
+        }
+
+        .col-md-10 {
+            width: 83.333333%;
+        }
+
+        .col-md-9 {
+            width: 75%;
+        }
+
+        .col-md-8 {
+            width: 66.66666666666666%;
+        }
+
+        .col-md-7 {
+            width: 58.333333333333336%;
+        }
+
+        .col-md-6 {
+            width: 50%;
+        }
+
+        .col-md-5 {
+            width: 41.66666666666667%;
+        }
+
+        .col-md-4 {
+            width: 33.33333333333333%;
+        }
+
+        .col-md-3 {
+            width: 25%;
+        }
+
+        .col-md-2 {
+            width: 16.666666666666664%;
+        }
+
+        .col-md-1 {
+            width: 8.333333333333332%;
+        }
+
+        .o-info {
+            display: none;
+        }
+
+        .top_row {
+            display: none;
+        }
+        /*.logo-image{
+              display:none;
+          }*/
+        .time {
+            display: none;
+        }
+
+        .top_logo {
+            width: 100%;
+            text-align: center;
+        }
+        /*.mtp-50{
+              display:none;
+          }*/
+        .empty-space {
+            display: none;
+        }
+
+        .main {
+            display: none;
+        }
+
+        .inputs {
+            border: none;
+            border-bottom: 0px solid #000;
+            width: 75%;
+        }
+
+        .pree-text {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .photo-img {
+            margin-top: 3px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border-bottom: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th {
+            border: 0px solid #000 !important;
+            border-left: 0px !important;
+            border: 0px !important;
+            color: #788598;
+            font-size: 12px !important;
+            padding: 2px;
+        }
+
+        .college-details {
+            display: none;
+        }
+
+        .header-top-section {
+            display: none;
+        }
+
+        .breadcrumb-header {
+            display: none;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+            border-top: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead2 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > thead > tr > th.myead3 {
+            border-top: 0px solid #000 !important;
+            border-right: 0px solid !important;
+            color: #000 !important;
+        }
+
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody {
+            border: 0px solid #000 !important;
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.myBody1 {
+            /*// border: 0px solid #000 !important;*/
+            border-right: 0px !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+            border-bottom: 0px solid #000 !important;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border-right: 0px !important;
+        }
+
+        .mySpacer {
+            height: 65px;
+        }
+
+
+
+        .print_btn {
+            display: none;
+        }
+
+        .bck_btn {
+            display: none;
+        }
+
+        .logoImg {
+            height: 60px !important;
+            width: 60px !important;
+        }
+
+        .scroll-top-wrapper.show {
+            display: none;
+            visibility: hidden !important;
+        }
+
+        .footer_section {
+            display: none;
+        }
+
+        /* .tbl {
+            border: 0px solid #000 !important;
+        }*/
+
+        /*.top_table {
+            width: 60%;
+        }*/
+
+        .top-tables {
+            border-bottom: 0px !important;
+            border-left: 0px !important;
+        }
+
+        .logo-image h2 {
+            margin: -12px 0px 16px 85px !important;
+            font-size: 17px !important;
+        }
+
+        .head2 {
+            font-size: 16px !important;
+        }
+
+        .terms_card {
+            margin: 5px !important;
+            font-size: 10px;
+        }
+
+        .sign_layout {
+            float: right;
+            width: auto;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > th.myeads {
+            border: 0px !important;
+        }
+
+        .textIndent {
+            padding-left: 15px;
+            text-indent: -15px;
+        }
+
+        .sign {
+            float: right;
+            position: absolute;
+            top: -40px;
+            left: 133px;
+        }
+
+        .downloadForm {
+            display: none;
+        }
+
+        .content {
+            padding-top: 0px;
+        }
+
+        .hall_head {
+            margin-top: 0px;
+            font-weight:600;
+            font-size: 16px !important;
+        }
+
+        /*  .col-md-2.logo {
+            width: 11.666667%;
+            padding: 0px;
+        }*/
+
+        .col-md-10.title {
+            width: 88.3333%;
+            padding: 0px;
+        }
+
+        h4.text-center.hall_head {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .table-custom-tables-tb .table-bordered > tbody > tr > td {
+            /*border: 1px solid #ddd !important;
+        color: #788598;*/
+            font-size: 11px !important;
+            padding: 4px !important;
+        }
+
+        .mySpacer.bottom {
+            display: none !important;
+        }
+
+        .resultsHeader {
+            display: none !important;
+        }
+
+        #mainfooter {
+            display: none !important;
+        }
+
+        .fd-form {
+            display: none !important;
+        }
+
+        #idtoDivPrint {
+            border: 1px solid #000;
+            padding: 0px;
+        }
+
+        .photo-img {
+            height: 136px !important;
+            width: 126px !important;
+            margin-top: 5px;
+        }
+
+        .table-bordered {
+            border: 0px solid #000;
+        }
+
+        .table {
+            margin-bottom: 0px;
+        }
+
+        hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 0;
+            border-top: 1px solid #000;
+        }
+
+        .photo_preview {
+            height: 145px;
+            width: 130px;
+            display: inline;
+        }
+
+        .panel-primary {
+            border: 0px;
+        }
+        header{
+            display:none;
+        }
+        footer {
+            display: none;
+        }
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 0px 9px;
+            font-size: 9px;
+        }
+    }
+
+    .panel-primary {
+        border-color: #337ab7;
+    }
+
+    .table-custom-tables-tb .table-bordered > tbody > tr > td {
+        border: 0px solid #ddd !important;
+        color: #788598;
+        font-size: 11px !important;
+        padding: 4px !important;
+        background-color: #fff;
+    }
+
+    .photo_preview {
+        height: 145px;
+        width: 130px;
+        display: inline;
+    }
+
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #000;
+    }
+
+    .myeads {
+        border-right: 0px !important;
+    }
+
+    .spacer {
+        height: 30px;
+    }
+
+    .footer {
+        display: none;
+    }
+    /*.table-custom-tables-tb .table-bordered > tbody > tr > td.bott_border {
+      border: 0px solid #000 !important;
+      border-left:0px!important;
+    }*/
+    .pree-text {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .top-box {
+        border: 0px solid #000;
+    }
+
+    .terms_card {
+        margin: 5px !important;
+        font-size: 10px;
+    }
+
+    .sign_layout {
+        float: right;
+        width: auto;
+    }
+
+    .lg-spacer {
+        height: 70px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .terms_card {
+        /*width: 100% !important;*/
+        text-align: left !important;
+        height: auto !important;
+        border-top: 1px solid #000;
+    }
+
+    .mySpacer {
+        height: 48px;
+    }
+
+    .textIndent {
+        padding-left: 15px;
+        text-indent: -15px;
+    }
+
+    .table-custom-tables-tb .table-bordered > thead > tr > th {
+        color: #788598 !important;
+        background-color: #fff !important;
+        padding: 3px;
+        font-size: 12px;
+        border: 0px;
+        font-size:14px;
+    }
+
+    .table-bordered {
+        border: 0px solid #ddd;
+    }
+
+    #idtoDivPrint {
+        padding: 0px;
+        border: 1px solid #000;
+        width: 100%;
+    }
+    .wprnt {
+        display: block;
+    }
+
+    .prnt {
+        display: none;
+    }
+    @media print {
+        #idtoDivPrint {
+            padding: 0px;
+            border: 1px solid #000;
+            width: auto;
+        }
+        .table-custom-tables-tb .table-bordered > thead > tr > th {
+            color: #788598 !important;
+            background-color: #fff !important;
+            padding: 3px;
+            font-size: 12px;
+            border: 0px;
+            font-size: 14px;
+            border: 1px solid #000 !important;
+        }
+        .default-padding {
+            padding: 0px;
+        }
+        .prnt_btn{
+            display:none;
+        }
+        .wprnt {
+            display: none;
+        }
+        .prnt {
+            display: block;
+        }
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 0px 9px;
+            font-size: 13px;
+        }
+        .head_sub {
+            font-weight: 600;
+        }
+        .marginData {
+            font-size: 13px;
+        }
+        .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+            padding: 0px 9px;
+            font-size: 13px;
+            border: 1px solid #000 !important;
+        }
+    }
+   
+    .text_red{
+        color:red;
+    }
+    .marginData{
+        font-size:13px;
+    }
+    .hall_head{
+        font-weight:600;
+    }
+    .head_sub {
+        font-weight: 600;
+    }
+   
+    @media screen and (max-width: 600px) {
+      .wprnt{
+          padding:0px;
+      }
+        .logo-image {
+           display:none;
+        }
+     
+    }
+</style>
+<ui-view>
+    <div ng-controller="RankCardController">
+
+        <div class="sm-spacer"></div>
+
+        <div class="container">
+
+            <div class="">
+                <!--  <div class="sm-spacer"></div>-->
+                <!-- Start Login
+                ============================================= -->
+                <div class="login-area default-padding">
+                    <div class="container">
+                        <div class="row">
+                            <div class="card1">
+                                <div class="row head_txt">
+                                    <div class="col-md-2 col-xs-12 logo">
+                                        <div class="logo-image" style="padding: 6px !important;">
+                                            <img src="/contents/img/sbtet-logo.svg" class="img-responsive logoImg pull-left" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-xs-12 title">
+                                        <h3 class="text-center hall_head" style="font-size: 16px !important;">STATE BOARD OF TECHNICAL EDUCATION & TRAINING TELANGANA, HYDERABAD</h3>
+                                        <h4 class="text-center " style="margin:0px;">
+                                            <b>POLYCET - 2023</b>
+                                        </h4>
+                                        <h5 class="text-center head_sub">(Polycet Common Entrance Test For Admission into Polytechnics)</h5>
+                                    </div>
+                                    <div class="col-md-2 col-xs-12 logo">
+                                        <div class="logo-image lg_right" style="padding: 6px !important;">
+                                            <img src="/contents/img/telangana-logo-png.png" class="img-responsive my-LOGO logoImg pull-right" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="myHr" />
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <h5 class="text-center subhead_text"><b>RANK CARD</b></h5>
+                                </div>
+                                <div class="col-md-2"></div>
+
+
+                                <div class='marginData'>
+                                    <div class='row1'>
+                                        <div class='col-md-6'>
+                                            <div>TS POLYCET Hall Ticket No: <b>{{HallTicketNo}}</b></div>
+                                            <div>Name: <b>{{Name}}</b></div>
+                                            <div>Father's Name: <b>{{FatherName}}</b></div>
+                                            <div>Date of Examination: <b>{{ExamDate}}</b></div>
+                                            <!--<div class="col-md-12">
+                         <div class="notifylabel pull-left" for="sel1" style="color: red;margin-bottom:10px;font-size:16px">
+                             Note : Please verify your caste details to avail fee consession.
+                         </div>
+                    </div>-->
+                                        </div>
+                                        <div class='col-md-6 prnt'>
+                                            <div class='col-md-1'>  </div>
+                                            <div class='col-md-11'>
+                                                <div>MPC Stream State Rank: <b>{{MPC_RANK}}</b></div>
+                                                <div>MBIPC Stream State Rank: <b>{{MBIPC_RANK}}</b></div>
+                                                <div>
+                                                    <table class=' table1 table-bordered  table1-striped table-rounded'>
+                                                        <thead>
+                                                            <tr>
+                                                                <th class='text-center clr_blue' colspan='4'>Marks Secured</th>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th class='text-center'><b>Maths</b></th>
+                                                                <th class='text-center'><b>Physics</b></th>
+                                                                <th class='text-center '><b>Chemistry</b></th>
+                                                                <th class='text-center cln'><b>Biology</b>  </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class='text-center'><b>{{MATHS}}</b></td>
+                                                                <td class='text-center'><b>{{PHYSICS}}</b></td>
+                                                                <td class='text-center'><b>{{CHEMISTRY}}</b></td>
+                                                                <td class='text-center cln'><b>{{BIOLOGY}}</b>  </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                            <div class='col-md-6 wprnt'>
+                                                <div class='col-md-5'></div>
+                                                <div class='col-md-7'>
+                                                    <div>MPC Stream State Rank: <b>{{MPC_RANK}}</b></div>
+                                                    <div>MBIPC Stream State Rank: <b>{{MBIPC_RANK}}</b></div>
+                                                </div>
+                                                <div class='col-md-5'></div>
+                                                <div class='col-md-7'>
+
+                                                    <div>
+                                                        <table class=' table1 table-bordered  table1-striped table-rounded'>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class='text-center clr_blue' colspan='4'>Marks Secured</th>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class='text-center'><b>Maths</b></th>
+                                                                    <th class='text-center'><b>Physics</b></th>
+                                                                    <th class='text-center '><b>Chemistry</b></th>
+                                                                    <th class='text-center cln'><b>Biology</b>  </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class='text-center'><b>{{MATHS}}</b></td>
+                                                                    <td class='text-center'><b>{{PHYSICS}}</b></td>
+                                                                    <td class='text-center'><b>{{CHEMISTRY}}</b></td>
+                                                                    <td class='text-center cln'><b>{{BIOLOGY}}</b>  </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+
+
+                                <div class="sm-spacer"></div>
+                                <div class="sm-spacer"></div>
+                                <div class="row wprnt">
+                                    <div class="col-md-9 col-xs-2"></div>
+                                    <div class="col-md-3 col-xs-8">
+                                        <img src="/contents/img/cesign.png" class="sign1" style="height:40px; width:180px;left:382px !important">
+                                        <br />  <b class="">Controller Of Examination</b>
+                                    </div>
+                                </div>
+                                <div class="row prnt">
+                                    <div class="col-md-7"></div>
+                                    <div class="col-md-5">
+                                        <img src="/contents/img/cesign.png" class="sign1" style="height:40px; width:180px;left:382px !important">
+                                        <br />  <b class="">Controller Of Examination</b>
+                                    </div>
+                                </div>
+                                <h5 class="text_red" ng-show="Remarks">
+                                    {{Remarks}}
+                                </h5>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <button class="btn sub_btn prnt_btn btn-danger" ng-show="printbutton" style="margin: 20px !important;" ng-click="GoBack()">
+                                    Cancel
+                                </button>
+                                <button class="btn sub_btn prnt_btn btn-success pull-right" ng-show="printbutton" style="margin: 20px !important;" ng-click="PrintRankCard()">
+                                    Print
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Login Area -->
+            </div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+            <div class="sm-spacer"></div>
+        </div>
+   
+    </div>
+   
+
+</ui-view>
+<script>
+    $(document).ready(function () {
+
+        var navListItems = $('div.setup-panel div a'),
+            allWells = $('.setup-content'),
+            allNextBtn = $('.nextBtn');
+
+        allWells.hide();
+
+        navListItems.click(function (e) {
+
+
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary').addClass('active')
+                if ($item.addClass('btn-primary').addClass('active')) {
+                    ($item.addClass('active').addClass('active_btn'))
+                    allNextBtn = $('.nextBtn');
+                }
+                $item.addClass('active');
+                //$("p").addClass("cls_active");
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+
+
+        allNextBtn.click(function () {
+
+            //validation = true;
+            //$target.show();
+
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+            $(this).removeClass('active')
+            $("p").addClass("cls_active");
+            $(".form-group").removeClass("has-error");
+
+            for (var i = 0; i < curInputs.length; i++) {
+                if (!curInputs[i].validity.valid) {
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+    });
+
+
+</script>

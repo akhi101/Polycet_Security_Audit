@@ -1,0 +1,58 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Modules</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Module Name:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.ModuleName">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Module Route Name:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.ModuleRouteName">
+            </div>
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Card Colour:</label>
+                <select class="form-control" id="District" ng-model="EditData.ModuleCardColourID"
+                        ng-options="data.ModuleCardColourID as data.ModuleCardColourName for data in ModuleCardColours">
+                    <option value="" selected>Select Colour</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Module Order:</label>
+                <input type="text" class="form-control" id="recipient-name" ng-model="EditData.ModuleOrder">
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData.Active" />
+            </div>
+            <!--</div>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateModules(EditData)">Update</button>
+        <button type="button" class="btn btn-secondary" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
+

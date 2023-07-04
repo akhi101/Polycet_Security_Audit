@@ -1,0 +1,183 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+            <!--<strong class="course-label">State Name:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData in EditData">
+        {{EditData.StateName}}
+    </span>
+    <hr>-->
+            <!--<strong class="course-label">District Name:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData in EditData">
+        {{EditData.DistrictName}}
+    </span>
+    <hr>
+    <strong class="course-label">Mandal Name:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData1 in EditData1">
+        {{EditData1.MandalName}}
+    </span>
+    <hr>-->
+            <strong class="course-label">Centre Code:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData[0].CentreCode}}
+            </span>
+            <hr>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Centre Name:</label>
+                <input type="text" class="form-control" maxlength="255" ng-model="EditData[0].CentreName" ng-disabled="CENTRENAME">
+            </div>
+            <div class="form-group">
+                <label>
+                    Centre Type:
+                </label>
+                <select class="form-control" id="State" ng-model="EditData[0].ExaminationCentreTypeID" ng-disabled="CENTRETYPE"
+                        ng-options="data.ExaminationCentreTypeID as data.ExaminationCentreTypeName for data in ExamCentreTypeData">
+                    <option value="" selected>Select Centre Type</option>
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">House Number / Building Name: (Optional)</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData[0].HouseNumber"ng-disabled="HNO">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Street Number / Name: (Optional)</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData[0].StreetName" ng-disabled="STREETNO">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Locality: (Optional)</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData[0].Locality" ng-disabled="LOCALITY">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Landmark:</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData[0].Landmark" ng-disabled="LANDMARK">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Village:</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData[0].Village" ng-disabled="VILLAGE">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    District:
+                </label>
+                <select class="form-control" id="District" ng-model="EditData[0].DistrictID" ng-change="editExamCentreMandals(EditData.DistrictID)"
+                        ng-options="data.DistrictID as data.DistrictName for data in EditDistrictsData" ng-disabled="ADDDISTRICT">
+                    <option value="" selected>Select District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Mandal:
+                </label>
+                <select class="form-control" id="Mandal" ng-model="EditData[0].MandalID"
+                        ng-options="data.MandalID as data.MandalName for data in EditMandalsData" ng-disabled="ADDMANDAL">
+                    <option value="" selected>Select Mandal</option>
+                </select>
+            </div>
+            <!--<strong class="course-label"> Mandal:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData in EditData">
+        {{EditData.MandalName}}
+    </span>
+    <hr>-->
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Postal pin code:</label>
+                <input type="text" class="form-control" ng-disabled="PINCODE" maxlength="6" minlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData[0].Pincode">
+            </div>
+            <div class="form-group">
+                <label>Centre Category:</label>
+
+                <select class="form-control" id="Category" ng-model="EditData[0].ExaminationCentreCategoryID" ng-disabled="CATEGORY"
+                        ng-options="data.ExaminationCentreCategoryID as data.ExaminationCentreCategoryName for data in CentresCategoryData">
+                    <option value="" selected>Select Centre Category</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-form-label">Urdu Medium:</label>
+                <input type="checkbox" ng-disabled="URDU" ng-model="EditData[0].UrduMedium" />
+            </div>
+            <div class="form-group">
+                <label class="font-weight-bold"> Students per Bench:</label>
+                <select class="form-control"ng-model="EditData[0].StudentsperBench" ng-disabled="STDPERBENCH"
+                        ng-options="data.Id as data.Id for data in Values">
+                    <option value="" selected>Select Students per Bench</option>
+                </select>
+                <!--<select class="form-control" ng-model="EditData[0].StudentsperBench" name="Type" required>
+                    <option value="" selected>Select Students per Bench</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>-->
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Total Capacity:</label>
+                <input type="text" class="form-control" maxlength="3" ng-disabled="TOTALCAPACITY" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData[0].TotalCapacity">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Priority Order:</label>
+                <input type="text" class="form-control" maxlength="2" ng-disabled="PRIORITY" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData[0].PriorityOrder">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Superitendent Name:</label>
+                <input type="text" class="form-control" maxlength="100" ng-disabled="SUPERNAME" ng-model="EditData[0].CheifSuperitendentName">
+            </div>
+            <div class="form-group">
+                <label>
+                    Superitendent Mobile Number:
+                </label>
+                <input class="form-control" type="text" placeholder="Enter Mobile No." ng-disabled="SUPERMOBILE" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData[0].CheifSuperitendentMobile" required />
+            </div>
+            <div class="form-group">
+                <label>
+                    Superitendent Email:
+                </label>
+                <input class="form-control" type="text" placeholder="Enter Email" ng-disabled="SUPERMAIL" ng-model="EditData[0].CheifSuperitendentEmail" required />
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Assistant Superitendent Name:</label>
+                <input type="text" class="form-control" ng-disabled="ASSTSUPERNAME" maxlength="100" ng-model="EditData[0].AsstCheifSuperitendentName">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Assistant Superitendent Mobile Number:</label>
+                <input type="text" class="form-control" ng-disabled="ASSTSUPERMOBILE" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData[0].AsstCheifSuperitendentMobile">
+            </div>
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Assistant Superitendent Email:</label>
+                <input type="text" class="form-control" ng-disabled="ASSTESUPERMAIL" maxlength="100" id="recipient-name" ng-model="EditData[0].AsstCheifSuperitendentEmail">
+            </div>
+
+
+
+
+
+            <div class="col-md-1">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData[0].Active" ng-disabled="ACTIVE" />
+            </div>
+            <!--</div>-->
+        </form>
+</div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData)">Update</button>
+        <button type="button" class="btn btn-danger" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>

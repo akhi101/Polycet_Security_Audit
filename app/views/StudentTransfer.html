@@ -1,0 +1,446 @@
+﻿<style>
+    .loader {
+        border: 4px solid #5cb85c;
+        border-radius: 50%;
+        border-top: 4px solid #fff;
+        width: 20px;
+        height: 20px;
+        -webkit-animation: spin 4s linear infinite; /* Safari */
+        animation: spin 1s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .modal-open {
+        padding-right: 0px !important;
+    }
+
+    body.modal-open {
+        padding-right: 0px !important;
+        overflow-y: auto;
+    }
+
+    .selectBox {
+        position: relative;
+    }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+    .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    thead > tr > th {
+        position: sticky;
+        top: 0px;
+    }
+
+
+
+
+    .txt_decorate {
+        text-transform: uppercase;
+    }
+
+    #checkboxesdistrict {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+        #checkboxesdistrict label {
+            display: block;
+        }
+
+            #checkboxesdistrict label:hover {
+                background-color: #1e90ff;
+            }
+
+    #checkboxesmandal label {
+        display: block;
+    }
+
+        #checkboxesmandal label:hover {
+            background-color: #1e90ff;
+        }
+
+    #checkboxesmandal {
+        display: none;
+        border: 1px #dadada solid;
+    }
+
+
+
+    .contain {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        /* margin-bottom: 12px; */
+        /* padding-top: 5px; */
+        cursor: pointer;
+        margin: 5px !important;
+        font-size: 15px !important;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .contain input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        background-color: #eee;
+        border: 1px solid #cac6c6;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .contain:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .contain input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .contain input:checked ~ .checkmark:after {
+        display: block;
+    }
+    /* Style the checkmark/indicator */
+    .contain .checkmark:after {
+        left: 8px;
+        top: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .contain {
+        font-size: 13px !important;
+    }
+
+
+
+    .card {
+        /* Add shadows to create the "card" effect */
+
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        padding: 20px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+
+    a.ExportToExcel1 {
+        color: #1f497d;
+        text-decoration: none;
+        font-size: 18px;
+        padding-right: 10px;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+   
+
+    .sm-spacer {
+        height: 50px;
+    }
+
+ 
+    .pad_cls{
+        padding:5px 5px!important;
+    }
+    .class_bord {
+        margin-top: 20px !important;
+        border-top: 1px solid #ddd;
+    }
+    tr:hover {
+        background-color: #dfebfb;
+    }
+</style>
+<div ng-controller="StudentTransferController">
+
+    <header id="home">
+
+        <!--  Start Navigation-->
+        <nav class="navbar navbar-default navbar-sticky bootsnav">
+
+            <div class="container">
+                <!-- Start Header Navigation-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/sbtet-logo.png" class="logo" alt="Logo">
+                    </a>
+                    <h6 class="header_text">Telangana Polytechnic Common Entrance Test</h6>
+                </div>
+                <!--End Header Navigation
+                Collect the nav links, forms, and other content for toggling-->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+                        <li><a><i class="fa fa-user" aria-hidden="true"></i> {{UserName}}</a></li>
+                        <li ng-click="ChangePassword()"><a><i class="user-login" aria-hidden="true"></i>Change Password</a></li>
+                        <li ng-click="logOut()"><a><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+
+        </nav>
+        <!-- End Navigation -->
+
+    </header>
+
+    <div class="breadcrumb-header">
+        <!-- breadcrumb Open -->
+        <div class="container">
+            <section class="content-header">
+                <h5>Student Transfer</h5>
+
+            </section>
+        </div>
+        <!-- breadcrumb Close -->
+    </div>
+    <div class="container">
+        <button class="btn  btn-primary back_button" ng-click="GoBack()"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>  Back</button>
+    </div>
+    <div class="container">
+        <div class="card">
+            <form name="dataForm">
+                <div class="row ">
+                    <div class="form-group col-md-3">
+                        <label>
+                            Hall Ticket Number:
+                        </label>
+                        <input class="form-control" type="text" maxlength="7" minlength="7" placeholder="Hall Ticket Number" ng-model="HallTicketNumber" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="">
+                            <button type="submit" class="btn  btn-primary btn_top_margin  pull-right" ng-click="getStudentTransferData(HallTicketNumber)">Get Details<span class="fa  heading_icon btn_icons"></span></button>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row class_bord" ng-show="StudentData.length>0">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Hall Ticket Number</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].HallticketNumber}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Student Name</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].StudentName}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Father Name</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].FatherName}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Alloted Centre</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].CentreName}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Caste Category Name</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].CasteCategoryName}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls">
+                                    <strong class="course-label"> Registration Number</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{StudentData[0].RegistrationNumber}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-2 pad_cls" ng-if="SelectedTransferCentre.length>0">
+                                    <strong class="course-label"> Transfer Centre</strong>
+
+                                </div>
+                                <div class="col-md-10 pad_cls" ng-if="SelectedTransferCentre.length>0">
+                                    <span class="text-muted word-break fl-right">
+                                        : {{SelectedTransferCentre}}
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-12" ng-show="StudentData.length>0 && ExamCentresDataNew.length>0">
+                            <div class="">
+                                <button type="submit" class="btn  btn-success btn_top_margin  pull-right" ng-click="Transfer()">Transfer<span class="fa  heading_icon btn_icons"></span></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </form>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-sm-12">
+        <div class="inner-heading">
+            <h3>Notifications</h3>
+        </div>
+    </div>-->
+            <div class="col-md-3" ng-show="StudentData.length>0 && ExamCentresDataNew.length>0">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input type="text" ng-model="search" class="form-control ng-pristine ng-untouched ng-valid ng-empty" placeholder="Search">
+                </div>
+            </div>
+
+
+            <div class="col-md-12" ng-show="Label">
+                <div class="notifylabel pull-right" for="sel1" style="color: red;">
+                    Note: Double Click on the Table Row to Select Transfer Exam Centre
+                </div>
+            </div>
+
+            <div class="col-sm-12" ng-show="StudentData.length>0 && ExamCentresDataNew.length>0">
+                <div id="preExamReports" class="table-responsive table-custom-tables-tb col-md-12 scrollbox">
+                    <table class="table table-bordered  table-rounded scrollbox-content">
+                        <thead>
+                            <tr class="cb-1">
+                                <th width="3%">S.No</th>
+                                <th>CentreCode</th>
+                                <th>Centre Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="cursor:pointer" ng-repeat="data in ExamCentresDataNew | filter:search" ng-dblclick="SelectCentre(data)">
+                                <td>{{$index+1}}</td>
+                                <td>{{data.CentreCode}}</td>
+                                <td>{{data.CentreName}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+                <div class="sm-spacer"></div>
+                <div class="sm-spacer"></div>
+                <div class="sm-spacer"></div>
+                <div class="sm-spacer"></div>
+                <div class="spacer"></div>
+
+                <footer class="bg-dark text-light ng-scope">
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-9">
+                                        <p>© 2022 This is the official website of State Board of Technical Education &amp; Training, Telangana. All rights reserved </p>
+                                    </div>
+                                    <div class="col-md-3 text-right link">
+                                        <span class="float-right">Total Site Views: </span>
+                                        <span class="site-visit float-right ng-binding">{{SiteViews}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>

@@ -1,0 +1,66 @@
+﻿<style>
+    /*.pub_btn {
+        border-radius: 30px;
+        font-weight: bold;
+        margin-top:20px;
+    }
+    .hed_tcxt{
+        color:darkgreen;
+    }
+    .yt-container {
+        position: absolute;*/ /* Postion relative to section */
+        /* Make it full size ↓ */
+        /*bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        overflow: hidden;*/ /* Prevent video overflow */
+        /*pointer-events: none;*/ /* Prevent user interaction */
+        /*z-index: -2;*/ /* Make YouTube container underneath section content */
+    /*}
+
+    .yt-background {
+        position: absolute;*/ /* Postion relative to .yt-container */
+        /* center it ↓ */
+        /*top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);*/
+        /* make it full height ↓ */
+        /*height: 100%;
+    }*/
+
+    /* Make a hidden sizer SVG to take up full size of the .yt-background */
+    /*.yt-sizer {
+        display: inline-block;
+        width: auto;
+        max-width: none;
+        height: 100%;
+        border: none;
+        vertical-align: top;
+    }*/
+
+    .res_bg {
+        width: 600PX;
+        height: 500PX ;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:100px;
+        /*width: 50%;*/
+    }
+    .txt-center {
+        text-align: center;
+        color: darkgreen;
+    }
+</style>
+<div ng-controller="ResultsReleaseController">
+    <!--<h3 class="text-center hed_tcxt">click below button to publish polycet 2022 results</h3>
+    <div class="col-md-4"></div>
+    <div class="col-md-4 text-center"> <button class="btn btn-circle text-center btn-info pub_btn" ng-click="releaseresults()">publish results</button></div>
+    <div class="col-md-4"></div>-->
+    <div class="container">
+        <img class="res_bg" src="/assets/Polycet 2023 Results Released.gif" />
+        <h4 class="txt-center">Please wait redirecting to Rank Card</h4>
+    </div>
+    
+</div>

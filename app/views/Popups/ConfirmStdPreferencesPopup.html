@@ -1,0 +1,121 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Confirm Preferences</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<strong class="course-label">Preference 1 District:</strong>
+    <span class="text-muted fl-right">
+        {{Preference1District.DistrictName}}
+    </span>
+    <hr>
+
+    <strong class="course-label">Preference 1 Mandal:</strong>
+    <span class="text-muted fl-right">
+        {{Preference1Mandal.MandalName}}
+    </span>
+    <hr>
+    <strong class="course-label">Preference 2 District:</strong>
+    <span class="text-muted fl-right">
+        {{Preference2District.DistrictName}}
+    </span>
+    <hr>
+    <strong class="course-label">Preference 2 Mandal:</strong>
+    <span class="text-muted fl-right">
+        {{Preference2Mandal.MandalName}}
+    </span>
+    <hr>
+    <strong class="course-label">Preference 3 District:</strong>
+    <span class="text-muted fl-right">
+        {{Preference3District.DistrictName}}
+    </span>
+    <hr>
+    <strong class="course-label">Preference 3 Mandal:</strong>
+    <span class="text-muted fl-right">
+        {{Preference3Mandal.MandalName}}
+    </span>
+    <hr>-->
+
+            <div>
+                <h4>Preference 1</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>
+                            District
+                        </label>
+                        <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference1District.DistrictName">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="form-group variation-dropdown">
+                                <label>Mandal</label>
+                                <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference1Mandal.MandalName">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>Preference 2</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>
+                            District
+                        </label>
+                        <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference2District.DistrictName">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="form-group">
+                                <label>Mandal</label>
+                                <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference2Mandal.MandalName">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>Preference 3</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>
+                            District
+                        </label>
+                        <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference3District.DistrictName">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <div class="form-group">
+                                <label>Mandal</label>
+                                <input type="text" class="form-control" maxlength="100" disabled ng-model="Preference3Mandal.MandalName">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <a style="font-size:18px" title="Amount Amount" >Are you sure to Confirm Preferences and Generate Hall Ticket?</a>
+
+
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="AddPreferences()" ng-disabled="tabsbutton">
+            <span ng-show="!loader9">Yes</span>
+            <span ng-show="loader9"><div class="loader"> </div></span>
+        </button>
+        <button type="button" class="btn btn-danger" ng-click="closeModal()">No</button>
+    </div>
+</div>
+

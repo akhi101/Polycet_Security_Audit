@@ -1,0 +1,181 @@
+﻿<style>
+    input[type=checkbox] {
+        margin: 4px 0 0;
+        width: 20px;
+        margin: 0px 10px !important;
+        padding: 0px 10px;
+        height: 20px;
+    }
+</style>
+
+<div class="modal-content">
+    <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">Edit Details</h2>
+        <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <!--<div style="background-color:#fff!important;" ng-repeat="x in EditDistCordCentresTable" class="ng-scope">-->
+            <!--<strong class="course-label">State Name:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData2 in EditData2">
+        {{EditData2.StateName}}
+    </span>
+    <hr>-->
+            <!--<div class=" form-group">
+        <label for="sel1">
+            District:
+        </label>
+        <div class="multiselect">
+            <div class="selectBox" ng-click="showdistrictCheckboxes()">
+                <select class="form-control ">
+                    <option ng-blur="closedistrictCheckbox()">Select District</option>
+                </select>
+                <div class="overSelect"></div>
+            </div>
+            <div id="checkboxesdistrict" style="max-height: 12em; overflow-y: scroll;">
+                <label class="contain">
+                    <input type="checkbox" ng-click="toggleAlldistrict()" ng-disabled="districtdisable" ng-model="isAllSelecteddistricts" /><span class="checkmark"></span>Select All
+                </label>
+                <label class="contain" ng-repeat="data in EditedDistricts">
+                    <input type="checkbox" ng-model="data.selected" ng-disabled="districtdisable" ng-change="optionEditToggleddistrict(data.selected,data.DistrictID)"><span class="checkmark"></span>{{data.DistrictName}}
+                </label>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="sel2">
+            Mandal:
+        </label>
+        <div class="multiselect">
+            <div class="selectBox" ng-click="showmandalCheckboxes()">
+                <select class="form-control ">
+                    <option ng-blur="closemandalCheckbox()">Select Mandal</option>
+                </select>
+                <div class="overSelect"></div>
+            </div>
+            <div id="checkboxesmandal" style="max-height: 12em; overflow-y: scroll;">
+                <label class="contain">
+                    <input type="checkbox" ng-click="toggleEditAllmandal()" ng-model="isAllSelectedmandals" /><span class="checkmark"></span>Select All
+                </label>
+                <label class="contain" ng-repeat="data in EditedMandals">
+                    <input type="checkbox" ng-model="data.selected" ng-change="optionToggledEditmandal(data.selected,data.MandalID)"><span class="checkmark"></span>{{data.MandalName}}
+                </label>
+
+            </div>
+        </div>
+
+    </div>-->
+            <strong class="course-label">District Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="data in EditDistrictData">
+                {{data.DistrictName}},
+            </span>
+            <hr>
+            <strong class="course-label">Mandal Name:</strong>
+            <span class="text-muted word-break fl-right" ng-repeat="data in EditMandalData">
+                {{data.MandalName}},
+            </span>
+            <hr>
+            <strong class="course-label">Centre Code:</strong>
+            <span class="text-muted word-break fl-right">
+                {{EditData2[0].CentreCode}}
+            </span>
+            <hr>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Centre Name:</label>
+                <input type="text" class="form-control" maxlength="255" ng-model="EditData2[0].CentreName">
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">House Number / Building Name (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].HouseNumber">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Street Number / Name (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].StreetName">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Locality (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].Locality">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Landmark (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].Landmark">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Village (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].Village">
+            </div>
+
+            <div class="form-group">
+                <label>
+                    District:
+                </label>
+                <select class="form-control" id="District" ng-model="EditData2[0].DistrictID" ng-change="editCoordinatingMandals(EditData2[0].DistrictID)"
+                        ng-options="data.DistrictID as data.DistrictName for data in EditDistrictsData">
+                    <option value="" selected>Select District</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    Mandal:
+                </label>
+                <select class="form-control" id="Mandal" ng-model="EditData2[0].MandalID"
+                        ng-options="data.MandalID as data.MandalName for data in EditMandalsData">
+                    <option value="" selected>Select Mandal</option>
+                </select>
+            </div>
+            <!--<strong class="course-label"> Mandal:</strong>
+    <span class="text-muted word-break fl-right" ng-repeat="EditData2 in EditData2">
+        {{EditData2.MandalName}}
+    </span>
+    <hr>-->
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Postal pin code:</label>
+                <input type="text" class="form-control" maxlength="6" minlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData2[0].Pincode">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">QP Route Number:</label>
+                <input type="text" class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData2[0].RouteNumber">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Route Sequence:</label>
+                <input type="text" class="form-control" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' maxlength="3" ng-model="EditData2[0].RouteSequence">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Coordinator Name:</label>
+                <input type="text" class="form-control" maxlength="100" ng-model="EditData2[0].CoordinatorName">
+            </div>
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Coordinator Mobile Number:</label>
+                <input type="text" class="form-control" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" ng-model="EditData2[0].CoordinatorMobile">
+            </div>
+
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Coordinator Email (Optional):</label>
+                <input type="text" class="form-control" maxlength="100" id="recipient-name" ng-model="EditData2[0].CoordinatorEmail">
+            </div>
+
+
+
+
+
+            <div class="col-md-1">
+                <label for="checkbox" class="col-form-label">Active:</label>
+                <input type="checkbox" ng-model="EditData2[0].Active" />
+            </div>
+            <!--</div>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="UpdateDetails(EditData2)">Update</button>
+        <button type="button" class="btn btn-danger" ng-click="closeModal()">Cancel</button>
+    </div>
+</div>
