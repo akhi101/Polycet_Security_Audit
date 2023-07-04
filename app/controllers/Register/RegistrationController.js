@@ -1,5 +1,6 @@
 ﻿define(['app'], function (app) {
     app.controller("RegistrationController", function ($scope, $http, $crypto, $localStorage, $state, $uibModal, PaymentService, StudentRegistrationService, AdminService, SystemUserService, PreExaminationService) {
+
         const $ctrl = this;
 
         $ctrl.$onInit = () => {

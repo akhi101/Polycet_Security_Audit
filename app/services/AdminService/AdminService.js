@@ -4,8 +4,17 @@
             return DataAccessService.getDataAll('api/AdminService/GetCurrentPolycetYear');
         };
 
-        this.GetStates = function () {
-            return DataAccessService.getDataAll('api/AdminService/GetStates');
+        //this.GetStates = function () {
+        //    return DataAccessService.getDataAll('api/AdminService/GetStates');
+        //};
+
+        this.GetStates = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetStates', paramObject);
         };
 
         this.GetExamCentreCategories = function () {
@@ -32,43 +41,32 @@
         //this.VerifyNRDownloadDates = function () {
         //    return DataAccessService.getDataAll('api/AdminService/VerifyNRDownloadDates');
         //};
-        this.VerifyRegistrationDates = function (DataType, UserName, SessionId, Captcha) {
+
+        this.GetTenthYears = function (UserName, SessionId, Captcha) {
             var paramObject = {
-                "DataType": DataType,
                 "UserName": UserName,
                 "SessionId": SessionId,
                 "Captcha": Captcha
             };
+            return DataAccessService.getDataWithPara('api/AdminService/GetTenthYears', paramObject);
+        };
+        this.VerifyRegistrationDates = function (DataType) {
+            var paramObject = { "DataType": DataType };
+            return DataAccessService.getDataWithPara('api/AdminService/VerifyRegistrationDates', paramObject);
+        };
+
+        this.VerifyExaminationDates = function (DataType) {
+            var paramObject = { "DataType": DataType };
             return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
         };
 
-        this.VerifyExaminationDates = function (DataType, UserName, SessionId, Captcha) {
-            var paramObject = {
-                "DataType": DataType,
-                "UserName": UserName,
-                "SessionId": SessionId,
-                "Captcha": Captcha
-            };
-            return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
-        };
-
-        this.VerifyExaminationCentresDates = function (DataType, UserName, SessionId, Captcha) {
-            var paramObject = {
-                "DataType": DataType,
-                "UserName": UserName,
-                "SessionId": SessionId,
-                "Captcha": Captcha
-            };
+        this.VerifyExaminationCentresDates = function (DataType) {
+            var paramObject = { "DataType": DataType };
             return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
         };
 
         this.VerifyNRDownloadDates = function (DataType, UserName, SessionId, Captcha) {
-            var paramObject = {
-                "DataType": DataType,
-                "UserName": UserName,
-                "SessionId": SessionId,
-                "Captcha": Captcha
-            };
+            var paramObject = { "DataType": DataType };
             return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
         };
 
@@ -77,8 +75,8 @@
                 "DataType": DataType,
                 "UserName": UserName,
                 "SessionId": SessionId,
-                "Captcha": Captcha
-            };            return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
+                "Captcha": Captcha };
+            return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
         };
 
         this.VerifyResultsDates = function (DataType, UserName, SessionId, Captcha) {
@@ -87,7 +85,7 @@
                 "UserName": UserName,
                 "SessionId": SessionId,
                 "Captcha": Captcha
-            };
+                  };
             return DataAccessService.getDataWithPara('api/AdminService/VerifyDates', paramObject);
         };
 
@@ -122,22 +120,32 @@
         //    return DataAccessService.getDataAll('api/AdminService/GetRecentNews');
         //};
 
-        this.GetDashboardStatus = function (RegistrationID) {
-            var paramObject = { "RegistrationID": RegistrationID };
-            return DataAccessService.getDataWithPara('api/AdminService/GetDashboardStatus', paramObject);
-        };
-        this.GetStudentFeeData = function (RegistrationID, UserName, SessionId ,Captcha) {
+        this.GetDashboardStatus = function (RegistrationID, UserName, SessionId, Captcha) {
             var paramObject = {
                 "RegistrationID": RegistrationID,
                 "UserName": UserName,
                 "SessionId": SessionId,
                 "Captcha": Captcha
-};
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetDashboardStatus', paramObject);
+        };
+        this.GetStudentFeeData = function (RegistrationID,UserName,SessionId,Captcha) {
+            var paramObject = {
+                "RegistrationID": RegistrationID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetStudentFeeData', paramObject);
         };
 
-        this.GetStudentApplicationData = function (RegistrationID) {
-            var paramObject = { "RegistrationID": RegistrationID };
+        this.GetStudentApplicationData = function (RegistrationID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "RegistrationID": RegistrationID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetStudentApplicationData', paramObject);
         };
         this.GetAllRecentNews = function (DataType) {
@@ -150,8 +158,8 @@
             return DataAccessService.getDataWithPara('api/AdminService/GetActiveRecentNews', paramObject);
         };
 
-        this.GetHallticketByRegistrationId = function (RegistrationID, RegistrationNumber, DataType) {
-            var paramObject = { "RegistrationID": RegistrationID, "RegistrationNumber": RegistrationNumber, "DataType": DataType };
+        this.GetHallticketByRegistrationId = function (RegistrationID, RegistrationNumber, DataType, UserName, SessionId, Captcha) {
+            var paramObject = { "RegistrationID": RegistrationID, "RegistrationNumber": RegistrationNumber, "DataType": DataType, "UserName": UserName, "SessionId": SessionId, "Captcha": Captcha };
             return DataAccessService.getDataWithPara('api/AdminService/GetHallticketByRegistrationId', paramObject);
         };
 
@@ -914,8 +922,8 @@
             return DataAccessService.postData('api/AdminService/AddorUpdatePolycetYear', paramObject);
         };
 
-        this.GetCasteDetails = function (applicationNo, userid) {
-            var paramObject = { "applicationNo": applicationNo, "userid": userid };
+        this.GetCasteDetails = function (applicationNo, userid, UserName, SessionId, Captcha) {
+            var paramObject = { "applicationNo": applicationNo, "userid": userid, "UserName": UserName, "SessionId": SessionId, "Captcha": Captcha };
             console.log(paramObject)
             return DataAccessService.postData('api/AdminService/GetCasteDetails', paramObject);
         };
@@ -1030,58 +1038,110 @@
             return DataAccessService.postData('api/AdminService/UpdateUserDetails', paramObject);
         };
 
-        this.GetQualifiedExams = function () {
-            return DataAccessService.postData('api/AdminService/GetQualifiedExams');
+        //this.GetQualifiedExams = function () {
+        //    return DataAccessService.postData('api/AdminService/GetQualifiedExams');
+        //};
+
+        this.GetQualifiedExams = function (UserName, SessionId, Captcha) {
+            var paramObj = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetQualifiedExams', paramObj);
         };
 
-        this.GetTenthYears = function () {
-            return DataAccessService.postData('api/AdminService/GetTenthYears');
-        };
+        //this.GetTenthYears = function () {
+        //    return DataAccessService.postData('api/AdminService/GetTenthYears');
+        //};
 
-        this.GetDistrictsbyState = function (DataType, StateID) {
-            var paramObject = { "DataType": DataType, "StateID": StateID };
+        this.GetDistrictsbyState = function (DataType, StateID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DataType": DataType,
+                "StateID": StateID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+};
             return DataAccessService.getDataWithPara('api/AdminService/GetDistrictsbyState', paramObject);
         };
 
-        this.GetMandalsbyDistrict = function (DistrictID) {
-            var paramObject = { "DistrictID": DistrictID };
+        this.GetMandalsbyDistrict = function (DistrictID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DistrictID": DistrictID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetMandalsbyDistrict', paramObject);
         };
 
-        this.GetPreference1Mandals = function (DistrictID) {
-            var paramObject = { "DistrictID": DistrictID };
+        this.GetPreference1Mandals = function (DistrictID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DistrictID": DistrictID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetPreference1Mandals', paramObject);
         };
 
-        this.GetPreference2Mandals = function (DistrictID) {
-            var paramObject = { "DistrictID": DistrictID };
+        this.GetPreference2Mandals = function (DistrictID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DistrictID": DistrictID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetPreference2Mandals', paramObject);
         };
 
-        this.GetPreference3Mandals = function (DistrictID) {
-            var paramObject = { "DistrictID": DistrictID };
+        this.GetPreference3Mandals = function (DistrictID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DistrictID": DistrictID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
             return DataAccessService.getDataWithPara('api/AdminService/GetPreference3Mandals', paramObject);
         };
 
-        this.GetTelanganaDistricts = function (DataType, StateID) {
-            var paramObject = { "DataType": DataType, "StateID": StateID };
+        this.GetTelanganaDistricts = function (DataType, StateID, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "DataType": DataType,
+                "StateID": StateID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha };
             return DataAccessService.getDataWithPara('api/AdminService/GetDistrictsbyState', paramObject);
         };
 
-        this.GetPreference1Districts = function () {
-            var promise = DataAccessService.getDataWithPara('api/AdminService/GetPreference1Districts');
-            return promise;
+        this.GetPreference1Districts = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetPreference1Districts', paramObject);
         }
 
 
-        this.GetPreference2Districts = function () {
-            var promise = DataAccessService.getDataWithPara('api/AdminService/GetPreference2Districts');
-            return promise;
+        this.GetPreference2Districts = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetPreference2Districts', paramObject);
         }
 
-        this.GetPreference3Districts = function () {
-            var promise = DataAccessService.getDataWithPara('api/AdminService/GetPreference3Districts');
-            return promise;
+        this.GetPreference3Districts = function (UserName, SessionId, Captcha) {
+            var paramObject = {
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
+            };
+            return DataAccessService.getDataWithPara('api/AdminService/GetPreference3Districts', paramObject);
         }
 
 
@@ -1091,18 +1151,23 @@
             return DataAccessService.postData('api/AdminService/AddStudentDetails', paramObject);
         };
 
-        this.GetStudentDetails = function (RegistrationID) {
+        this.GetStudentDetails = function (RegistrationID, UserName, SessionId, Captcha) {
             var paramObj = {
-                "RegistrationID": RegistrationID
+                "RegistrationID": RegistrationID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha
             };
             var promise = DataAccessService.postData('api/AdminService/GetStudentDetails', paramObj);
             return promise;
         };
 
-        this.SetApplicationSubmit = function (RegistrationID) {
+        this.SetApplicationSubmit = function (RegistrationID, UserName, SessionId, Captcha) {
             var paramObj = {
-                "RegistrationID": RegistrationID
-            };
+                "RegistrationID": RegistrationID,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha            };
             var promise = DataAccessService.getDataWithPara('api/AdminService/SetApplicationSubmit', paramObj);
             return promise;
         };
@@ -1147,8 +1212,13 @@
             return DataAccessService.getDataWithPara('api/AdminService/GetFeePaymentReportsExcel', paramObject);
         };
 
-        this.GetPolycetEWSVerification = function (applicationNo, userid) {
-            var paramObject = { "applicationNo": applicationNo, "userid": userid };
+        this.GetPolycetEWSVerification = function (applicationNo, userid, UserName, SessionId, Captcha) {
+            var paramObject = {
+                "applicationNo": applicationNo,
+                "userid": userid,
+                "UserName": UserName,
+                "SessionId": SessionId,
+                "Captcha": Captcha };
             console.log(paramObject)
             return DataAccessService.postData('api/AdminService/GetPolycetEWSVerification', paramObject);
         };
